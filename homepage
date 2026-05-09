@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LANDPLUS | 上下水道施設の耐震解析・補強設計</title>
+  <meta name="description" content="LANDPLUSの上下水道施設における耐震解析、補強設計、数量計算、概算工事費、図面作成、施工計画書作成に関する技術サービス紹介ページです。" />
+  <style>
+    :root {
+      --bg: #f4f7fa;
+      --paper: #ffffff;
+      --ink: #142433;
+      --muted: #5d7185;
+      --line: #d6dde5;
+      --line-strong: #9fb0c1;
+      --brand: #173a5e;
+      --brand-2: #255b8f;
+      --accent: #b38b4d;
+      --soft: #edf3f8;
+      --soft-2: #f8fbfd;
+      --ok: #285d52;
+      --shadow: 0 18px 40px rgba(12, 31, 52, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --content: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(37, 91, 143, 0.08), transparent 24%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.8;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--content));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(248, 251, 253, 0.88);
+      border-bottom: 1px solid rgba(159, 176, 193, 0.35);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-mark {
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: var(--soft);
+      color: var(--brand);
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-card {
+      background:
+        linear-gradient(135deg, rgba(23, 58, 94, 0.96), rgba(37, 91, 143, 0.92)),
+        #173a5e;
+      color: #fff;
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-card::before {
+      width: 420px;
+      height: 420px;
+      background: rgba(255,255,255,0.06);
+      top: -180px;
+      right: -120px;
+    }
+
+    .hero-card::after {
+      width: 240px;
+      height: 240px;
+      background: rgba(255,255,255,0.05);
+      bottom: -90px;
+      left: -60px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 28px;
+      padding: 54px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.92);
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4.2vw, 3.5rem);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-lead {
+      margin: 0;
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      background: #f3f7fb;
+    }
+
+    .button-secondary {
+      border-color: rgba(255,255,255,0.3);
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .panel-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 4px;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-list-item {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-list-item:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .hero-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.86rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.14);
+    }
+
+    .hero-list-item strong {
+      display: block;
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-list-item span {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 26px 0 0;
+    }
+
+    .section-block {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      color: var(--brand-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.3;
+      color: var(--brand);
+    }
+
+    .section-desc {
+      margin: 0;
+      color: var(--muted);
+      max-width: 880px;
+    }
+
+    .overview-grid,
+    .service-grid,
+    .result-grid,
+    .feature-grid,
+    .flow-grid,
+    .deliverable-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .overview-grid { grid-template-columns: 1.15fr 0.85fr; }
+    .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .result-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .feature-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .flow-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .deliverable-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 22px rgba(19, 41, 66, 0.04);
+    }
+
+    .card-pad { padding: 28px; }
+
+    .summary-card {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-table {
+      display: grid;
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      background: #fff;
+    }
+
+    .summary-row dt,
+    .summary-row dd {
+      margin: 0;
+      padding: 16px 18px;
+    }
+
+    .summary-row dt {
+      background: var(--soft-2);
+      color: var(--brand);
+      font-weight: 700;
+      border-right: 1px solid var(--line);
+    }
+
+    .summary-row dd {
+      color: var(--ink);
+    }
+
+    .status-card {
+      background: linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(40, 93, 82, 0.08);
+      color: var(--ok);
+      font-weight: 700;
+      font-size: 0.84rem;
+    }
+
+    .status-title {
+      margin: 16px 0 10px;
+      font-size: 1.25rem;
+      color: var(--brand);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .check-list div {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--ink);
+    }
+
+    .check-list span {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.76rem;
+      margin-top: 2px;
+    }
+
+    .service-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .service-no {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--soft);
+      color: var(--brand);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .service-card h3,
+    .deliverable-card h3,
+    .point-card h3,
+    .flow-card h3 {
+      margin: 0;
+      font-size: 1.18rem;
+      color: var(--brand);
+      line-height: 1.45;
+    }
+
+    .service-card p,
+    .deliverable-card p,
+    .point-card p,
+    .flow-card p,
+    .metric-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .mini-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-list li {
+      padding-left: 16px;
+      position: relative;
+      color: var(--ink);
+    }
+
+    .mini-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.76em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translateY(-50%);
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: 28px 18px;
+    }
+
+    .metric-value {
+      display: block;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--brand);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .metric-label {
+      display: block;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .point-card,
+    .flow-card,
+    .deliverable-card {
+      height: 100%;
+    }
+
+    .point-icon,
+    .flow-icon,
+    .deliverable-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft);
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .process-bar {
+      margin-top: 24px;
+      background: linear-gradient(90deg, rgba(23,58,94,0.06), rgba(37,91,143,0.12));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .process-track {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      align-items: center;
+    }
+
+    .process-step {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(159, 176, 193, 0.4);
+      border-radius: 16px;
+      padding: 16px 14px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--brand);
+      position: relative;
+    }
+
+    .process-step small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .cta {
+      padding: 44px 0 80px;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, #173a5e 0%, #214e7c 100%);
+      color: #fff;
+      border-radius: 32px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.3;
+    }
+
+    .cta p {
+      margin: 0;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .contact-panel {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .contact-panel dl {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+    }
+
+    .contact-panel div {
+      display: grid;
+      gap: 4px;
+    }
+
+    .contact-panel dt {
+      margin: 0;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.66);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .contact-panel dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .site-footer {
+      padding: 24px 0 46px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .overview-grid,
+      .cta-grid,
+      .result-grid,
+      .feature-grid,
+      .flow-grid,
+      .deliverable-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid > :first-child,
+      .overview-grid > :first-child,
+      .cta-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .process-track { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+
+      .overview-grid,
+      .service-grid,
+      .result-grid,
+      .feature-grid,
+      .flow-grid,
+      .deliverable-grid,
+      .cta-grid,
+      .process-track {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-row {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-row dt {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .card-pad,
+      .cta-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="LANDPLUS Home">
+        <span class="brand-mark">LANDPLUS</span>
+        <span class="brand-sub">Civil Engineering / Seismic Design / Technical Services</span>
+      </a>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="#overview">業務概要</a>
+        <a href="#services">業務内容</a>
+        <a href="#results">業務成果</a>
+        <a href="#points">技術ポイント</a>
+        <a href="#flow">対応範囲</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow">Representative Project / Technical Support</div>
+              <h1>上下水道施設における<br>耐震解析・補強設計・施工計画支援</h1>
+              <p class="hero-lead">
+                LANDPLUSは、上下水道施設の既設構造物に対して、耐震解析から補強設計、数量計算、概算工事費、図面作成、施工計画書整理まで、設計から施工準備に至る一連の技術支援を実施。元請会社の業務推進を技術面から支援しました。
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#services">業務内容を見る</a>
+                <a class="button button-secondary" href="#contact">相談する</a>
+              </div>
+            </div>
+            <aside class="hero-panel">
+              <div>
+                <div class="panel-label">Project Scope</div>
+                <div class="hero-list">
+                  <div class="hero-list-item">
+                    <div class="hero-num">01</div>
+                    <div>
+                      <strong>耐震解析</strong>
+                      <span>三次元的な構造挙動を踏まえ、二次元モデルへ合理的に反映。</span>
+                    </div>
+                  </div>
+                  <div class="hero-list-item">
+                    <div class="hero-num">02</div>
+                    <div>
+                      <strong>補強設計</strong>
+                      <span>既設条件と施工性を考慮した補強方針・断面検討を実施。</span>
+                    </div>
+                  </div>
+                  <div class="hero-list-item">
+                    <div class="hero-num">03</div>
+                    <div>
+                      <strong>施工計画支援</strong>
+                      <span>施工順序、留意事項、計画資料整理まで一体で対応。</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="panel-label">Deliverables</div>
+                <div style="color: rgba(255,255,255,0.92); font-weight: 700; line-height: 1.8;">
+                  数量計算書 / 概算工事費資料 / 設計図面 / 施工計画書
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Overview</span>
+          <h2 class="section-title">対応業務</h2>
+          <p class="section-desc">
+            既設上下水道施設の耐震性能を確認し、その結果に基づいて補強設計を行うとともに、設計成果として必要となる数量計算、概算工事費、図面、施工計画書までを整理しました。単一作業ではなく、解析・設計・施工準備を一連で支援した点が本案件の特徴です。
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <div class="card card-pad summary-card">
+            <div>
+              <h3 style="margin:0 0 12px; color: var(--brand); font-size: 1.22rem;">プロジェクトサマリー</h3>
+              <p style="margin:0; color: var(--muted);">
+                客先情報を開示しない形で、技術範囲と成果内容を整理した紹介です。元請会社の設計業務に対して、LANDPLUSが技術支援として対応した範囲を示しています。
+              </p>
+            </div>
+            <dl class="summary-table">
+              <div class="summary-row">
+                <dt>対象分野</dt>
+                <dd>浄水施設・既設構造物・耐震対策</dd>
+              </div>
+              <div class="summary-row">
+                <dt>主な対応</dt>
+                <dd>耐震解析、補強設計、施工手順整理</dd>
+              </div>
+              <div class="summary-row">
+                <dt>作成資料</dt>
+                <dd>数量計算書、概算工事費資料、図面、施工計画書</dd>
+              </div>
+              <div class="summary-row">
+                <dt>支援形態</dt>
+                <dd>元請会社の設計・施工準備業務に対する技術支援</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="card card-pad status-card">
+            <span class="status-badge">Integrated Technical Support</span>
+            <h3 class="status-title">解析だけで終わらない一体対応</h3>
+            <p style="margin:0; color: var(--muted);">
+              構造解析の結果を補強設計に反映し、その後の数量・概算・図面・施工計画書まで整理することで、次工程へつながる実務資料として仕上げました。
+            </p>
+            <div class="check-list">
+              <div><span>✓</span><p style="margin:0;">三次元的な受力特性を踏まえた二次元解析モデルの適用</p></div>
+              <div><span>✓</span><p style="margin:0;">既設条件と施工条件を踏まえた補強計画</p></div>
+              <div><span>✓</span><p style="margin:0;">施工準備に必要な設計資料まで一括整理</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Services</span>
+          <h2 class="section-title">業務内容</h2>
+          <p class="section-desc">
+            解析、評価、補強設計、施工計画整理までを段階的に実施し、元請会社による全体業務の完遂を支援しました。
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="card card-pad service-card">
+            <div class="service-no">01</div>
+            <h3>耐震解析</h3>
+            <p>既設浄水施設の構造性能把握を目的に、構造形式、荷重条件、境界条件を整理し、解析モデルを構築しました。</p>
+            <ul class="mini-list">
+              <li>構造形式・荷重条件の整理</li>
+              <li>解析モデルの作成</li>
+              <li>地震時内力の算定</li>
+              <li>三次元挙動の二次元モデルへの合理的反映</li>
+            </ul>
+          </article>
+
+          <article class="card card-pad service-card">
+            <div class="service-no">02</div>
+            <h3>耐震性能評価</h3>
+            <p>解析結果に基づき、柱・梁・壁などの主要部材に対する安全性確認を行い、補強必要箇所を明確化しました。</p>
+            <ul class="mini-list">
+              <li>部材ごとの照査</li>
+              <li>耐震性能の確認</li>
+              <li>補強対象部位の抽出</li>
+              <li>結果整理と評価資料作成</li>
+            </ul>
+          </article>
+
+          <article class="card card-pad service-card">
+            <div class="service-no">03</div>
+            <h3>補強設計</h3>
+            <p>評価結果を踏まえ、既設条件・施工性・経済性を考慮しながら合理的な補強設計を実施しました。</p>
+            <ul class="mini-list">
+              <li>補強方針の検討</li>
+              <li>補強部材・断面の設定</li>
+              <li>補強後性能の確認</li>
+              <li>設計図書への反映</li>
+            </ul>
+          </article>
+
+          <article class="card card-pad service-card">
+            <div class="service-no">04</div>
+            <h3>施工計画整理</h3>
+            <p>補強設計に基づき、施工手順、施工上の留意事項、準備資料を整理し、実施段階への移行を支援しました。</p>
+            <ul class="mini-list">
+              <li>施工順序の整理</li>
+              <li>施工方法の検討</li>
+              <li>留意事項の整理</li>
+              <li>施工計画書の作成支援</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="process-bar">
+          <div class="process-track">
+            <div class="process-step">解析条件整理<small>Modeling / Loading</small></div>
+            <div class="process-step">耐震解析・評価<small>Analysis / Check</small></div>
+            <div class="process-step">補強設計<small>Reinforcement Design</small></div>
+            <div class="process-step">施工計画整理<small>Construction Planning</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Results</span>
+          <h2 class="section-title">業務成果</h2>
+          <p class="section-desc">
+            解析結果を単なる検討資料に留めず、実務で使える設計成果として整理したことが本業務の成果です。
+          </p>
+        </div>
+
+        <div class="result-grid">
+          <article class="card metric-card">
+            <span class="metric-value">解析</span>
+            <span class="metric-label">耐震解析資料</span>
+            <p>構造挙動と地震時内力の整理</p>
+          </article>
+          <article class="card metric-card">
+            <span class="metric-value">設計</span>
+            <span class="metric-label">補強設計資料</span>
+            <p>補強方法・断面・性能確認</p>
+          </article>
+          <article class="card metric-card">
+            <span class="metric-value">図書</span>
+            <span class="metric-label">設計成果整理</span>
+            <p>数量・概算・図面・計画書を整備</p>
+          </article>
+          <article class="card metric-card">
+            <span class="metric-value">支援</span>
+            <span class="metric-label">元請業務推進</span>
+            <p>設計から施工準備まで技術支援</p>
+          </article>
+        </div>
+
+        <div class="deliverable-grid" style="margin-top:18px;">
+          <article class="card card-pad deliverable-card">
+            <div class="deliverable-icon">数</div>
+            <h3>数量計算書</h3>
+            <p>補強対象や設計条件に基づき、必要数量を整理し、設計成果として取りまとめました。</p>
+          </article>
+          <article class="card card-pad deliverable-card">
+            <div class="deliverable-icon">費</div>
+            <h3>概算工事費資料</h3>
+            <p>補強計画に対応した概算工事費を整理し、事業判断や計画検討に資する資料を作成しました。</p>
+          </article>
+          <article class="card card-pad deliverable-card">
+            <div class="deliverable-icon">図</div>
+            <h3>設計図面</h3>
+            <p>補強内容を反映した図面類を作成し、設計意図が伝わる形で整理しました。</p>
+          </article>
+          <article class="card card-pad deliverable-card">
+            <div class="deliverable-icon">工</div>
+            <h3>施工計画書</h3>
+            <p>施工手順、施工方法、留意事項などを整理し、実施段階への引き渡し資料としてまとめました。</p>
+          </article>
+          <article class="card card-pad deliverable-card">
+            <div class="deliverable-icon">整</div>
+            <h3>設計成果一式</h3>
+            <p>解析結果から図書作成までを一貫整理することで、実務性の高い成果構成としました。</p>
+          </article>
+          <article class="card card-pad deliverable-card">
+            <div class="deliverable-icon">支</div>
+            <h3>元請支援</h3>
+            <p>元請会社が最終成果を完成させるための技術資料作成・検討整理を支援しました。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="points" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Technical Points</span>
+          <h2 class="section-title">技術ポイント</h2>
+          <p class="section-desc">
+            実施設計に近い実務レベルでの検討・資料化までを含む点が、本案件におけるLANDPLUSの強みです。
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card card-pad point-card">
+            <div class="point-icon">01</div>
+            <h3>三次元挙動の合理的反映</h3>
+            <p>実構造の三次元的な受力特性を踏まえながら、二次元解析モデルへ適切に落とし込み、設計実務に結びつく形で評価しました。</p>
+          </article>
+          <article class="card card-pad point-card">
+            <div class="point-icon">02</div>
+            <h3>補強設計まで一体対応</h3>
+            <p>解析結果の提示にとどまらず、補強方針の検討、断面検討、設計資料への反映まで一貫して整理しました。</p>
+          </article>
+          <article class="card card-pad point-card">
+            <div class="point-icon">03</div>
+            <h3>施工準備資料まで対応</h3>
+            <p>数量・概算工事費・図面・施工計画書を整理し、次段階へ引き継げる成果物としてまとめました。</p>
+          </article>
+          <article class="card card-pad point-card">
+            <div class="point-icon">04</div>
+            <h3>元請業務の技術補完</h3>
+            <p>元請会社の業務遂行に必要な技術検討と資料整備を担い、全体業務の完成に貢献しました。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Workflow</span>
+          <h2 class="section-title">対応範囲と進め方</h2>
+          <p class="section-desc">
+            解析から設計、さらに施工準備へとつながる実務フローを意識しながら、段階ごとに成果を積み上げました。
+          </p>
+        </div>
+
+        <div class="flow-grid">
+          <article class="card card-pad flow-card">
+            <div class="flow-icon">A</div>
+            <h3>条件整理</h3>
+            <p>対象構造、既設条件、荷重条件、設計前提を整理し、検討範囲を明確化しました。</p>
+          </article>
+          <article class="card card-pad flow-card">
+            <div class="flow-icon">B</div>
+            <h3>解析・評価</h3>
+            <p>解析モデルの構築と計算を行い、耐震性能を確認のうえ補強必要箇所を抽出しました。</p>
+          </article>
+          <article class="card card-pad flow-card">
+            <div class="flow-icon">C</div>
+            <h3>補強設計</h3>
+            <p>構造性能、施工性、経済性のバランスを踏まえ、合理的な補強計画を設計に反映しました。</p>
+          </article>
+          <article class="card card-pad flow-card">
+            <div class="flow-icon">D</div>
+            <h3>図書作成</h3>
+            <p>数量計算書、概算工事費、図面、施工計画書を整理し、成果として取りまとめました。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-grid">
+            <div>
+              <h2>浄水施設・土木構造物の耐震解析、補強設計、設計資料作成のご相談に対応します。</h2>
+              <p>
+                LANDPLUSは、耐震解析だけでなく、補強設計、数量計算、概算工事費、図面、施工計画書まで含めた技術支援を通じて、元請会社の実務を支えます。具体的な案件内容に応じて、支援範囲の整理から対応可能です。
+              </p>
+            </div>
+            <aside class="contact-panel">
+              <dl>
+                <div>
+                  <dt>Company</dt>
+                  <dd>株式会社LANDPLUS</dd>
+                </div>
+                <div>
+                  <dt>Website</dt>
+                  <dd>www.landplus.co.jp</dd>
+                </div>
+                <div>
+                  <dt>Service</dt>
+                  <dd>耐震解析 / 補強設計 / 数量計算 / 図面 / 施工計画書</dd>
+                </div>
+                <div>
+                  <dt>Note</dt>
+                  <dd>ご検討ありがとうございます。</dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © LANDPLUS. Technical engineering services for civil and infrastructure projects.
+    </div>
+  </footer>
+</body>
+</html>
