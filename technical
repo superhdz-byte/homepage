@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技術資料 | LANDPLUS.WORK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dk-bg:    #1a2e4a;
+  --dk-bg2:   #152238;
+  --dk-blue:  #3d6fa8;
+  --dk-gold:  #b07d2b;
+  --lt-bg:    #f4f7fb;
+  --lt-card:  #ffffff;
+  --lt-navy:  #1a2e4a;
+  --lt-blue:  #2a5b9e;
+  --lt-blue2: #3d6fa8;
+  --lt-gold:  #b07d2b;
+  --lt-teal:  #2a7a6e;
+  --lt-text:  #21364f;
+  --lt-text2: #3f566f;
+  --lt-text3: #6c8299;
+  --lt-bdr:   #dce6f0;
+  --lt-bdr2:  #c4d4e4;
+  --lt-bg2:   #eaf1f8;
+  --mono:  'Share Tech Mono', monospace;
+  --serif: 'Noto Serif JP', serif;
+  --sans:  'Noto Sans JP', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--lt-bg); color: var(--lt-text); font-family: var(--sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+/* HEADER */
+.lp-header {
+  position: sticky; top: 0; left: 0; width: 100%; z-index: 9999;
+  background: var(--dk-bg2); display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 66px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.35);
+}
+.lp-logo { text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
+.lp-logo-main { font-family: var(--mono); font-size: 15px; letter-spacing: .18em; color: #fff; font-weight: 600; }
+.lp-logo-sub { font-size: 9px; letter-spacing: .22em; color: rgba(255,255,255,.48); text-transform: uppercase; }
+.lp-nav { display: flex; align-items: center; gap: 26px; }
+.lp-nav a { font-size: 12px; font-weight: 600; letter-spacing: .10em; text-decoration: none; color: rgba(255,255,255,.72); transition: color .18s; }
+.lp-nav a:hover, .lp-nav a.on { color: #fff; }
+.lp-nav a.on { border-bottom: 2px solid var(--dk-gold); padding-bottom: 2px; }
+.lp-nav-cta { background: var(--dk-gold); color: #fff !important; padding: 9px 20px; border-radius: 2px; font-size: 11px; letter-spacing: .13em; border-bottom: none !important; }
+.lp-nav-cta:hover { background: #c48f35 !important; }
+
+/* HERO */
+.lp-hero {
+  width: 100%; background: linear-gradient(150deg,#1a2e4a 0%,#1d3457 45%,#223960 100%);
+  padding: 64px 0 56px; position: relative; overflow: hidden;
+}
+.lp-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size: 44px 44px;
+}
+.lp-hero-deco { position: absolute; right: 0; top: 0; bottom: 0; width: 420px; opacity: .07; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+.lp-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; position: relative; }
+.lp-breadcrumb { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .20em; color: rgba(255,255,255,.38); margin-bottom: 20px; text-transform: uppercase; }
+.lp-breadcrumb a { color: rgba(255,255,255,.38); text-decoration: none; transition: color .2s; }
+.lp-breadcrumb a:hover { color: rgba(255,255,255,.70); }
+.lp-page-label { font-family: var(--mono); font-size: 10px; letter-spacing: .40em; color: #e8b96a; text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.lp-page-label::before { content: ''; width: 28px; height: 1px; background: #e8b96a; }
+.lp-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px,3vw,40px); letter-spacing: .07em; color: #fff; margin: 0 0 12px; line-height: 1.35; }
+.lp-hero h1 span { display: block; font-size: .62em; color: rgba(255,255,255,.76); letter-spacing: .05em; margin-top: 6px; font-weight: 300; }
+.lp-hero-desc { font-size: 13.5px; letter-spacing: .04em; color: rgba(255,255,255,.58); line-height: 1.95; max-width: 680px; margin: 0; }
+
+/* SECTIONS */
+.lp-sec { width: 100%; padding: 72px 0; background: var(--lt-bg); }
+.lp-sec.alt { background: var(--lt-card); }
+.lp-sec.mid { background: #f0f5fc; }
+.lp-sec.dark { background: var(--dk-bg); color: rgba(255,255,255,.88); }
+.lp-sec-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .42em; color: var(--lt-blue); text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.lp-sec-label::before { content: ''; width: 18px; height: 1px; background: var(--lt-blue); }
+.lp-sec.dark .lp-sec-label { color: #7cb8e8; }
+.lp-sec.dark .lp-sec-label::before { background: #7cb8e8; }
+.lp-sec-h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(24px,2.4vw,34px); letter-spacing: .07em; color: var(--lt-navy); margin: 0 0 10px; line-height: 1.4; }
+.lp-sec.dark .lp-sec-h2 { color: #d8eaf8; }
+.lp-sec-desc { font-size: 13.5px; color: var(--lt-text2); letter-spacing: .04em; line-height: 1.95; margin: 0 0 48px; max-width: 580px; }
+.lp-sec.dark .lp-sec-desc { color: rgba(255,255,255,.55); }
+
+/* CATEGORY NAV */
+.lp-cat-nav { display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; margin-bottom: 0; }
+.lp-cat-btn { display: flex; flex-direction: column; align-items: flex-start; padding: 20px 20px 18px; background: var(--lt-card); border: 1px solid var(--lt-bdr); border-radius: 3px; border-top: 3px solid transparent; cursor: pointer; transition: all .2s; text-decoration: none; }
+.lp-cat-btn:hover, .lp-cat-btn.active { border-top-color: var(--lt-blue); background: #f6faff; box-shadow: 0 4px 16px rgba(26,46,74,.08); }
+.lp-cat-num { font-family: var(--mono); font-size: 10px; letter-spacing: .22em; color: var(--lt-blue); margin-bottom: 10px; }
+.lp-cat-icon { width: 32px; height: 32px; border-radius: 2px; background: rgba(42,91,158,.08); border: 1px solid rgba(42,91,158,.16); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.lp-cat-icon svg { width: 16px; height: 16px; stroke: var(--lt-blue); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.lp-cat-name { font-family: var(--serif); font-size: 13px; color: var(--lt-navy); font-weight: 400; letter-spacing: .05em; line-height: 1.45; }
+.lp-cat-count { font-family: var(--mono); font-size: 9px; color: var(--lt-text3); margin-top: 6px; letter-spacing: .10em; }
+
+/* FEATURED DOCS */
+.lp-featured-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.lp-feat-doc { background: var(--lt-card); border: 1px solid var(--lt-bdr); border-radius: 3px; overflow: hidden; transition: box-shadow .22s, transform .22s; display: flex; flex-direction: column; }
+.lp-feat-doc:hover { box-shadow: 0 8px 28px rgba(26,46,74,.12); transform: translateY(-4px); }
+.lp-feat-doc-header { padding: 26px 26px 22px; background: linear-gradient(135deg,#1a2e4a 0%,#243f6e 100%); position: relative; overflow: hidden; }
+.lp-feat-doc-header::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px); background-size: 30px 30px; }
+.lp-feat-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .18em; padding: 3px 10px; border-radius: 1px; margin-bottom: 14px; position: relative; color: #fff; }
+.fb-memo { background: rgba(61,111,168,.8); } .fb-guide { background: rgba(42,122,110,.8); } .fb-check { background: rgba(176,125,43,.8); }
+.lp-feat-doc-num { font-family: var(--mono); font-size: 8.5px; letter-spacing: .30em; color: rgba(255,255,255,.38); margin-bottom: 10px; position: relative; }
+.lp-feat-doc-ttl { font-family: var(--serif); font-size: 16px; color: #fff; font-weight: 400; letter-spacing: .05em; line-height: 1.5; position: relative; }
+.lp-feat-doc-body { padding: 20px 26px 22px; flex: 1; display: flex; flex-direction: column; }
+.lp-feat-doc-meta { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; flex: 1; }
+.lp-doc-meta-row { display: flex; gap: 10px; font-size: 12px; }
+.lp-doc-ml { font-family: var(--mono); font-size: 8.5px; letter-spacing: .14em; color: var(--lt-text3); text-transform: uppercase; min-width: 40px; padding-top: 2px; flex-shrink: 0; }
+.lp-doc-mv { color: var(--lt-text2); line-height: 1.6; letter-spacing: .03em; }
+.lp-doc-btn { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 10px; letter-spacing: .16em; color: var(--lt-blue); text-decoration: none; text-transform: uppercase; padding: 8px 0; border-top: 1px solid var(--lt-bdr); transition: gap .18s, color .18s; }
+.lp-doc-btn:hover { gap: 12px; color: var(--lt-navy); }
+.lp-doc-btn::after { content: '→'; }
+
+/* DOC LIST */
+.lp-doc-filter { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.lp-filter-btn { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; padding: 6px 14px; border: 1px solid var(--lt-bdr2); border-radius: 2px; color: var(--lt-text3); background: #fff; cursor: pointer; transition: all .15s; text-transform: uppercase; }
+.lp-filter-btn:hover { border-color: var(--lt-blue2); color: var(--lt-navy); }
+.lp-filter-btn.on { background: var(--lt-blue); border-color: var(--lt-blue); color: #fff; }
+.lp-doc-table { width: 100%; border-collapse: collapse; background: var(--lt-card); border: 1px solid var(--lt-bdr); border-radius: 3px; overflow: hidden; }
+.lp-doc-table thead tr { background: var(--lt-bg2); }
+.lp-doc-table th { font-family: var(--mono); font-size: 8.5px; letter-spacing: .22em; color: var(--lt-text3); text-transform: uppercase; padding: 10px 16px; text-align: left; font-weight: 400; border-bottom: 1px solid var(--lt-bdr); }
+.lp-doc-table tbody tr { border-bottom: 1px solid var(--lt-bdr); cursor: pointer; transition: background .13s; }
+.lp-doc-table tbody tr:last-child { border-bottom: none; }
+.lp-doc-table tbody tr:hover { background: #f2f8ff; }
+.lp-doc-table td { padding: 16px 16px; vertical-align: middle; }
+.td-num { width: 42px; font-family: var(--mono); font-size: 10px; color: var(--lt-text3); padding-left: 18px !important; position: relative; }
+.td-num::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--lt-blue2); transform: scaleY(0); transform-origin: top; transition: transform .18s; }
+tr:hover .td-num::before { transform: scaleY(1); }
+.td-badge { width: 100px; }
+.td-arrow { width: 32px; text-align: right; padding-right: 16px !important; font-family: var(--mono); font-size: 13px; color: var(--lt-bdr2); transition: color .14s, transform .18s; }
+tr:hover .td-arrow { color: var(--lt-blue); transform: translateX(3px); }
+.lp-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .12em; padding: 3px 9px; border-radius: 1px; color: #fff; white-space: nowrap; }
+.lp-badge.bm { background: var(--lt-blue2); } .lp-badge.bg { background: var(--lt-teal); } .lp-badge.bc { background: var(--lt-gold); } .lp-badge.bs { background: #5a3e8a; }
+.lp-doc-ttl { font-size: 13.5px; color: var(--lt-navy); letter-spacing: .04em; font-weight: 400; line-height: 1.5; margin-bottom: 4px; transition: color .14s; }
+tr:hover .lp-doc-ttl { color: var(--lt-blue); }
+.lp-doc-exc { font-size: 11.5px; color: var(--lt-text3); letter-spacing: .03em; line-height: 1.55; }
+.lp-doc-tgt { font-family: var(--mono); font-size: 10px; color: var(--lt-text3); letter-spacing: .06em; line-height: 1.55; }
+.lp-doc-table tbody tr.hidden { display: none; }
+
+/* TECH COLUMN CARDS */
+.lp-col-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.lp-col-card { background: var(--lt-card); border: 1px solid var(--lt-bdr); border-radius: 3px; overflow: hidden; transition: box-shadow .2s, transform .2s; }
+.lp-col-card:hover { box-shadow: 0 6px 20px rgba(26,46,74,.10); transform: translateY(-3px); }
+.lp-col-thumb { height: 130px; background: linear-gradient(135deg,#1e3458 0%,#263f68 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.lp-col-thumb::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size: 28px 28px; }
+.lp-col-cat { position: absolute; top: 10px; left: 10px; z-index: 1; font-family: var(--mono); font-size: 8px; letter-spacing: .14em; padding: 3px 9px; border-radius: 1px; color: #fff; background: var(--lt-teal); }
+.lp-col-body { padding: 20px; }
+.lp-col-date { font-family: var(--mono); font-size: 10px; color: var(--lt-text3); letter-spacing: .08em; margin-bottom: 8px; }
+.lp-col-ttl { font-size: 13.5px; color: var(--lt-navy); letter-spacing: .04em; font-weight: 400; line-height: 1.6; margin-bottom: 10px; transition: color .14s; }
+.lp-col-card:hover .lp-col-ttl { color: var(--lt-blue); }
+.lp-col-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.lp-col-tag { font-size: 9.5px; letter-spacing: .06em; padding: 3px 8px; border: 1px solid var(--lt-bdr2); color: var(--lt-text3); border-radius: 1px; }
+.col-svg { position: relative; z-index: 1; }
+
+/* CTA */
+.lp-cta { width: 100%; background: linear-gradient(135deg,#1a2e4a 0%,#1e3557 50%,#243f6e 100%); padding: 72px 0; position: relative; overflow: hidden; }
+.lp-cta::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size: 44px 44px; }
+.lp-cta-inner { max-width: 760px; margin: 0 auto; padding: 0 48px; text-align: center; position: relative; }
+.lp-cta-lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: .40em; color: #e8b96a; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.lp-cta-lbl::before,.lp-cta-lbl::after { content: ''; flex: 1; height: 1px; background: #e8b96a; max-width: 32px; }
+.lp-cta h2 { font-family: var(--serif); font-size: 26px; color: #fff; font-weight: 400; letter-spacing: .07em; margin: 0 0 18px; line-height: 1.4; }
+.lp-cta p { font-size: 13.5px; color: rgba(255,255,255,.60); letter-spacing: .04em; line-height: 2; margin: 0 0 36px; }
+.lp-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.lp-btn-g { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; font-size: 12.5px; letter-spacing: .18em; text-decoration: none; border-radius: 2px; background: var(--dk-gold); color: #fff; border: none; transition: background .2s, transform .2s; }
+.lp-btn-g:hover { background: #c48f35; transform: translateY(-2px); }
+.lp-btn-w { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; font-size: 12.5px; letter-spacing: .18em; text-decoration: none; border-radius: 2px; border: 1px solid rgba(255,255,255,.40); color: rgba(255,255,255,.85); transition: border-color .2s, color .2s; }
+.lp-btn-w:hover { border-color: #fff; color: #fff; }
+
+/* FOOTER */
+.lp-footer { width: 100%; background: var(--dk-bg2); border-top: 3px solid var(--dk-blue); padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.lp-ft-logo { font-family: var(--mono); font-size: 13px; letter-spacing: .20em; color: rgba(255,255,255,.82); font-weight: 600; }
+.lp-ft-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.lp-ft-links a { font-size: 10px; letter-spacing: .14em; color: rgba(255,255,255,.52); text-decoration: none; transition: color .2s; }
+.lp-ft-links a:hover { color: rgba(255,255,255,.85); }
+.lp-ft-copy { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.35); letter-spacing: .08em; }
+
+/* BACK TO TOP */
+.lp-back-top { position: fixed; bottom: 28px; right: 28px; z-index: 9998; width: 42px; height: 42px; background: #fff; border: 1px solid var(--lt-bdr2); border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .2s; font-family: var(--mono); font-size: 14px; color: var(--lt-text3); opacity: 0; pointer-events: none; box-shadow: 0 2px 10px rgba(0,0,0,.10); }
+.lp-back-top.on { opacity: 1; pointer-events: all; }
+.lp-back-top:hover { background: var(--lt-blue); color: #fff; border-color: var(--lt-blue); }
+
+@keyframes lpFU { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+.lp-hero .lp-inner > * { animation: lpFU .45s ease both; }
+.lp-hero .lp-inner > *:nth-child(1) { animation-delay:.05s; }
+.lp-hero .lp-inner > *:nth-child(2) { animation-delay:.12s; }
+.lp-hero .lp-inner > *:nth-child(3) { animation-delay:.18s; }
+.lp-hero .lp-inner > *:nth-child(4) { animation-delay:.24s; }
+
+@media(max-width:1100px) {
+  .lp-cat-nav { grid-template-columns: repeat(3,1fr); }
+  .lp-featured-grid, .lp-col-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:768px) {
+  .lp-header { padding: 0 18px; }
+  .lp-nav { display: none; }
+  .lp-inner, .lp-cta-inner { padding: 0 20px; }
+  .lp-hero { padding: 52px 0 44px; }
+  .lp-cat-nav { grid-template-columns: 1fr 1fr; }
+  .lp-featured-grid, .lp-col-grid { grid-template-columns: 1fr; }
+  .lp-doc-table thead { display: none; }
+  .lp-sec { padding: 52px 0; }
+  .lp-footer { padding: 28px 20px; flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+
+
+<section class="lp-hero">
+  <div class="lp-hero-deco" aria-hidden="true">
+    <svg viewBox="0 0 400 300" width="400" height="300" fill="none">
+      <line x1="30" y1="260" x2="380" y2="260" stroke="white" stroke-width="1.2"/>
+      <line x1="30" y1="260" x2="30" y2="20" stroke="white" stroke-width="1.2"/>
+      <path d="M30,258 Q50,60 80,55 Q110,50 140,80 Q170,105 200,130 Q240,155 290,175 Q330,188 380,195" stroke="white" stroke-width="2" fill="none"/>
+      <path d="M30,258 Q50,130 80,125 Q110,120 140,148 Q170,170 200,190 Q240,208 290,222 Q330,232 380,238" stroke="white" stroke-width="1.2" fill="none" stroke-dasharray="5 4"/>
+      <circle cx="80" cy="55" r="5" fill="white" opacity=".8"/>
+      <circle cx="80" cy="125" r="4" fill="none" stroke="white" stroke-width="1.2" opacity=".8"/>
+      <line x1="200" y1="30" x2="225" y2="30" stroke="white" stroke-width="2"/>
+      <text x="228" y="34" fill="white" font-size="9" font-family="monospace">L2地震動</text>
+      <line x1="200" y1="46" x2="225" y2="46" stroke="white" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <text x="228" y="50" fill="white" font-size="9" font-family="monospace">L1地震動</text>
+      <text x="18" y="18" fill="white" font-size="10" font-family="monospace">Sa</text>
+      <text x="368" y="272" fill="white" font-size="10" font-family="monospace">T(s)</text>
+    </svg>
+  </div>
+  <div class="lp-inner">
+    <div class="lp-breadcrumb"><a href="home.html">HOME</a><span>/</span><span>技術資料</span></div>
+    <div class="lp-page-label">Technical Library</div>
+    <h1>技術資料<span>上下水道施設・地下構造物の耐震解析に関する技術資料</span></h1>
+    <p class="lp-hero-desc">L1静的解析、L2動的解析、FEM解析、地盤応答解析、補強設計など、上下水道施設の耐震検討に関する実務資料を整理しています。</p>
+  </div>
+</section>
+
+<!-- カテゴリーナビ -->
+<section class="lp-sec alt">
+  <div class="lp-inner">
+    <div class="lp-sec-label">Categories</div>
+    <h2 class="lp-sec-h2">資料カテゴリー</h2>
+    <p class="lp-sec-desc" style="margin-bottom:32px">業務種別・解析種別ごとに資料を分類しています。目的に応じてお探しください。</p>
+    <div class="lp-cat-nav">
+      <div class="lp-cat-btn active" onclick="filterDocs('all',this)">
+        <div class="lp-cat-num">ALL</div>
+        <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <div class="lp-cat-name">すべての資料</div><div class="lp-cat-count">10 件</div>
+      </div>
+      <div class="lp-cat-btn" onclick="filterDocs('kiso',this)">
+        <div class="lp-cat-num">01</div>
+        <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="lp-cat-name">耐震解析の基礎</div><div class="lp-cat-count">3 件</div>
+      </div>
+      <div class="lp-cat-btn" onclick="filterDocs('l2',this)">
+        <div class="lp-cat-num">02</div>
+        <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><polyline points="3,17 7,11 11,14 15,6 21,10"/><line x1="3" y1="20" x2="21" y2="20"/></svg></div>
+        <div class="lp-cat-name">L2動的解析</div><div class="lp-cat-count">2 件</div>
+      </div>
+      <div class="lp-cat-btn" onclick="filterDocs('fem',this)">
+        <div class="lp-cat-num">03</div>
+        <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg></div>
+        <div class="lp-cat-name">FEM解析・地盤応答</div><div class="lp-cat-count">2 件</div>
+      </div>
+      <div class="lp-cat-btn" onclick="filterDocs('hokyo',this)">
+        <div class="lp-cat-num">04</div>
+        <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="lp-cat-name">補強設計・数量計算</div><div class="lp-cat-count">2 件</div>
+      </div>
+      <div class="lp-cat-btn" onclick="filterDocs('tool',this)">
+        <div class="lp-cat-num">05</div>
+        <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div class="lp-cat-name">実務ツール・チェックリスト</div><div class="lp-cat-count">1 件</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 重点資料 -->
+<section class="lp-sec mid">
+  <div class="lp-inner">
+    <div class="lp-sec-label">Featured</div>
+    <h2 class="lp-sec-h2">重点資料</h2>
+    <p class="lp-sec-desc">実務上の判断に直接役立つ、代表的な技術資料です。</p>
+    <div class="lp-featured-grid">
+      <div class="lp-feat-doc">
+        <div class="lp-feat-doc-header">
+          <span class="lp-feat-badge fb-guide">解説資料</span>
+          <div class="lp-feat-doc-num">FEATURED 01</div>
+          <div class="lp-feat-doc-ttl">上下水道施設のL2耐震解析<br>実務フロー</div>
+        </div>
+        <div class="lp-feat-doc-body">
+          <div class="lp-feat-doc-meta">
+            <div class="lp-doc-meta-row"><span class="lp-doc-ml">対象</span><span class="lp-doc-mv">浄水場・配水池・ポンプ場・地下構造物</span></div>
+            <div class="lp-doc-meta-row"><span class="lp-doc-ml">内容</span><span class="lp-doc-mv">L2動的解析の流れを設計条件整理→解析モデル構築→部材照査→報告書作成の順に解説。実務担当者が全体像を把握できる構成。</span></div>
+          </div>
+          <a href="#" class="lp-doc-btn">資料を見る</a>
+        </div>
+      </div>
+      <div class="lp-feat-doc">
+        <div class="lp-feat-doc-header">
+          <span class="lp-feat-badge fb-memo">技術メモ</span>
+          <div class="lp-feat-doc-num">FEATURED 02</div>
+          <div class="lp-feat-doc-ttl">配水池・浄水場における<br>耐震補強設計の考え方</div>
+        </div>
+        <div class="lp-feat-doc-body">
+          <div class="lp-feat-doc-meta">
+            <div class="lp-doc-meta-row"><span class="lp-doc-ml">対象</span><span class="lp-doc-mv">配水池・浄水場（既設RC造）</span></div>
+            <div class="lp-doc-meta-row"><span class="lp-doc-ml">内容</span><span class="lp-doc-mv">RC増厚・あと施工アンカー・炭素繊維シートなど各補強工法の特徴と選定の考え方を整理。施工性・経済性を踏まえた比較方法を解説。</span></div>
+          </div>
+          <a href="#" class="lp-doc-btn">資料を見る</a>
+        </div>
+      </div>
+      <div class="lp-feat-doc">
+        <div class="lp-feat-doc-header">
+          <span class="lp-feat-badge fb-check">チェックリスト</span>
+          <div class="lp-feat-doc-num">FEATURED 03</div>
+          <div class="lp-feat-doc-ttl">第三者照査に備えるための<br>解析結果チェックリスト</div>
+        </div>
+        <div class="lp-feat-doc-body">
+          <div class="lp-feat-doc-meta">
+            <div class="lp-doc-meta-row"><span class="lp-doc-ml">対象</span><span class="lp-doc-mv">L2動的解析・FEM解析を含む業務全般</span></div>
+            <div class="lp-doc-meta-row"><span class="lp-doc-ml">内容</span><span class="lp-doc-mv">第三者照査で指摘されやすい事項を項目化したチェックリスト。解析条件・モデル設定・照査計算の各段階で確認すべき内容を整理。</span></div>
+          </div>
+          <a href="#" class="lp-doc-btn">資料を見る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 資料一覧 -->
+<section class="lp-sec alt" id="doc-list">
+  <div class="lp-inner">
+    <div class="lp-sec-label">All Documents</div>
+    <h2 class="lp-sec-h2">資料一覧</h2>
+    <p class="lp-sec-desc">カテゴリーボタンで絞り込みができます。</p>
+    <div class="lp-doc-filter">
+      <button class="lp-filter-btn on" onclick="filterDocs2('all',this)">ALL</button>
+      <button class="lp-filter-btn" onclick="filterDocs2('kiso',this)">耐震解析の基礎</button>
+      <button class="lp-filter-btn" onclick="filterDocs2('l2',this)">L2動的解析</button>
+      <button class="lp-filter-btn" onclick="filterDocs2('fem',this)">FEM・地盤応答</button>
+      <button class="lp-filter-btn" onclick="filterDocs2('hokyo',this)">補強設計</button>
+      <button class="lp-filter-btn" onclick="filterDocs2('tool',this)">実務ツール</button>
+    </div>
+    <table class="lp-doc-table" id="docTable">
+      <thead><tr><th style="width:42px">#</th><th style="width:100px">種別</th><th>タイトル / 内容</th><th style="width:160px">対象施設</th><th style="width:32px"></th></tr></thead>
+      <tbody>
+        <tr data-cat="kiso"><td class="td-num">01</td><td class="td-badge"><span class="lp-badge bm">技術メモ</span></td><td><div class="lp-doc-ttl">上下水道施設におけるL1・L2耐震解析の違い</div><div class="lp-doc-exc">静的解析と動的解析の適用条件・目的・照査方法の違いを整理。どちらを選ぶべきかの判断基準を解説。</div></td><td><div class="lp-doc-tgt">浄水場・配水池<br>ポンプ場</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="l2"><td class="td-num">02</td><td class="td-badge"><span class="lp-badge bm">技術メモ</span></td><td><div class="lp-doc-ttl">配水池のL2動的解析で確認すべきポイント</div><div class="lp-doc-exc">解析モデルの設定・動水圧の考慮・部材照査位置の選定など、配水池特有の留意点をまとめた実務メモ。</div></td><td><div class="lp-doc-tgt">配水池</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="kiso"><td class="td-num">03</td><td class="td-badge"><span class="lp-badge bg">解説資料</span></td><td><div class="lp-doc-ttl">浄水場施設の耐震診断フロー</div><div class="lp-doc-exc">浄水場各施設（沈澱池・ろ過池・ポンプ井等）の耐震診断を進める際の手順と確認事項を解説。</div></td><td><div class="lp-doc-tgt">浄水場</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="fem"><td class="td-num">04</td><td class="td-badge"><span class="lp-badge bm">技術メモ</span></td><td><div class="lp-doc-ttl">地下構造物FEM解析の基本的な考え方</div><div class="lp-doc-exc">水圧・土圧・地震時慣性力の設定方法、メッシュ分割の考え方、応力評価の手順を整理した技術メモ。</div></td><td><div class="lp-doc-tgt">地下構造物全般</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="fem"><td class="td-num">05</td><td class="td-badge"><span class="lp-badge bg">解説資料</span></td><td><div class="lp-doc-ttl">地盤応答解析と構造解析の役割分担</div><div class="lp-doc-exc">地盤応答解析で得られる結果を構造解析にどう繋ぐか。サイト波の設定から入力地震動の整理まで解説。</div></td><td><div class="lp-doc-tgt">浄水場・配水池<br>ポンプ場</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="kiso"><td class="td-num">06</td><td class="td-badge"><span class="lp-badge bm">技術メモ</span></td><td><div class="lp-doc-ttl">動水圧を考慮した水槽構造物の耐震検討</div><div class="lp-doc-exc">満水状態・半水状態・空状態における動水圧の考慮方法と、それぞれのケースで着目すべき部材を整理。</div></td><td><div class="lp-doc-tgt">配水池・浄水場<br>水槽構造物</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="hokyo"><td class="td-num">07</td><td class="td-badge"><span class="lp-badge bg">解説資料</span></td><td><div class="lp-doc-ttl">耐震補強設計における補強案比較の考え方</div><div class="lp-doc-exc">RC増厚・あと施工アンカー・炭素繊維など複数案を比較する際の評価軸と整理方法を解説。</div></td><td><div class="lp-doc-tgt">配水池・浄水場<br>既設RC構造物</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="hokyo"><td class="td-num">08</td><td class="td-badge"><span class="lp-badge bm">技術メモ</span></td><td><div class="lp-doc-ttl">断面力整理・部材照査で起きやすい実務上の問題</div><div class="lp-doc-exc">照査位置の選定ミス・断面力の取り方・安全率の適用など、実務でよくある間違いと対処法を整理。</div></td><td><div class="lp-doc-tgt">RC構造物全般</div></td><td class="td-arrow">→</td></tr>
+        <tr data-cat="tool"><td class="td-num">09</td><td class="td-badge"><span class="lp-badge bc">チェックリスト</span></td><td><div class="lp-doc-ttl">耐震解析業務を外注する際の確認チェックリスト</div><div class="lp-doc-exc">発注者・元請け設計会社が外部に解析を委託する際に確認すべき事項を一覧化。成果物の品質確認にも活用可能。</div></td><td><div class="lp-doc-tgt">発注者・設計会社<br>向け</div></td><td class="td-arrow">→</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 最新技術コラム -->
+<section class="lp-sec">
+  <div class="lp-inner">
+    <div class="lp-sec-label">Technical Column</div>
+    <h2 class="lp-sec-h2">最新技術コラム</h2>
+    <p class="lp-sec-desc">上下水道施設の耐震解析に関する技術情報を継続的に発信しています。</p>
+    <div class="lp-col-grid">
+      <div class="lp-col-card">
+        <div class="lp-col-thumb"><span class="lp-col-cat">技術コラム</span>
+          <svg class="col-svg" viewBox="0 0 110 72" width="110" height="72" fill="none" opacity=".7"><line x1="4" y1="68" x2="106" y2="68" stroke="rgba(140,190,240,.5)" stroke-width="1"/><line x1="4" y1="4" x2="4" y2="68" stroke="rgba(140,190,240,.5)" stroke-width="1"/><polyline points="4,68 14,52 24,57 40,30 56,42 72,16 88,30 106,22" stroke="rgba(140,190,240,.9)" stroke-width="1.5" fill="none"/><circle cx="72" cy="16" r="3.5" fill="#b07d2b"/></svg>
+        </div>
+        <div class="lp-col-body"><div class="lp-col-date">2025.04.01</div><div class="lp-col-ttl">浄水場のL2耐震解析とは何か</div><div class="lp-col-tags"><span class="lp-col-tag">L2地震動</span><span class="lp-col-tag">動的解析</span></div></div>
+      </div>
+      <div class="lp-col-card">
+        <div class="lp-col-thumb"><span class="lp-col-cat">技術コラム</span>
+          <svg class="col-svg" viewBox="0 0 110 72" width="110" height="72" fill="none" opacity=".7"><rect x="10" y="10" width="90" height="52" stroke="rgba(140,190,240,.6)" stroke-width="1"/><line x1="10" y1="27" x2="100" y2="27" stroke="rgba(255,255,255,.18)" stroke-width=".8" stroke-dasharray="4 3"/><line x1="10" y1="44" x2="100" y2="44" stroke="rgba(255,255,255,.18)" stroke-width=".8" stroke-dasharray="4 3"/><rect x="18" y="14" width="18" height="13" fill="rgba(176,125,43,.18)" stroke="rgba(230,180,80,.7)" stroke-width=".8"/><rect x="66" y="30" width="18" height="13" fill="rgba(61,111,168,.18)" stroke="rgba(140,190,240,.7)" stroke-width=".8"/></svg>
+        </div>
+        <div class="lp-col-body"><div class="lp-col-date">2025.03.15</div><div class="lp-col-ttl">配水池耐震診断の流れと確認すべき要点</div><div class="lp-col-tags"><span class="lp-col-tag">耐震診断</span><span class="lp-col-tag">配水池</span></div></div>
+      </div>
+      <div class="lp-col-card">
+        <div class="lp-col-thumb"><span class="lp-col-cat">技術コラム</span>
+          <svg class="col-svg" viewBox="0 0 110 72" width="110" height="72" fill="none" opacity=".7"><circle cx="55" cy="36" r="22" stroke="rgba(140,190,240,.6)" stroke-width="1"/><circle cx="55" cy="36" r="13" stroke="rgba(255,255,255,.18)" stroke-width=".8" stroke-dasharray="3 2"/><line x1="33" y1="36" x2="77" y2="36" stroke="#b07d2b" stroke-width="1"/><line x1="55" y1="14" x2="55" y2="58" stroke="#b07d2b" stroke-width="1"/><circle cx="55" cy="36" r="3.5" fill="#b07d2b"/></svg>
+        </div>
+        <div class="lp-col-body"><div class="lp-col-date">2025.02.20</div><div class="lp-col-ttl">地盤応答解析と構造解析の違いを整理する</div><div class="lp-col-tags"><span class="lp-col-tag">地盤応答</span><span class="lp-col-tag">FEM</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="lp-cta">
+  <div class="lp-cta-inner">
+    <div class="lp-cta-lbl">Contact</div>
+    <h2>同種施設の耐震解析・補強設計について、<br>資料だけでは判断が難しい場合はご相談ください</h2>
+    <p>図面・設計条件・既往資料を確認したうえで、<br>解析方針や対応範囲を整理してご提案します。</p>
+    <div class="lp-cta-btns">
+      <a href="https://www.landplus.work/contact-3/" class="lp-btn-g">お問い合わせ →</a>
+      <a href="https://www.landplus.work/contact-2/" class="lp-btn-w">実績・事例を見る</a>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="lp-back-top" id="lpBackTop">↑</div>
+
+<script>
+(function(){
+  window.filterDocs = function(cat,btn){
+    document.querySelectorAll('.lp-cat-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    filterTable(cat);
+    document.querySelectorAll('.lp-filter-btn').forEach(function(b){
+      var oc=b.getAttribute('onclick')||'';
+      b.classList.toggle('on',oc.indexOf("'"+cat+"'")>-1);
+    });
+    var list=document.getElementById('doc-list');
+    if(list)setTimeout(function(){list.scrollIntoView({behavior:'smooth',block:'start'});},120);
+  };
+  window.filterDocs2 = function(cat,btn){
+    document.querySelectorAll('.lp-filter-btn').forEach(function(b){b.classList.remove('on');});
+    btn.classList.add('on');
+    filterTable(cat);
+    document.querySelectorAll('.lp-cat-btn').forEach(function(b){
+      var oc=b.getAttribute('onclick')||'';
+      b.classList.toggle('active',oc.indexOf("'"+cat+"'")>-1);
+    });
+  };
+  function filterTable(cat){
+    document.querySelectorAll('#docTable tbody tr').forEach(function(tr){
+      tr.classList.toggle('hidden',cat!=='all'&&tr.dataset.cat!==cat);
+    });
+  }
+  var btn=document.getElementById('lpBackTop');
+  if(btn){
+    btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    window.addEventListener('scroll',function(){btn.classList.toggle('on',window.scrollY>300);});
+  }
+})();
+</script>
+</body>
+</html>
