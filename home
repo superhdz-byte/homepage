@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LANDPLUS.WORK | 上下水道施設の耐震解析・補強設計</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2e4a;--navy-2:#243f6a;--blue:#2f60a0;--blue-lt:#4e7fc0;
+  --blue-pale:#e8f0fb;--gold:#b47a21;--gold-lt:#d4973a;--teal:#1e6a5e;
+  --bg:#f4f7fb;--bg-white:#ffffff;--bg-pale:#eef3fa;
+  --text:#162033;--text-2:#3f5070;--text-3:#7a96b4;
+  --border:#d6e0ee;--border-lt:#eaf0f8;
+  --shadow-sm:0 2px 8px rgba(26,46,74,.07);
+  --shadow-md:0 6px 24px rgba(26,46,74,.11);
+  --shadow-lg:0 12px 40px rgba(26,46,74,.15);
+  --mono:"Share Tech Mono",monospace;
+  --serif:"Noto Serif JP",serif;
+  --sans:"Noto Sans JP",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;overflow-x:hidden;line-height:1.75;-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;box-shadow:0 2px 16px rgba(26,46,74,.35);transition:height .25s,box-shadow .25s}
+header.scrolled{height:58px}
+.logo{text-decoration:none;display:flex;flex-direction:column;gap:2px}
+.logo-main{font-family:var(--mono);font-size:15px;letter-spacing:.20em;color:#fff;font-weight:600}
+.logo-sub{font-size:9px;letter-spacing:.24em;color:rgba(255,255,255,.45);text-transform:uppercase}
+
+
+/* HERO */
+.hero{background:linear-gradient(140deg,#1a2e4a 0%,#1e3a62 48%,#2a5285 100%);min-height:75vh;display:flex;flex-direction:column;justify-content:center;padding:130px calc(72px + 16.6667%) 128px calc(72px + 16.6667%);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);background-size:52px 52px;pointer-events:none}
+.hero::after{content:"";position:absolute;right:-80px;top:-100px;width:700px;height:700px;background:radial-gradient(circle,rgba(92,140,200,.12) 0%,transparent 60%);pointer-events:none}
+.hero-diagram{position:absolute;right:60px;top:50%;transform:translateY(-50%);opacity:.11;pointer-events:none;width:520px}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.50em;color:#d4a040;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;animation:fadeUp .5s ease both}
+.hero-eyebrow::before{content:"";width:40px;height:1px;background:#d4a040}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,54px);line-height:1.50;letter-spacing:.04em;color:#fff;margin-bottom:30px;max-width:700px;text-shadow:0 2px 14px rgba(0,0,0,.22);animation:fadeUp .55s .08s ease both}
+h1 em{font-style:normal;color:#9dcef8;font-weight:500}
+.hero-lead{font-size:15.5px;line-height:2.05;letter-spacing:.04em;font-weight:500;color:rgba(255,255,255,.86);max-width:540px;margin-bottom:46px;animation:fadeUp .55s .16s ease both}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .55s .24s ease both}
+.btn-g{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#fff;padding:15px 38px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .2s,transform .2s}
+.btn-g:hover{background:var(--gold-lt);transform:translateX(3px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.42);color:rgba(255,255,255,.88);padding:15px 38px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:border-color .2s,color .2s,background .2s}
+.btn-o:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.07)}
+.hero-metrics{position:absolute;bottom:60px;right:72px;display:flex;gap:56px;animation:fadeUp .55s .32s ease both}
+.metric{text-align:right}
+.metric-num{font-family:var(--mono);font-size:30px;font-weight:600;color:#fff;display:block;line-height:1}
+.metric-label{font-size:9.5px;letter-spacing:.24em;color:rgba(255,255,255,.45);margin-top:6px;text-transform:uppercase}
+
+/* SECTION BASE */
+.sec-inner{max-width:1200px;margin:0 auto;padding:96px 52px}
+.sec-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.48em;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.sec-label::before{content:"";width:24px;height:2px;background:var(--blue)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,38px);letter-spacing:.05em;color:var(--navy);margin-bottom:16px;line-height:1.4}
+.sec-desc{font-size:15px;color:var(--text-2);letter-spacing:.03em;line-height:1.95;margin-bottom:60px;max-width:540px;font-weight:400}
+
+/* PAIN — LIGHT */
+.pain-sec{background:var(--bg-pale)}
+.pain-sec .sec-label{color:#5a7898}.pain-sec .sec-label::before{background:#5a7898}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pain-card{background:var(--bg-white);border-radius:4px;padding:40px 34px;border-top:3px solid var(--gold);box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s}
+.pain-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.pain-icon{width:52px;height:52px;border-radius:10px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.pain-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pain-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.5;letter-spacing:.03em}
+.pain-body{font-size:14px;color:var(--text-2);line-height:1.95}
+
+/* VALUE */
+.value-sec{background:var(--bg-white)}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border)}
+.value-card{padding:44px 38px;border-right:1px solid var(--border);position:relative;transition:background .2s}
+.value-card:last-child{border-right:none}
+.value-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.value-card:hover::before{transform:scaleX(1)}
+.value-card:hover{background:var(--bg-pale)}
+.value-num{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.25em;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.value-num::after{content:"";flex:1;height:1px;background:var(--border)}
+.value-title{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--navy);margin-bottom:14px;line-height:1.5;letter-spacing:.04em}
+.value-body{font-size:14px;color:var(--text-2);line-height:1.95}
+
+/* SERVICES - boxed layout */
+.srv-sec{
+  background:var(--bg-pale);
+  border-top:1px solid var(--border-lt);
+}
+
+.srv-inner{
+  max-width:1200px;
+  padding:96px 52px;
+}
+
+.srv-sec .sec-desc{
+  margin-bottom:58px;
+}
+
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border:1px solid var(--border);
+  background:#ffffff;
+}
+
+.srv-card{
+  background:#ffffff;
+  min-height:332px;
+  padding:48px 38px 42px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;
+  transition:background .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+.srv-card:nth-child(3n){
+  border-right:none;
+}
+
+.srv-card:nth-child(n+4){
+  border-bottom:none;
+}
+
+.srv-card:hover{
+  background:#f7faff;
+  box-shadow:0 10px 28px rgba(26,46,74,.08);
+  transform:translateY(-2px);
+  z-index:2;
+}
+
+.srv-num{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  color:var(--blue);
+  letter-spacing:.24em;
+  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.srv-num::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--border);
+}
+
+.srv-title{
+  font-family:var(--serif);
+  font-size:24px;
+  font-weight:500;
+  color:var(--navy);
+  line-height:1.55;
+  letter-spacing:.04em;
+  margin-bottom:20px;
+}
+
+.srv-body{
+  font-size:14px;
+  color:var(--text-2);
+  line-height:2.05;
+  letter-spacing:.03em;
+}
+
+/* tablet */
+@media(max-width:1024px){
+  .srv-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .srv-card{
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+
+  .srv-card:nth-child(3n){
+    border-right:1px solid var(--border);
+  }
+
+  .srv-card:nth-child(2n){
+    border-right:none;
+  }
+
+  .srv-card:nth-child(n+5){
+    border-bottom:none;
+  }
+}
+
+/* mobile */
+@media(max-width:767px){
+  .srv-inner{
+    padding:72px 22px;
+  }
+
+  .srv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .srv-card{
+    min-height:auto;
+    padding:36px 28px;
+    border-right:none !important;
+    border-bottom:1px solid var(--border) !important;
+  }
+
+  .srv-card:last-child{
+    border-bottom:none !important;
+  }
+
+  .srv-title{
+    font-size:21px;
+  }
+}
+
+/* DIFF */
+.diff-sec{background:var(--bg-white)}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.diff-card{border:1px solid var(--border);border-radius:4px;padding:44px 40px;display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start;transition:box-shadow .25s,border-color .25s}
+.diff-card:hover{box-shadow:var(--shadow-md);border-color:var(--blue)}
+.diff-badge{width:80px;height:80px;background:var(--navy);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+.diff-badge-top{font-family:var(--mono);font-size:16px;font-weight:700;color:#9dcef8;line-height:1}
+.diff-badge-sub{font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.48);text-transform:uppercase;line-height:1}
+.diff-content h3{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--navy);margin-bottom:12px;line-height:1.45;letter-spacing:.04em}
+.diff-content p{font-size:14px;color:var(--text-2);line-height:1.95}
+.diff-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.chip{font-size:10.5px;font-weight:600;padding:4px 12px;background:var(--blue-pale);color:var(--blue);border-radius:2px;letter-spacing:.08em}
+
+/* COLLAB */
+.collab-sec{background:var(--bg-pale)}
+.collab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.collab-card{background:var(--bg-white);border:1px solid var(--border);border-radius:4px;padding:40px 34px;transition:box-shadow .25s,transform .25s}
+.collab-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.collab-letter{font-family:var(--mono);font-size:56px;font-weight:700;color:var(--border);line-height:1;margin-bottom:6px}
+.collab-type{font-size:10.5px;font-weight:700;letter-spacing:.28em;color:var(--blue);text-transform:uppercase;margin-bottom:18px}
+.collab-title{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--navy);margin-bottom:14px;line-height:1.5}
+.collab-body{font-size:14px;color:var(--text-2);line-height:1.95}
+.collab-cta{margin-top:40px;background:var(--navy);padding:30px 40px;border-radius:4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.collab-cta p{font-size:15px;font-weight:500;color:rgba(255,255,255,.90);letter-spacing:.04em}
+
+/* WORKS — LIGHT */
+.works-sec{background:var(--bg-white)}
+.works-sec .sec-inner{padding-bottom:64px}
+.works-sec .sec-label{color:#5a7898}.works-sec .sec-label::before{background:#5a7898}
+.works-sec h2{color:var(--navy)}
+.works-sec .sec-desc{color:var(--text-2);margin-bottom:48px}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:20px}
+.wk-card{background:var(--bg-white);border:1px solid var(--border);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .22s,transform .22s,border-color .22s;cursor:pointer}
+.wk-card:hover{box-shadow:var(--shadow-md);transform:translateY(-5px);border-color:var(--blue)}
+.wk-img{height:168px;background:var(--bg-pale);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+.wk-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(238,243,250,.9) 100%);pointer-events:none}
+.wk-cat{position:absolute;top:12px;left:12px;z-index:1;font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.16em;color:#fff;background:var(--blue);padding:4px 10px;border-radius:1px;text-transform:uppercase}
+.wk-cat.gold{background:var(--gold)}.wk-cat.teal{background:var(--teal)}
+.wk-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.wk-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.wk-date{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--text-3);letter-spacing:.08em}
+.wk-fac{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--blue);text-transform:uppercase}
+.wk-title{font-size:14px;font-weight:500;line-height:1.70;letter-spacing:.04em;color:var(--navy);margin-bottom:14px;flex:1}
+.wk-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.wk-tag{font-size:9px;letter-spacing:.09em;padding:3px 9px;border:1px solid var(--border);color:var(--text-3);border-radius:1px}
+.wk-detail{border-top:1px solid var(--border-lt);padding-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wk-dl{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase;margin-bottom:3px}
+.wk-dv{font-size:12px;color:var(--text-2);letter-spacing:.03em;line-height:1.5}
+.dl{stroke:rgba(100,136,168,.52);stroke-width:1;fill:none}
+.dl2{stroke:rgba(100,136,168,.30);stroke-width:.8;fill:none}
+.da{stroke:#b47a21;stroke-width:1.5;fill:none}
+.dg{stroke:rgba(74,111,140,.62);stroke-width:1.8;fill:none}
+.df{fill:rgba(92,133,173,.15);stroke:rgba(120,170,220,.5);stroke-width:.8}
+.dfg{fill:rgba(176,125,43,.12);stroke:rgba(220,170,80,.6);stroke-width:.8}
+.dt{fill:rgba(75,101,128,.72);font-family:monospace;font-size:8px}
+.works-footer{border-top:1px solid var(--border-lt);display:flex;align-items:center;justify-content:space-between;padding:28px 0}
+.works-summary{display:flex;gap:40px}
+.ws-item{display:flex;flex-direction:column;gap:3px}
+.ws-num{font-family:var(--mono);font-size:20px;font-weight:600;color:var(--navy);line-height:1}
+.ws-num span{font-size:12px;color:var(--text-3);margin-left:2px}
+.ws-label{font-size:11px;color:var(--text-3);letter-spacing:.08em}
+.view-all{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:gap .2s,color .2s;margin-top:26px}
+.view-all::after{content:"->"}
+.view-all:hover{gap:16px;color:#4e7fc0}
+
+.lp-news-section {
+  background: #eef4fb;
+  padding: 90px 0 120px;
+  overflow: visible;
+}
+
+.lp-news-inner {
+  width: min(986px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.lp-sec-label {
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  font-weight: 700;
+  color: #315a9a;
+  margin-bottom: 20px;
+}
+
+.lp-sec-title {
+  margin: 0 0 22px;
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #071735;
+  letter-spacing: 0.08em;
+}
+
+.lp-sec-desc {
+  margin: 0 0 54px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #1e3558;
+}
+
+.lp-news-card {
+  background: #ffffff;
+  border: 1px solid #cbd8ea;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#lp-auto-news {
+  margin: 0 !important;
+}
+
+#lp-auto-news .lp-news-item {
+  display: grid;
+  grid-template-columns: 110px 92px 1fr;
+  align-items: center;
+  gap: 20px;
+  min-height: 56px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  text-decoration: none;
+  color: #071735;
+}
+
+#lp-auto-news .lp-news-item:last-child {
+  border-bottom: none;
+}
+
+#lp-auto-news .lp-news-date {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: #315a9a;
+  font-weight: 700;
+}
+
+#lp-auto-news .lp-news-cat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 1px;
+}
+
+#lp-auto-news .lp-news-cat-default {
+  background: #3f5f98;
+}
+
+#lp-auto-news .lp-news-cat-blue {
+  background: #3f5f98;
+}
+
+#lp-auto-news .lp-news-cat-green {
+  background: #28705d;
+}
+
+#lp-auto-news .lp-news-cat-brown {
+  background: #a87b25;
+}
+
+#lp-auto-news .lp-news-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #071735;
+  white-space: normal;
+}
+
+.lp-news-more {
+  display: inline-block;
+  margin-top: 38px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #315a9a;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .lp-news-section {
+    padding: 64px 0 86px;
+  }
+
+  .lp-news-inner {
+    width: min(100% - 32px, 986px);
+  }
+
+  .lp-sec-title {
+    font-size: 28px;
+  }
+
+  #lp-auto-news .lp-news-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px;
+  }
+
+  #lp-auto-news .lp-news-cat {
+    width: fit-content;
+  }
+}
+
+/* CTA */
+.cta-sec{background:linear-gradient(135deg,#1a2e4a 0%,#1e3a62 55%,#2a5285 100%);position:relative;overflow:hidden}
+.cta-sec::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:52px 52px}
+.cta-inner{max-width:1200px;margin:0 auto;padding:100px 52px;display:grid;grid-template-columns:1fr auto;gap:72px;align-items:center;position:relative}
+.cta-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.48em;color:#d4a040;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.cta-label::before{content:"";width:24px;height:2px;background:#d4a040}
+.cta-inner h2{font-family:var(--serif);font-size:clamp(22px,2.4vw,34px);font-weight:400;color:#fff;letter-spacing:.05em;line-height:1.55;margin-bottom:20px}
+.cta-inner p{font-size:15px;color:rgba(255,255,255,.72);line-height:1.95;max-width:500px;margin-bottom:36px}
+.cta-contact{display:flex;flex-direction:column;gap:20px;min-width:300px}
+.cta-ci{display:flex;flex-direction:column;gap:4px}
+.cta-cl{font-family:var(--mono);font-size:9px;letter-spacing:.32em;color:rgba(255,255,255,.40);text-transform:uppercase}
+.cta-cv{font-size:14px;font-weight:500;color:rgba(255,255,255,.88)}
+
+/* FOOTER */
+footer{background:#0f1d2e;border-top:3px solid var(--blue);padding:44px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.ft-left{display:flex;flex-direction:column;gap:6px}
+.ft-logo{font-family:var(--mono);font-size:14px;letter-spacing:.22em;color:rgba(255,255,255,.88);font-weight:600}
+.ft-tag{font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.35)}
+.ft-links{display:flex;gap:28px;flex-wrap:wrap}
+.ft-links a{font-size:11px;font-weight:500;letter-spacing:.12em;color:rgba(255,255,255,.52);text-decoration:none;transition:color .2s}
+.ft-links a:hover{color:rgba(255,255,255,.90)}
+.ft-copy{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.26);letter-spacing:.08em}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.09s}.reveal-d2{transition-delay:.18s}.reveal-d3{transition-delay:.27s}
+
+/* RESPONSIVE */
+@media(max-width:1200px){.hero{padding:120px 44px 96px}.hero-diagram{display:none}.hero-metrics{right:44px}}
+@media(max-width:1024px){
+  header{padding:0 28px}nav{gap:18px}nav a{font-size:11px}
+  .sec-inner{padding:72px 36px}
+  .pain-grid,.collab-grid,.works-grid{grid-template-columns:repeat(2,1fr)}
+  .value-grid{grid-template-columns:1fr}
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+  .diff-grid{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:767px){
+  header{position:relative;height:auto;padding:18px 22px;flex-direction:column;align-items:flex-start;gap:14px}
+  nav{width:100%;flex-wrap:wrap;gap:10px 14px}
+  .hero{min-height:auto;padding:56px 22px 64px}
+  h1{font-size:30px;line-height:1.5}
+  .hero-lead{font-size:14.5px}
+  .hero-metrics{position:static;margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;background:rgba(255,255,255,.07);border-radius:4px;padding:20px 16px}
+  .metric{text-align:center;padding:0 8px;border-right:1px solid rgba(255,255,255,.12)}.metric:last-child{border-right:none}
+  .metric-num{font-size:22px}
+  .pain-grid,.collab-grid,.works-grid{grid-template-columns:1fr}
+  .srv-grid{grid-template-columns:1fr}
+  .diff-card{grid-template-columns:1fr}
+  .works-footer{flex-direction:column;align-items:flex-start;gap:20px}
+  .cta-inner{padding:64px 22px}
+  footer{padding:32px 22px;flex-direction:column;align-items:flex-start;gap:22px}
+}
+
+</style>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-diagram" aria-hidden="true">
+    <svg viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="130" width="400" height="220" stroke="white" stroke-width="1.2"/>
+      <line x1="193" y1="130" x2="193" y2="350" stroke="white" stroke-width="1"/>
+      <line x1="327" y1="130" x2="327" y2="350" stroke="white" stroke-width="1"/>
+      <rect x="52" y="118" width="416" height="12" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="1"/>
+      <line x1="20" y1="360" x2="500" y2="360" stroke="white" stroke-width="2"/>
+      <line x1="25" y1="364" x2="38" y2="372" stroke="white" stroke-width="0.7"/><line x1="50" y1="364" x2="63" y2="372" stroke="white" stroke-width="0.7"/>
+      <line x1="450" y1="364" x2="463" y2="372" stroke="white" stroke-width="0.7"/><line x1="475" y1="364" x2="488" y2="372" stroke="white" stroke-width="0.7"/>
+      <line x1="140" y1="350" x2="140" y2="400" stroke="white" stroke-width="1.2"/>
+      <line x1="260" y1="350" x2="260" y2="400" stroke="white" stroke-width="1.2"/>
+      <line x1="380" y1="350" x2="380" y2="400" stroke="white" stroke-width="1.2"/>
+      <line x1="63" y1="220" x2="191" y2="220" stroke="rgba(100,170,230,0.6)" stroke-width="0.9" stroke-dasharray="5 4"/>
+      <line x1="196" y1="200" x2="325" y2="200" stroke="rgba(100,170,230,0.6)" stroke-width="0.9" stroke-dasharray="5 4"/>
+      <line x1="330" y1="230" x2="458" y2="230" stroke="rgba(100,170,230,0.6)" stroke-width="0.9" stroke-dasharray="5 4"/>
+      <circle cx="260" cy="118" r="8" stroke="white" stroke-width="1.2"/>
+      <line x1="260" y1="42" x2="260" y2="110" stroke="white" stroke-width="1" stroke-dasharray="5 4"/>
+      <line x1="10" y1="245" x2="52" y2="245" stroke="#b07d2b" stroke-width="1.5"/>
+      <polyline points="48,240 52,245 48,250" fill="none" stroke="#b07d2b" stroke-width="1.5"/>
+      <text x="270" y="108" fill="white" font-size="11" font-family="monospace">&#9661;GL</text>
+      <text x="8" y="240" fill="rgba(200,160,70,.9)" font-size="10" font-family="monospace">L2</text>
+      <polyline points="60,350 90,342 120,328 160,308 200,280 240,248 280,228 320,218 360,215 400,214 440,214" stroke="#b07d2b" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-eyebrow">上下水道施設 耐震解析の技術パートナー</div>
+  <h1>上下水道施設の<br><em>耐震解析</em>・補強設計専門</h1>
+  <p class="hero-lead">浄水場・配水池・ポンプ場など、<br>既設・新設施設の耐震性能評価に対応。<br>動的解析から補強設計、報告書まで一貫支援します。</p>
+  <div class="hero-btns">
+    <a href="https://www.landplus.work/contact-3/" class="btn-g">無料でご相談 &#8594;</a>
+    <a href="https://www.landplus.work/contact-2/" class="btn-o">業務実績を見る</a>
+  </div>
+ 
+</section>
+
+<!-- PAIN POINTS LIGHT -->
+<section class="pain-sec">
+  <div class="sec-inner">
+    <div class="sec-label reveal">こんなお悩みはありませんか？</div>
+
+    <h2 class="reveal">
+      上下水道施設の耐震設計で<br>
+      このような課題はありませんか
+    </h2>
+
+    <p class="sec-desc reveal">
+      浄水場・配水池・ポンプ場などの耐震性能評価では、<br>
+      L2解析、非線形解析、補強検討まで専門的な対応が求められます。
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal reveal-d1">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+
+        <div class="pain-title">
+          L2解析・非線形解析の<br>
+          対応が難しい
+        </div>
+
+        <div class="pain-body">
+          レベル2地震動に対する動的解析、プッシュオーバー解析、
+          RC部材の非線形評価など、専門的な判断が必要となる業務に対応したい。
+        </div>
+      </div>
+
+      <div class="pain-card reveal reveal-d2">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </div>
+
+        <div class="pain-title">
+          解析ケースが多い<br>
+          解析時間がかかる
+        </div>
+
+        <div class="pain-body">
+          設計条件、地盤条件、水位条件、荷重条件、断面照査条件など、
+          解析ケースが多く、社内工数を圧迫している。
+        </div>
+      </div>
+
+      <div class="pain-card reveal reveal-d3">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+
+        <div class="pain-title">
+          補強設計まで一貫して<br>
+          相談できる先が少ない
+        </div>
+
+        <div class="pain-body">
+          耐震性能評価だけでなく、補強方針、補強断面、数量計算、
+          概算工事費、説明資料作成までまとめて対応できる外部パートナーを探している。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section class="value-sec">
+  <div class="sec-inner">
+    <div class="sec-label reveal">弊社の提供価値</div>
+    <h2 class="reveal">設計会社様の耐震検討業務を、<br>専門技術で支援します</h2>
+    <p class="sec-desc reveal">上下水道施設に関する解析・照査・補強設計業務を補完し、<br>
+  繁忙期や専門検討が必要な案件にも対応できる体制づくりを支援します。</p>
+    <div class="value-grid">
+      <div class="value-card reveal reveal-d1">
+        <div class="value-num">01</div>
+        <div class="value-title">解析業務の外部パートナー化</div>
+        <div class="value-body">社内リソースを圧迫せず、耐震解析業務を丸ごとお任せいただけます。繁忙期のスポット対応から長期継続まで、柔軟な協業スタイルに対応します。</div>
+      </div>
+      <div class="value-card reveal reveal-d2">
+        <div class="value-num">02</div>
+        <div class="value-title">高度解析（L2・非線形）対応</div>
+        <div class="value-body">プッシュオーバー解析・時刻歴応答解析など専門的な解析に対応。各設計基準に準拠した正確な評価と、第三者照査を前提とした報告書作成が可能です。</div>
+      </div>
+      <div class="value-card reveal reveal-d3">
+        <div class="value-num">03</div>
+        <div class="value-title">品質とスピードの両立</div>
+        <div class="value-body">解析担当者とは独立したチェック体制により高品質を確保。繰り返し作業の効率化により、納期を厳守した成果物をご提供します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="srv-sec">
+  <div class="sec-inner srv-inner">
+    <div class="sec-label reveal">Services</div>
+    <h2 class="reveal">対応業務</h2>
+    <p class="sec-desc reveal">
+      上下水道施設・土木構造物の耐震性能評価から補強設計まで、<br>
+      一貫して対応します。
+    </p>
+
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-num">01</div>
+        <div class="srv-title">耐震性能評価</div>
+        <div class="srv-body">
+          浄水場・配水池・ポンプ場・管廊などの上下水道施設を対象に、
+          既設構造物の耐震性能を評価。L1・L2地震動に対する照査条件を整理し、
+          構造安全性と補強要否を確認します。
+        </div>
+      </div>
+
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-num">02</div>
+        <div class="srv-title">L1・L2耐震解析</div>
+        <div class="srv-body">
+          常時・レベル1地震時の静的解析から、レベル2地震時の動的解析まで対応。
+          設計条件、地盤条件、荷重条件を整理し、実務に即した解析モデルを構築します。
+        </div>
+      </div>
+
+      <div class="srv-card reveal reveal-d2">
+        <div class="srv-num">03</div>
+        <div class="srv-title">FEM・構造解析</div>
+        <div class="srv-body">
+          RC構造物、地下構造物、複雑断面を対象に、FEM解析・断面力算定・変形照査を実施。
+          水圧・土圧・地震時慣性力を考慮し、補強検討に必要な解析結果を整理します。
+        </div>
+      </div>
+
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-num">04</div>
+        <div class="srv-title">耐震補強設計</div>
+        <div class="srv-body">
+          耐震性能が不足する既設RC構造物に対して、補強方針の検討から補強断面設計まで対応。
+          増厚、あと施工アンカー、開口部補強など、施工性・経済性を踏まえた補強案を整理します。
+        </div>
+      </div>
+
+      <div class="srv-card reveal reveal-d2">
+        <div class="srv-num">05</div>
+        <div class="srv-title">数量計算・概算工事費</div>
+        <div class="srv-body">
+          補強・改修工事に必要な数量算出、概算工事費の算定、設計説明資料の作成に対応。
+          発注者説明、協議資料、見積検討に使用できる形で成果を整理します。
+        </div>
+      </div>
+
+      <div class="srv-card reveal reveal-d3">
+        <div class="srv-num">06</div>
+        <div class="srv-title">成果品作成・設計支援</div>
+        <div class="srv-body">
+          解析結果、照査結果、補強設計内容をもとに、報告書・計算書・図面資料・説明資料の作成を支援。
+          設計会社・施工会社の外部技術パートナーとして対応します。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF -->
+<section class="diff-sec">
+  <div class="sec-inner">
+    <div class="sec-label reveal">Why Landplus</div>
+    <h2 class="reveal">選ばれる理由</h2>
+    <p class="sec-desc reveal">技術力と品質管理の2つの柱で、設計会社様の期待を超える成果をご提供します。</p>
+    <div class="diff-grid">
+      <div class="diff-card reveal reveal-d1">
+        <div class="diff-badge"><div class="diff-badge-top">L2</div><div class="diff-badge-sub">Dynamic</div></div>
+        <div class="diff-content">
+          <h3>L2動的解析・非線形解析への対応</h3>
+          <p>レベル2地震動に対する時刻歴応答解析・プッシュオーバー解析に対応。材料非線形・幾何非線形を考慮した高度な解析により、複雑な構造挙動を適切に評価します。各種水道施設設計指針に準拠し、第三者チェック指摘にも柔軟に対応可能です。</p>
+          <div class="diff-chips"><span class="chip">時刻歴応答解析</span><span class="chip">プッシュオーバー解析</span><span class="chip">非線形解析</span><span class="chip">第三者照査対応</span></div>
+        </div>
+      </div>
+      <div class="diff-card reveal reveal-d2">
+        <div class="diff-badge" style="background:var(--teal)"><div class="diff-badge-top">QC</div><div class="diff-badge-sub">Quality</div></div>
+        <div class="diff-content">
+          <h3>独立した品質管理・照査体制</h3>
+          <p>解析担当者とは別に、独立したチェック担当による確認を実施。断面力・照査結果などの重要項目を重点的に確認し、設計基準に基づくチェックリストを用いた品質管理体制を整備しています。照査指摘への柔軟な対応も可能です。</p>
+          <div class="diff-chips"><span class="chip">独立チェック担当</span><span class="chip">重点項目確認</span><span class="chip">設計基準準拠</span><span class="chip">照査指摘対応</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLAB -->
+<section class="collab-sec">
+  <div class="sec-inner">
+    <div class="sec-label reveal">Collaboration</div>
+    <h2 class="reveal">協業のイメージ</h2>
+    <p class="sec-desc reveal">小規模案件・お試し案件からご対応します。貴社の状況に合わせた柔軟な協業スタイルをご提案します。</p>
+    <div class="collab-grid">
+      <div class="collab-card reveal reveal-d1"><div class="collab-letter">A</div><div class="collab-type">スポット利用</div><div class="collab-title">プロジェクト単位での委託</div><div class="collab-body">案件ごとに解析業務を委託。社内の繁忙期や専門解析が必要なタイミングで柔軟にご活用いただけます。お試し解析・サンプル報告書も対応可能です。</div></div>
+      <div class="collab-card reveal reveal-d2"><div class="collab-letter">B</div><div class="collab-type">部分外注</div><div class="collab-title">解析業務の一部外注</div><div class="collab-body">設計・照査は貴社担当、解析のみを弊社が担当。業務分担でコスト・時間を最適化します。貴社フォーマットへの対応も可能です。</div></div>
+      <div class="collab-card reveal reveal-d3"><div class="collab-letter">C</div><div class="collab-type">長期連携</div><div class="collab-title">継続的な技術パートナー</div><div class="collab-body">定期的な案件を通じた長期的な協力関係。貴社の技術チームの一員として、品質管理・効率化をともに推進します。</div></div>
+    </div>
+    <div class="collab-cta reveal">
+      <p>まずはお気軽にご相談ください。ご担当者様との個別打ち合わせを歓迎します。</p>
+      <a href="https://www.landplus.work/contact-3/" class="btn-g" style="white-space:nowrap">お問い合わせ &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS DARK V3 / 上下水道施設 実績セクション -->
+<section class="works-sec" id="jisseki">
+  <div class="sec-inner">
+    <div class="sec-label reveal">実績</div>
+
+    <h2 class="reveal">最新の業務実績</h2>
+
+    <p class="sec-desc reveal">
+      完了した業務の一部をご紹介します。類似施設・類似業務をご検討の際の参考資料としてご活用ください。
+    </p>
+
+    <div class="works-grid">
+
+      <!-- 実績 01 -->
+      <div class="wk-card reveal reveal-d1">
+        <div class="wk-img">
+          <div class="wk-cat">業務実績</div>
+
+          <!-- 浄水場 沈殿池・ろ過池 断面イメージ -->
+          <svg viewBox="0 0 240 150" width="240" height="150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="浄水場 沈殿池・ろ過池の断面イメージ">
+            <!-- ground -->
+            <line x1="18" y1="126" x2="222" y2="126" stroke="#9fb2c8" stroke-width="1.2"/>
+            <path d="M22 131 L32 136 M42 131 L52 136 M62 131 L72 136 M172 131 L182 136 M192 131 L202 136" stroke="#c3ceda" stroke-width="0.9"/>
+
+            <!-- outer tank -->
+            <rect x="34" y="40" width="172" height="82" fill="#e9f1fb" stroke="#9eb7d3" stroke-width="1.6"/>
+            <rect x="28" y="31" width="184" height="10" fill="#dbe8f6" stroke="#9eb7d3" stroke-width="1.4"/>
+
+            <!-- compartments -->
+            <line x1="92" y1="40" x2="92" y2="122" stroke="#9eb7d3" stroke-width="1.2"/>
+            <line x1="150" y1="40" x2="150" y2="122" stroke="#9eb7d3" stroke-width="1.2"/>
+
+            <!-- water level -->
+            <line x1="38" y1="72" x2="89" y2="72" stroke="#6aa6d8" stroke-width="1" stroke-dasharray="5 4"/>
+            <line x1="96" y1="72" x2="147" y2="72" stroke="#6aa6d8" stroke-width="1" stroke-dasharray="5 4"/>
+            <line x1="154" y1="72" x2="202" y2="72" stroke="#6aa6d8" stroke-width="1" stroke-dasharray="5 4"/>
+
+            <!-- vertical small structures -->
+            <rect x="82" y="20" width="11" height="11" fill="#f4ead9" stroke="#d4af74" stroke-width="1"/>
+            <rect x="147" y="20" width="11" height="11" fill="#f4ead9" stroke="#d4af74" stroke-width="1"/>
+
+            <!-- L2 input arrow -->
+            <line x1="12" y1="87" x2="28" y2="87" stroke="#c89435" stroke-width="1.3"/>
+            <path d="M24 83 L29 87 L24 91" stroke="#c89435" stroke-width="1.3" fill="none"/>
+            <text x="9" y="80" fill="#b98225" font-family="serif" font-size="8">L2</text>
+
+            <!-- stress/analysis accent -->
+            <path d="M36 111 C64 104, 76 106, 92 111 C118 119, 132 103, 150 111 C172 119, 188 108, 204 113" stroke="#b98b3d" stroke-width="1" stroke-dasharray="4 4" opacity="0.75"/>
+
+            <text x="40" y="68" fill="#6d86a3" font-family="serif" font-size="8">▽HWL</text>
+            <text x="166" y="121" fill="#6d86a3" font-family="serif" font-size="8">▽GL</text>
+            <text x="82" y="137" fill="#8aa0b8" font-family="serif" font-size="8">沈殿池・ろ過池 断面</text>
+          </svg>
+        </div>
+
+        <div class="wk-body">
+          <div class="wk-meta">
+            <span class="wk-date">2025年度</span>
+            <span class="wk-fac">浄水場</span>
+          </div>
+
+          <div class="wk-title">
+            浄水場 沈殿池・ろ過池<br>
+            L2耐震性能照査業務
+          </div>
+
+          <div class="wk-tags">
+            <span class="wk-tag">L2動的解析</span>
+            <span class="wk-tag">RC構造</span>
+            <span class="wk-tag">上下水道施設</span>
+          </div>
+
+          <div class="wk-detail">
+            <div>
+              <div class="wk-dl">解析種別</div>
+              <div class="wk-dv">動的解析・断面照査</div>
+            </div>
+            <div>
+              <div class="wk-dl">発注者</div>
+              <div class="wk-dv">設計コンサルタント会社</div>
+            </div>
+            <div>
+              <div class="wk-dl">対象施設</div>
+              <div class="wk-dv">沈殿池・ろ過池</div>
+            </div>
+            <div>
+              <div class="wk-dl">成果物</div>
+              <div class="wk-dv">解析報告書・照査資料</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 実績 02 -->
+      <div class="wk-card reveal reveal-d2">
+        <div class="wk-img">
+          <div class="wk-cat gold">業務実績</div>
+
+          <!-- 配水池 補強設計イメージ -->
+          <svg viewBox="0 0 240 150" width="240" height="150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="配水池の補強設計イメージ">
+            <!-- ground -->
+            <line x1="20" y1="126" x2="220" y2="126" stroke="#9fb2c8" stroke-width="1.2"/>
+            <path d="M25 131 L35 136 M48 131 L58 136 M70 131 L80 136 M166 131 L176 136 M190 131 L200 136" stroke="#c3ceda" stroke-width="0.9"/>
+
+            <!-- reservoir -->
+            <rect x="42" y="39" width="156" height="78" fill="#e8f0fa" stroke="#9eb7d3" stroke-width="1.6"/>
+            <rect x="37" y="31" width="166" height="9" fill="#dde8f6" stroke="#9eb7d3" stroke-width="1.3"/>
+            <rect x="42" y="113" width="156" height="7" fill="#dbe6f2" stroke="#9eb7d3" stroke-width="1.2"/>
+
+            <!-- inner wall -->
+            <line x1="120" y1="40" x2="120" y2="113" stroke="#9eb7d3" stroke-width="1.2"/>
+
+            <!-- reinforcement layers -->
+            <rect x="34" y="43" width="8" height="68" fill="#ead7b3" stroke="#c58f35" stroke-width="1" stroke-dasharray="3 2"/>
+            <rect x="198" y="43" width="8" height="68" fill="#ead7b3" stroke="#c58f35" stroke-width="1" stroke-dasharray="3 2"/>
+            <rect x="48" y="35" width="144" height="3" fill="#c58f35" opacity="0.5"/>
+
+            <!-- water level -->
+            <line x1="47" y1="73" x2="116" y2="73" stroke="#6aa6d8" stroke-width="1" stroke-dasharray="5 4"/>
+            <line x1="124" y1="73" x2="193" y2="73" stroke="#6aa6d8" stroke-width="1" stroke-dasharray="5 4"/>
+
+            <!-- reinforcement callout -->
+            <line x1="157" y1="25" x2="195" y2="25" stroke="#c58f35" stroke-width="1"/>
+            <path d="M191 21 L198 25 L191 29" stroke="#c58f35" stroke-width="1" fill="none"/>
+            <text x="128" y="27" fill="#b98225" font-family="serif" font-size="8">補強範囲</text>
+
+            <text x="50" y="69" fill="#6d86a3" font-family="serif" font-size="8">▽HWL</text>
+            <text x="164" y="121" fill="#6d86a3" font-family="serif" font-size="8">▽GL</text>
+            <text x="77" y="137" fill="#8aa0b8" font-family="serif" font-size="8">RC壁補強・断面照査</text>
+          </svg>
+        </div>
+
+        <div class="wk-body">
+          <div class="wk-meta">
+            <span class="wk-date">2025年度</span>
+            <span class="wk-fac">配水池</span>
+          </div>
+
+          <div class="wk-title">
+            配水池 耐震診断・<br>
+            RC壁補強設計業務
+          </div>
+
+          <div class="wk-tags">
+            <span class="wk-tag">静的解析</span>
+            <span class="wk-tag">補強設計</span>
+            <span class="wk-tag">配水池</span>
+          </div>
+
+          <div class="wk-detail">
+            <div>
+              <div class="wk-dl">解析種別</div>
+              <div class="wk-dv">静的解析・断面照査</div>
+            </div>
+            <div>
+              <div class="wk-dl">発注者</div>
+              <div class="wk-dv">上下水道事業者</div>
+            </div>
+            <div>
+              <div class="wk-dl">対象施設</div>
+              <div class="wk-dv">RC配水池</div>
+            </div>
+            <div>
+              <div class="wk-dl">成果物</div>
+              <div class="wk-dv">補強検討資料・計算書</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 実績 03 -->
+      <div class="wk-card reveal reveal-d3">
+        <div class="wk-img">
+          <div class="wk-cat teal">業務実績</div>
+
+          <!-- ポンプ場 地下構造物 FEM解析イメージ -->
+          <svg viewBox="0 0 240 150" width="240" height="150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ポンプ場地下構造物のFEM解析イメージ">
+            <!-- ground line -->
+            <line x1="18" y1="54" x2="222" y2="54" stroke="#9fb2c8" stroke-width="1.2"/>
+            <path d="M22 58 L32 62 M42 58 L52 62 M62 58 L72 62 M178 58 L188 62 M198 58 L208 62" stroke="#c3ceda" stroke-width="0.9"/>
+
+            <!-- underground box -->
+            <rect x="43" y="54" width="154" height="70" fill="#e8f0fa" stroke="#9eb7d3" stroke-width="1.6"/>
+            <line x1="43" y1="80" x2="197" y2="80" stroke="#9eb7d3" stroke-width="1.1"/>
+            <line x1="93" y1="54" x2="93" y2="124" stroke="#9eb7d3" stroke-width="1.1"/>
+            <line x1="145" y1="54" x2="145" y2="124" stroke="#9eb7d3" stroke-width="1.1"/>
+
+            <!-- pump openings / equipment -->
+            <rect x="59" y="84" width="30" height="28" fill="#21334f" stroke="#6c90b6" stroke-width="1"/>
+            <rect x="106" y="84" width="30" height="28" fill="#21334f" stroke="#6c90b6" stroke-width="1"/>
+            <rect x="153" y="84" width="30" height="28" fill="#21334f" stroke="#6c90b6" stroke-width="1"/>
+
+            <!-- FEM mesh lines -->
+            <line x1="56" y1="54" x2="56" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="69" y1="54" x2="69" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="82" y1="54" x2="82" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="108" y1="54" x2="108" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="121" y1="54" x2="121" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="134" y1="54" x2="134" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="160" y1="54" x2="160" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="173" y1="54" x2="173" y2="124" stroke="#c5d2e0" stroke-width="0.7"/>
+
+            <line x1="43" y1="67" x2="197" y2="67" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="43" y1="94" x2="197" y2="94" stroke="#c5d2e0" stroke-width="0.7"/>
+            <line x1="43" y1="110" x2="197" y2="110" stroke="#c5d2e0" stroke-width="0.7"/>
+
+            <!-- stress area -->
+            <path d="M45 80 C70 68, 91 74, 115 80 C137 86, 160 70, 195 78" stroke="#c58f35" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.85"/>
+            <text x="151" y="76" fill="#b98225" font-family="serif" font-size="8">応力集中</text>
+
+            <!-- bottom base -->
+            <line x1="35" y1="126" x2="205" y2="126" stroke="#9fb2c8" stroke-width="1"/>
+            <text x="50" y="51" fill="#6d86a3" font-family="serif" font-size="8">▽GL</text>
+            <text x="74" y="138" fill="#8aa0b8" font-family="serif" font-size="8">地下構造物 FEM解析</text>
+          </svg>
+        </div>
+
+        <div class="wk-body">
+          <div class="wk-meta">
+            <span class="wk-date">2025年度</span>
+            <span class="wk-fac">ポンプ場</span>
+          </div>
+
+          <div class="wk-title">
+            ポンプ場地下構造物<br>
+            FEM応力解析・耐震照査業務
+          </div>
+
+          <div class="wk-tags">
+            <span class="wk-tag">FEM解析</span>
+            <span class="wk-tag">地下構造物</span>
+            <span class="wk-tag">応力解析</span>
+          </div>
+
+          <div class="wk-detail">
+            <div>
+              <div class="wk-dl">解析種別</div>
+              <div class="wk-dv">FEM応力解析・耐震照査</div>
+            </div>
+            <div>
+              <div class="wk-dl">発注者</div>
+              <div class="wk-dv">設計コンサルタント会社</div>
+            </div>
+            <div>
+              <div class="wk-dl">対象施設</div>
+              <div class="wk-dv">ポンプ場地下構造物</div>
+            </div>
+            <div>
+              <div class="wk-dl">成果物</div>
+              <div class="wk-dv">応力解析報告書・照査資料</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="https://www.landplus.work/contact-2/" class="view-all">
+      実績・事例を詳しく見る
+    </a>
+
+  </div>
+  
+</section>
+<!-- NEWS -->
+<section class="lp-news-section">
+  <div class="lp-news-inner">
+
+    <div class="lp-sec-label">NEWS & UPDATES</div>
+    <h2 class="lp-sec-title">お知らせ</h2>
+    <p class="lp-sec-desc">
+      業務実績の更新や技術情報など、最新の動態をお知らせします。
+    </p>
+
+    <div class="lp-news-card">
+      <div id="lp-auto-news"></div>
+    </div>
+
+    <a class="lp-news-more" href="https://www.landplus.work/news/">
+      お知らせをすべて見る　->
+    </a>
+
+  </div>
+</section>
+<script>
+(function () {
+  function stripHtml(html) {
+    const div = document.createElement("div");
+    div.innerHTML = html || "";
+    return div.textContent || div.innerText || "";
+  }
+
+  function getCategoryName(post) {
+    let catName = "お知らせ";
+
+    if (
+      post._embedded &&
+      post._embedded["wp:term"] &&
+      Array.isArray(post._embedded["wp:term"])
+    ) {
+      post._embedded["wp:term"].forEach(function(termGroup) {
+        if (Array.isArray(termGroup)) {
+          termGroup.forEach(function(term) {
+            if (term.taxonomy === "category" && term.name) {
+              catName = term.name;
+            }
+          });
+        }
+      });
+    }
+
+    return catName;
+  }
+
+  function getCategoryClass(catName) {
+    if (catName === "耐震解析") return "lp-news-cat-blue";
+    if (catName === "モデル作成") return "lp-news-cat-green";
+    if (catName === "土木設計") return "lp-news-cat-brown";
+    if (catName === "補強設計") return "lp-news-cat-orange";
+    if (catName === "技術資料") return "lp-news-cat-green";
+    if (catName === "更新情報") return "lp-news-cat-brown";
+    return "lp-news-cat-default";
+  }
+
+  function loadLandplusNews() {
+    const newsBox = document.getElementById("lp-auto-news");
+    if (!newsBox) return;
+
+    newsBox.innerHTML = '<div class="lp-news-empty">読み込み中...</div>';
+
+    fetch("https://www.landplus.work/wp-json/wp/v2/posts?per_page=5&orderby=date&order=desc&_embed=1&t=" + new Date().getTime())
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error("REST API error: " + response.status);
+        }
+        return response.json();
+      })
+      .then(function(posts) {
+        if (!posts || posts.length === 0) {
+          newsBox.innerHTML = '<div class="lp-news-empty">現在、お知らせはありません。</div>';
+          return;
+        }
+
+        let html = "";
+
+        posts.forEach(function(post) {
+          const dateObj = new Date(post.date);
+          const y = dateObj.getFullYear();
+          const m = String(dateObj.getMonth() + 1).padStart(2, "0");
+          const d = String(dateObj.getDate()).padStart(2, "0");
+          const dateText = y + "." + m + "." + d;
+
+          const catName = getCategoryName(post);
+          const catClass = getCategoryClass(catName);
+          const titleText = stripHtml(post.title && post.title.rendered ? post.title.rendered : "");
+          const link = post.link || "#";
+
+          html += ''
+            + '<a class="lp-news-item" href="' + link + '">'
+            + '<div class="lp-news-date">' + dateText + '</div>'
+            + '<div class="lp-news-cat ' + catClass + '">' + catName + '</div>'
+            + '<div class="lp-news-title">' + titleText + '</div>'
+            + '</a>';
+        });
+
+        newsBox.innerHTML = html;
+      })
+      .catch(function(error) {
+        console.log(error);
+        newsBox.innerHTML =
+          '<div class="lp-news-empty">投稿を取得できませんでした。REST API または JavaScript の実行設定を確認してください。</div>';
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadLandplusNews);
+  } else {
+    loadLandplusNews();
+  }
+
+  window.addEventListener("load", loadLandplusNews);
+})();
+</script>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-label">お問い合わせ</div>
+      <h2>同種施設の耐震解析・補強設計について<br>まずはお気軽にご相談ください</h2>
+      <p>小規模案件・お試し案件からご対応します。図面・設計条件・既往資料を確認したうえで、解析方針や対応範囲を整理してご提案します。ご担当者様との個別打ち合わせも歓迎します。</p>
+      <a href="https://www.landplus.work/contact-3/" class="btn-g">お問い合わせフォームへ &#8594;</a>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-ci"><div class="cta-cl">運営会社</div><div class="cta-cv">株式会社ランドプラス</div></div>
+      <div class="cta-ci"><div class="cta-cl">Tel</div><div class="cta-cv">048-788-4865</div></div>
+      <div class="cta-ci"><div class="cta-cl">Email</div><div class="cta-cv">tousawa.yy@landplus.co.jp</div></div>
+      <div class="cta-ci"><div class="cta-cl">対応業務</div><div class="cta-cv">耐震解析 / 補強設計 / FEM解析<br>地盤応答解析 / 報告書作成</div></div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+(function(){
+  var hdr=document.getElementById("hdr");
+  window.addEventListener("scroll",function(){hdr.classList.toggle("scrolled",window.scrollY>60);},{passive:true});
+  var els=document.querySelectorAll(".reveal");
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+  els.forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
