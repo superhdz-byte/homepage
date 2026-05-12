@@ -1,0 +1,1793 @@
+<style>
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  background: #f4f7fb !important;
+}
+
+#page,
+#content,
+#primary,
+#main,
+.site,
+.site-content,
+.content-area,
+.site-main,
+.entry-content,
+.elementor,
+.elementor-page,
+.elementor-section,
+.elementor-container,
+.elementor-column,
+.elementor-widget-wrap,
+.elementor-widget,
+.elementor-widget-html,
+.elementor-widget-container,
+.e-con,
+.e-con-inner,
+.e-con-full,
+.elementor-element {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.page-header,
+.entry-header,
+.entry-title,
+.ast-container,
+.ast-page-builder-template .site-content,
+.wp-site-blocks,
+.wp-block-template-part,
+header.entry-header,
+.page .entry-header,
+.single .entry-header,
+.elementor-page-title,
+h1.entry-title {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.elementor-section-wrap,
+.elementor-inner,
+.elementor-widget-wrap,
+.elementor-widget-container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+:root {
+  --dk-bg: #1a2e4a;
+  --dk-bg2: #152238;
+  --dk-blue: #3d6fa8;
+  --dk-gold: #b07d2b;
+  --dk-grid: rgba(255,255,255,0.033);
+
+  --lt-bg: #f4f7fb;
+  --lt-card: #ffffff;
+  --lt-navy: #1a2e4a;
+  --lt-blue: #2a5b9e;
+  --lt-blue2: #3d6fa8;
+  --lt-gold: #b07d2b;
+  --lt-text: #21364f;
+  --lt-text2: #3f566f;
+  --lt-text3: #6c8299;
+  --lt-bdr: #dce6f0;
+  --lt-bdr2: #c4d4e4;
+  --lt-bg2: #eaf1f8;
+
+  --mono: "Share Tech Mono", "Consolas", monospace;
+  --serif: "Noto Serif JP", "Yu Mincho", "YuMincho", serif;
+  --sans: "Noto Sans JP", "Yu Gothic", "YuGothic", sans-serif;
+  --admin-bar: 0px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.lp-co-page {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw !important;
+  min-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--lt-bg);
+  color: var(--lt-text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.lp-header {
+  position: fixed;
+  top: var(--admin-bar);
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 9999;
+  background: var(--dk-bg2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,.35);
+}
+
+.lp-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.lp-logo-main {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: .16em;
+  color: #fff;
+}
+
+.lp-logo-sub {
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: rgba(255,255,255,.48);
+  text-transform: uppercase;
+}
+
+.lp-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.lp-nav a {
+  font-size: 11.5px;
+  letter-spacing: .10em;
+  text-decoration: none;
+  color: rgba(255,255,255,.70);
+  transition: color .18s;
+  font-weight: 500;
+}
+
+.lp-nav a:hover,
+.lp-nav a.on {
+  color: #fff;
+}
+
+.lp-nav-cta {
+  background: var(--dk-gold);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 2px;
+  font-size: 11px;
+  letter-spacing: .13em;
+}
+
+.lp-nav-cta:hover {
+  background: #c48f35 !important;
+}
+
+.lp-hero {
+  width: 100%;
+  margin: 0 !important;
+  background: linear-gradient(150deg,#1a2e4a 0%,#1d3457 45%,#233960 100%);
+  padding: calc(60px + var(--admin-bar) + 64px) 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--dk-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dk-grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.lp-hero-deco {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 380px;
+  opacity: .06;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.lp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .20em;
+  color: rgba(255,255,255,.38);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.lp-breadcrumb a {
+  color: rgba(255,255,255,.38);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.lp-breadcrumb a:hover {
+  color: rgba(255,255,255,.70);
+}
+
+.lp-page-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .40em;
+  color: #e8b96a;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.lp-page-label::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: #e8b96a;
+}
+
+.lp-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px,3vw,40px);
+  letter-spacing: .07em;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.35;
+}
+
+.lp-hero h1 span {
+  display: block;
+  font-size: .60em;
+  color: rgba(255,255,255,.72);
+  letter-spacing: .05em;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+.lp-hero-desc {
+  font-size: 13.5px;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.62);
+  line-height: 1.95;
+  max-width: 680px;
+  margin: 0;
+}
+
+.lp-sec {
+  width: 100%;
+  padding: 72px 0;
+  background: var(--lt-bg);
+}
+
+.lp-sec.alt {
+  background: var(--lt-card);
+}
+
+.lp-sec.dark {
+  background: var(--dk-bg);
+  color: rgba(255,255,255,.88);
+}
+
+.lp-sec-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .42em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.lp-sec-label::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--lt-blue);
+}
+
+.lp-sec.dark .lp-sec-label {
+  color: #7cb8e8;
+}
+
+.lp-sec.dark .lp-sec-label::before {
+  background: #7cb8e8;
+}
+
+.lp-sec-h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(22px,2.4vw,32px);
+  letter-spacing: .07em;
+  color: var(--lt-navy);
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.lp-sec.dark .lp-sec-h2 {
+  color: #d8eaf8;
+}
+
+.lp-sec-desc {
+  font-size: 13.5px;
+  color: var(--lt-text2);
+  letter-spacing: .04em;
+  line-height: 1.95;
+  margin: 0 0 48px;
+  max-width: 620px;
+}
+
+.lp-sec.dark .lp-sec-desc {
+  color: rgba(255,255,255,.55);
+}
+
+.lp-rinen-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+}
+
+.lp-rinen-card {
+  background: var(--lt-card);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  padding: 30px 26px;
+  border-top: 3px solid var(--lt-blue);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.lp-rinen-card:hover {
+  box-shadow: 0 6px 22px rgba(26,46,74,.10);
+  transform: translateY(-3px);
+}
+
+.lp-rinen-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  background: rgba(42,91,158,.08);
+  border: 1px solid rgba(42,91,158,.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.lp-rinen-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--lt-blue);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lp-rinen-h {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--lt-navy);
+  font-weight: 400;
+  letter-spacing: .05em;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.lp-rinen-p {
+  font-size: 13px;
+  color: var(--lt-text2);
+  letter-spacing: .03em;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.lp-greeting-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.lp-greeting-photo {
+  background: transparent !important;
+  border-radius: 4px;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(26,46,74,.10);
+}
+
+.lp-president-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--lt-bg2);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 4px;
+}
+
+.lp-greeting-name {
+  display: none !important;
+}
+
+.lp-greeting-body p {
+  font-size: 13.5px;
+  color: var(--lt-text);
+  letter-spacing: .04em;
+  line-height: 2;
+  margin: 0 0 16px;
+}
+
+.lp-greeting-body p:last-child {
+  margin-bottom: 0;
+}
+
+.lp-greeting-sig {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--lt-bdr);
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--lt-navy);
+  letter-spacing: .06em;
+  text-align: right;
+  line-height: 1.8;
+}
+
+.lp-greeting-sig span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .20em;
+  color: var(--lt-text3);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.lp-co-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
+  align-items: start;
+}
+
+.lp-co-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lp-co-table tr {
+  border-bottom: 1px solid var(--lt-bdr);
+}
+
+.lp-co-table tr:first-child {
+  border-top: 1px solid var(--lt-bdr);
+}
+
+.lp-co-table th,
+.lp-co-table td {
+  padding: 16px 0;
+  vertical-align: top;
+  text-align: left;
+}
+
+.lp-co-table th {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .22em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  width: 140px;
+  padding-right: 20px;
+  padding-top: 18px;
+  flex-shrink: 0;
+  font-weight: 400;
+}
+
+.lp-co-table td {
+  font-size: 13.5px;
+  color: var(--lt-text);
+  line-height: 1.75;
+  letter-spacing: .03em;
+}
+
+.lp-co-table td a {
+  color: var(--lt-blue);
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.lp-co-table td a:hover {
+  color: var(--lt-navy);
+}
+
+.lp-co-table tr.sep th,
+.lp-co-table tr.sep td {
+  padding-top: 32px;
+  border-top: 2px solid var(--lt-bdr2);
+  border-bottom: none;
+}
+
+.lp-co-table tr.sep th {
+  color: var(--lt-navy);
+  font-family: var(--serif);
+  font-size: 14px;
+  letter-spacing: .06em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.lp-co-table tr.sep td {
+  display: none;
+}
+
+.lp-side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lp-contact-card {
+  background: var(--lt-card);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  padding: 26px;
+}
+
+.lp-cc-head {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .32em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-cc-head::before {
+  content: "";
+  width: 12px;
+  height: 1px;
+  background: var(--lt-blue);
+}
+
+.lp-cc-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.lp-cc-row {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--lt-bdr);
+}
+
+.lp-cc-row:last-child {
+  border-bottom: none;
+}
+
+.lp-cc-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .16em;
+  color: var(--lt-text3);
+  text-transform: uppercase;
+  min-width: 54px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.lp-cc-val {
+  font-size: 13px;
+  color: var(--lt-text);
+  letter-spacing: .03em;
+  line-height: 1.7;
+}
+
+.lp-cc-val a {
+  color: var(--lt-blue);
+  text-decoration: none;
+}
+
+.lp-cc-val a:hover {
+  text-decoration: underline;
+}
+
+.lp-map-card {
+  background: var(--lt-card);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lp-map-placeholder {
+  height: 200px;
+  background: linear-gradient(135deg,#1e3252 0%,#253e62 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-map-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.lp-map-pin {
+  width: 36px;
+  height: 36px;
+  background: var(--dk-gold);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lp-map-pin::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.lp-map-txt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.55);
+  position: relative;
+}
+
+.lp-map-addr {
+  padding: 14px 18px;
+  border-top: 1px solid var(--lt-bdr);
+}
+
+.lp-map-addr-lbl {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: .20em;
+  color: var(--lt-text3);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.lp-map-addr-val {
+  font-size: 12.5px;
+  color: var(--lt-text2);
+  letter-spacing: .03em;
+  line-height: 1.7;
+}
+
+.lp-biz-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+
+.lp-biz-card {
+  background: var(--lt-card);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-biz-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--lt-blue2);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .2s;
+}
+
+.lp-biz-card:hover {
+  box-shadow: 0 6px 20px rgba(26,46,74,.10);
+  transform: translateY(-2px);
+  border-color: var(--lt-bdr2);
+}
+
+.lp-biz-card:hover::before {
+  transform: scaleY(1);
+}
+
+.lp-biz-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: var(--lt-blue);
+}
+
+.lp-biz-h {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--lt-navy);
+  font-weight: 400;
+  letter-spacing: .05em;
+  line-height: 1.4;
+}
+
+.lp-biz-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lp-biz-list li {
+  display: flex;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--lt-text2);
+  letter-spacing: .03em;
+  line-height: 1.65;
+}
+
+.lp-biz-list li::before {
+  content: "—";
+  color: var(--lt-blue);
+  flex-shrink: 0;
+}
+
+.lp-timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.lp-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--lt-bdr);
+}
+
+.lp-tl-item {
+  position: relative;
+  margin-bottom: 0;
+  padding: 20px 0 20px 20px;
+  border-bottom: 1px solid var(--lt-bdr);
+}
+
+.lp-tl-item:last-child {
+  border-bottom: none;
+}
+
+.lp-tl-dot {
+  position: absolute;
+  left: -28px;
+  top: 24px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--lt-blue);
+}
+
+.lp-tl-item.major .lp-tl-dot {
+  background: var(--lt-blue);
+}
+
+.lp-tl-year {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--lt-blue);
+  margin-bottom: 6px;
+}
+
+.lp-tl-txt {
+  font-size: 13.5px;
+  color: var(--lt-text);
+  letter-spacing: .03em;
+  line-height: 1.75;
+}
+
+.lp-tl-sub {
+  font-size: 12px;
+  color: var(--lt-text3);
+  margin-top: 4px;
+  letter-spacing: .03em;
+  line-height: 1.7;
+}
+
+.lp-certs-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+}
+
+.lp-cert-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 3px;
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.lp-cert-num {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: #d8eaf8;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.lp-cert-num span {
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  margin-left: 2px;
+}
+
+.lp-cert-lbl {
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .04em;
+  line-height: 1.6;
+}
+
+.lp-dark-panel {
+  margin-top: 36px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 3px;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.lp-dark-panel-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .30em;
+  color: #7cb8e8;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-dark-panel-title::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 1px;
+  background: #7cb8e8;
+}
+
+.lp-dark-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lp-dark-list li {
+  display: flex;
+  gap: 8px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.68);
+  letter-spacing: .03em;
+  line-height: 1.65;
+}
+
+.lp-dark-list li::before {
+  content: "—";
+  color: #7cb8e8;
+  flex-shrink: 0;
+}
+
+.lp-cta-sec {
+  width: 100%;
+  background: linear-gradient(135deg,#1a2e4a 0%,#1e3557 50%,#243f6e 100%);
+  padding: 72px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-cta-sec::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.lp-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 48px;
+  text-align: center;
+  position: relative;
+}
+
+.lp-cta-lbl {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .40em;
+  color: #e8b96a;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.lp-cta-lbl::before,
+.lp-cta-lbl::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e8b96a;
+  max-width: 32px;
+}
+
+.lp-cta h2 {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: .07em;
+  margin: 0 0 18px;
+  line-height: 1.4;
+}
+
+.lp-cta p {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.60);
+  letter-spacing: .04em;
+  line-height: 2;
+  margin: 0 0 36px;
+}
+
+.lp-cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lp-btn-g {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  font-size: 12.5px;
+  letter-spacing: .18em;
+  text-decoration: none;
+  border-radius: 2px;
+  background: var(--dk-gold);
+  color: #fff;
+  border: none;
+  font-family: var(--sans);
+  transition: background .2s, transform .2s;
+  cursor: pointer;
+}
+
+.lp-btn-g:hover {
+  background: #c48f35;
+  transform: translateY(-2px);
+}
+
+.lp-btn-w {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  font-size: 12.5px;
+  letter-spacing: .18em;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,.40);
+  color: rgba(255,255,255,.85);
+  font-family: var(--sans);
+  transition: border-color .2s, color .2s;
+}
+
+.lp-btn-w:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.lp-footer {
+  width: 100%;
+  background: var(--dk-bg2);
+  border-top: 3px solid var(--dk-blue);
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lp-ft-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .20em;
+  color: rgba(255,255,255,.82);
+}
+
+.lp-ft-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.lp-ft-links a {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.52);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.lp-ft-links a:hover {
+  color: rgba(255,255,255,.85);
+}
+
+.lp-ft-copy {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .08em;
+}
+
+.lp-back-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9998;
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  border: 1px solid var(--lt-bdr2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--lt-text3);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.10);
+}
+
+.lp-back-top.on {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lp-back-top:hover {
+  background: var(--lt-blue);
+  color: #fff;
+  border-color: var(--lt-blue);
+}
+
+@keyframes lpFU {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lp-hero .lp-inner > * {
+  animation: lpFU .45s ease both;
+}
+
+.lp-hero .lp-inner > *:nth-child(1) {
+  animation-delay: .05s;
+}
+
+.lp-hero .lp-inner > *:nth-child(2) {
+  animation-delay: .12s;
+}
+
+.lp-hero .lp-inner > *:nth-child(3) {
+  animation-delay: .18s;
+}
+
+.lp-hero .lp-inner > *:nth-child(4) {
+  animation-delay: .24s;
+}
+
+@media (max-width: 1024px) {
+  .lp-co-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-side-stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .lp-contact-card,
+  .lp-map-card {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .lp-certs-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .lp-greeting-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-greeting-photo {
+    max-width: 320px;
+  }
+
+  .lp-dark-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .lp-header {
+    padding: 0 18px;
+  }
+
+  .lp-nav {
+    display: none;
+  }
+
+  .lp-inner,
+  .lp-cta-inner {
+    padding: 0 20px;
+  }
+
+  .lp-hero {
+    padding: calc(60px + var(--admin-bar) + 52px) 0 44px;
+  }
+
+  .lp-rinen-grid,
+  .lp-biz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-certs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lp-side-stack {
+    flex-direction: column;
+  }
+
+  .lp-sec {
+    padding: 52px 0;
+  }
+
+  .lp-footer {
+    padding: 28px 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lp-co-table th {
+    width: 100px;
+    font-size: 8.5px;
+  }
+
+  .lp-dark-panel {
+    padding: 22px 20px;
+  }
+}
+</style>
+
+<div class="lp-co-page">
+
+
+
+  <section class="lp-hero">
+    <div class="lp-hero-deco" aria-hidden="true">
+      <svg viewBox="0 0 340 300" width="340" height="300" fill="none">
+        <rect x="40" y="100" width="260" height="160" stroke="white" stroke-width="1.2"/>
+        <rect x="80" y="130" width="50" height="80" stroke="white" stroke-width="1"/>
+        <rect x="150" y="130" width="50" height="80" stroke="white" stroke-width="1"/>
+        <rect x="220" y="130" width="50" height="80" stroke="white" stroke-width="1"/>
+        <line x1="40" y1="100" x2="20" y2="78" stroke="white" stroke-width="1"/>
+        <line x1="300" y1="100" x2="320" y2="78" stroke="white" stroke-width="1"/>
+        <line x1="20" y1="78" x2="320" y2="78" stroke="white" stroke-width="1.2"/>
+        <line x1="10" y1="264" x2="330" y2="264" stroke="white" stroke-width="2"/>
+        <line x1="170" y1="34" x2="170" y2="100" stroke="white" stroke-width="1" stroke-dasharray="4 3"/>
+        <circle cx="170" cy="28" r="8" stroke="white" stroke-width="1.2"/>
+        <text x="176" y="92" fill="white" font-size="8" font-family="monospace">▽GL</text>
+      </svg>
+    </div>
+
+    <div class="lp-inner">
+      <div class="lp-breadcrumb">
+        <a href="home.html">HOME</a>
+        <span>/</span>
+        <span>会社概要</span>
+      </div>
+
+      <div class="lp-page-label">Company Profile</div>
+
+      <h1>会社概要<span>株式会社ランドプラス / LANDPLUS Co., Ltd.</span></h1>
+
+      <p class="lp-hero-desc">
+        土木構造物の耐震解析・補強設計を専門とし、上下水道施設・地下構造物の安全性向上に取り組んでいます。
+      </p>
+    </div>
+  </section>
+
+  <section class="lp-sec alt">
+    <div class="lp-inner">
+      <div class="lp-sec-label">Philosophy</div>
+      <h2 class="lp-sec-h2">企業理念</h2>
+      <p class="lp-sec-desc">
+        当社は、土木構造物・建築構造物の設計支援を目的として設立しました。お客様に信頼される技術会社を目指し、品質・迅速性・誠実な対応を重視しています。
+      </p>
+
+      <div class="lp-rinen-grid">
+
+        <div class="lp-rinen-card">
+          <div class="lp-rinen-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+          </div>
+          <div class="lp-rinen-h">技術力と迅速な対応</div>
+          <p class="lp-rinen-p">
+            上下水道施設・地下構造物を中心に、設計条件の整理から解析・照査資料作成まで、実務に即した対応を行います。
+          </p>
+        </div>
+
+        <div class="lp-rinen-card">
+          <div class="lp-rinen-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9,12 11,14 15,10"/>
+            </svg>
+          </div>
+          <div class="lp-rinen-h">品質へのこだわり</div>
+          <p class="lp-rinen-p">
+            成果物の照査性、根拠資料の整理、設計基準への適合を重視し、第三者照査を見据えた資料作成を行います。
+          </p>
+        </div>
+
+        <div class="lp-rinen-card">
+          <div class="lp-rinen-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="lp-rinen-h">誠実な問題解決</div>
+          <p class="lp-rinen-p">
+            発注者・元請設計会社の意図を正確に把握し、設計上の課題に対して実務的かつ丁寧に対応します。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec">
+    <div class="lp-inner">
+      <div class="lp-sec-label">Message</div>
+      <h2 class="lp-sec-h2">代表挨拶</h2>
+      <p class="lp-sec-desc" style="margin-bottom:40px;">
+        社会インフラを支える技術会社として、確実で誠実な設計支援を行います。
+      </p>
+
+      <div class="lp-greeting-layout">
+
+        <div class="lp-greeting-photo">
+          <img 
+            src="https://www.landplus.work/wp-content/uploads/2026/05/1766711095959972.png"
+            alt="株式会社ランドプラス 代表取締役 横山 東沢"
+            class="lp-president-img"
+          >
+        </div>
+
+        <div class="lp-greeting-body">
+          <p>
+            平素は格別のご愛顧を賜り、厚く御礼申し上げます。
+          </p>
+
+          <p>
+            当社は2021年10月に埼玉県さいたま市に設立し、土木・建築構造物の解析・設計を専門とする技術会社として歩んでまいりました。設立以来、多くのお客様のご支援・ご指導をいただき、上下水道施設を中心とした耐震解析・補強設計の分野で実績を積み重ねてきました。
+          </p>
+
+          <p>
+            近年、社会インフラの老朽化対策・耐震化が急務とされる中、浄水場・配水池・ポンプ場などの上下水道施設における耐震性能評価の重要性はますます高まっています。
+          </p>
+
+          <p>
+            当社はこの分野において、L1・L2耐震解析、FEM解析、補強設計、数量計算、照査対応資料の作成まで一貫して対応できる技術体制を整え、地域の安全・安心に貢献してまいります。
+          </p>
+
+          <p>
+            今後とも変わらぬご指導・ご鞭撻を賜りますようお願い申し上げます。
+          </p>
+
+          <div class="lp-greeting-sig">
+            <span>Representative Director</span>
+            株式会社ランドプラス<br>
+            代表取締役社長　横山 東沢
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec alt" id="profile">
+    <div class="lp-inner">
+      <div class="lp-sec-label">Overview</div>
+      <h2 class="lp-sec-h2">会社概要</h2>
+      <p class="lp-sec-desc" style="margin-bottom:40px;">
+        株式会社ランドプラスの基本情報です。
+      </p>
+
+      <div class="lp-co-layout">
+
+        <div>
+          <table class="lp-co-table">
+
+            <tr>
+              <th>商号</th>
+              <td>
+                株式会社 ランドプラス<br>
+                <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--lt-text3);">
+                  LANDPLUS Co., Ltd.
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th>設立</th>
+              <td>2021年10月</td>
+            </tr>
+
+            <tr>
+              <th>代表者</th>
+              <td>代表取締役社長　横山 東沢</td>
+            </tr>
+
+            <tr>
+              <th>資本金</th>
+              <td>5,000,000円</td>
+            </tr>
+
+            <tr>
+              <th>従業員数</th>
+              <td>10名（2026年4月現在）</td>
+            </tr>
+
+            <tr class="sep">
+              <th>事業所</th>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th>本社</th>
+              <td>
+                〒330-0843<br>
+                埼玉県さいたま市大宮区吉敷町1丁目133-1<br>
+                ワンライトビル 7F-A
+              </td>
+            </tr>
+
+            <tr>
+              <th>TEL / FAX</th>
+              <td><a href="tel:048-788-4865">048-788-4865</a></td>
+            </tr>
+
+            <tr>
+              <th>携帯</th>
+              <td><a href="tel:070-9260-7308">070-9260-7308</a></td>
+            </tr>
+
+            <tr>
+              <th>メール</th>
+              <td><a href="mailto:tousawa.yy@landplus.co.jp">tousawa.yy@landplus.co.jp</a></td>
+            </tr>
+
+            <tr>
+              <th>Web</th>
+              <td>
+                <a href="https://www.landplus.work" target="_blank">landplus.work</a>（耐震解析専門）<br>
+                <a href="https://www.landplus.co.jp" target="_blank">landplus.co.jp</a>（公式）
+              </td>
+            </tr>
+
+            <tr class="sep">
+              <th>取引実績</th>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th>主要取引先</th>
+              <td>
+                地方整備局 / 県庁・市役所<br>
+                主要建設会社 各社<br>
+                設計事務所・建設コンサルタント会社
+              </td>
+            </tr>
+
+            <tr>
+              <th>資格保有</th>
+              <td>土木学会認定技術者 3名在籍</td>
+            </tr>
+
+            <tr>
+              <th>対応地域</th>
+              <td>全国対応</td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="lp-side-stack">
+
+          <div class="lp-contact-card">
+            <div class="lp-cc-head">連絡先</div>
+
+            <div class="lp-cc-rows">
+              <div class="lp-cc-row">
+                <span class="lp-cc-lbl">TEL</span>
+                <span class="lp-cc-val"><a href="tel:048-788-4865">048-788-4865</a></span>
+              </div>
+
+              <div class="lp-cc-row">
+                <span class="lp-cc-lbl">携帯</span>
+                <span class="lp-cc-val"><a href="tel:070-9260-7308">070-9260-7308</a></span>
+              </div>
+
+              <div class="lp-cc-row">
+                <span class="lp-cc-lbl">Mail</span>
+                <span class="lp-cc-val" style="word-break:break-all;">
+                  <a href="mailto:tousawa.yy@landplus.co.jp">tousawa.yy@landplus.co.jp</a>
+                </span>
+              </div>
+
+              <div class="lp-cc-row">
+                <span class="lp-cc-lbl">受付</span>
+                <span class="lp-cc-val">平日 9:00 〜 18:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lp-map-card">
+            <div class="lp-map-placeholder">
+              <div class="lp-map-pin"></div>
+              <div class="lp-map-txt">本社所在地</div>
+            </div>
+
+            <div class="lp-map-addr">
+              <div class="lp-map-addr-lbl">本社</div>
+              <div class="lp-map-addr-val">
+                〒330-0843<br>
+                埼玉県さいたま市大宮区<br>
+                吉敷町1丁目133-1<br>
+                ワンライトビル 7F-A
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec">
+    <div class="lp-inner">
+      <div class="lp-sec-label">Business</div>
+      <h2 class="lp-sec-h2">事業内容</h2>
+      <p class="lp-sec-desc">
+        土木構造物の解析・設計を中心に、上下水道施設、地下構造物、橋梁・構造物まで幅広く対応しています。
+      </p>
+
+      <div class="lp-biz-grid">
+
+        <div class="lp-biz-card">
+          <div class="lp-biz-num">01</div>
+          <div class="lp-biz-h">上下水道施設の耐震解析・補強設計</div>
+          <ul class="lp-biz-list">
+            <li>浄水場・配水池・ポンプ場の耐震性能評価</li>
+            <li>L1静的解析・L2動的解析</li>
+            <li>時刻歴応答解析・FEM解析</li>
+            <li>耐震補強方針の検討・補強断面設計</li>
+            <li>数量計算・概算工事費算定</li>
+          </ul>
+        </div>
+
+        <div class="lp-biz-card">
+          <div class="lp-biz-num">02</div>
+          <div class="lp-biz-h">地下構造物・BOX構造物の設計</div>
+          <ul class="lp-biz-list">
+            <li>ボックスカルバート・共同溝の設計</li>
+            <li>立坑・地下ピットの構造解析</li>
+            <li>地盤応答解析</li>
+            <li>液状化リスク評価</li>
+          </ul>
+        </div>
+
+        <div class="lp-biz-card">
+          <div class="lp-biz-num">03</div>
+          <div class="lp-biz-h">橋梁・構造物の解析・設計</div>
+          <ul class="lp-biz-list">
+            <li>橋梁のFEM解析・耐震設計</li>
+            <li>構造物の耐震診断・補強設計</li>
+            <li>非線形解析・固有値解析</li>
+            <li>断面力算定・部材照査</li>
+          </ul>
+        </div>
+
+        <div class="lp-biz-card">
+          <div class="lp-biz-num">04</div>
+          <div class="lp-biz-h">設計・解析支援業務</div>
+          <ul class="lp-biz-list">
+            <li>設計会社・建設コンサルタントへの技術支援</li>
+            <li>第三者照査対応資料の作成</li>
+            <li>解析条件整理・報告書作成</li>
+            <li>数量計算・概算工事費資料作成</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec alt">
+    <div class="lp-inner">
+      <div class="lp-sec-label">History</div>
+      <h2 class="lp-sec-h2">沿革</h2>
+      <p class="lp-sec-desc" style="margin-bottom:40px;">
+        設立以来、技術力の向上と事業領域の拡大に取り組んでいます。
+      </p>
+
+      <div style="max-width:680px;">
+        <div class="lp-timeline">
+
+          <div class="lp-tl-item major">
+            <div class="lp-tl-dot"></div>
+            <div class="lp-tl-year">2021年10月</div>
+            <div class="lp-tl-txt">株式会社ランドプラス 設立</div>
+            <div class="lp-tl-sub">
+              埼玉県さいたま市浦和区に事務所を開設。土木・建築構造物の解析・設計事業を開始。
+            </div>
+          </div>
+
+          <div class="lp-tl-item">
+            <div class="lp-tl-dot"></div>
+            <div class="lp-tl-year">2022年</div>
+            <div class="lp-tl-txt">上下水道施設の耐震解析業務を本格開始</div>
+            <div class="lp-tl-sub">
+              浄水場・配水池・ポンプ場を対象としたL1・L2耐震解析・補強設計に注力。
+            </div>
+          </div>
+
+          <div class="lp-tl-item major">
+            <div class="lp-tl-dot"></div>
+            <div class="lp-tl-year">2023年4月</div>
+            <div class="lp-tl-txt">千葉事務所を開設</div>
+            <div class="lp-tl-sub">
+              関東エリアでの業務対応力を強化。地方自治体・建設コンサルタントへの支援を拡大。
+            </div>
+          </div>
+
+          <div class="lp-tl-item">
+            <div class="lp-tl-dot"></div>
+            <div class="lp-tl-year">2023年〜</div>
+            <div class="lp-tl-txt">設計・解析支援体制を強化</div>
+            <div class="lp-tl-sub">
+              耐震解析、補強設計、照査対応資料作成、数量計算まで対応範囲を拡大。
+            </div>
+          </div>
+
+          <div class="lp-tl-item major">
+            <div class="lp-tl-dot"></div>
+            <div class="lp-tl-year">2024年〜現在</div>
+            <div class="lp-tl-txt">LANDPLUS.WORK を開設・耐震解析専門サイトとして運用開始</div>
+            <div class="lp-tl-sub">
+              上下水道施設の耐震解析に特化した専門サイトを立ち上げ、技術資料・業務実績を継続的に発信。
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec dark">
+    <div class="lp-inner">
+      <div class="lp-sec-label">Credentials</div>
+      <h2 class="lp-sec-h2">技術体制・資格</h2>
+      <p class="lp-sec-desc">
+        専門技術者が対応します。高い品質水準を維持するため、複数名による社内照査体制を整えています。
+      </p>
+
+      <div class="lp-certs-grid">
+        <div class="lp-cert-card">
+          <div class="lp-cert-num">10<span>名</span></div>
+          <div class="lp-cert-lbl">在籍スタッフ<br>（2026年4月現在）</div>
+        </div>
+
+        <div class="lp-cert-card">
+          <div class="lp-cert-num">3<span>名</span></div>
+          <div class="lp-cert-lbl">土木学会<br>認定技術者</div>
+        </div>
+
+        <div class="lp-cert-card">
+          <div class="lp-cert-num">2<span>拠点</span></div>
+          <div class="lp-cert-lbl">国内事務所<br>（本社・千葉）</div>
+        </div>
+
+        <div class="lp-cert-card">
+          <div class="lp-cert-num">全国<span>対応</span></div>
+          <div class="lp-cert-lbl">オンライン打合せ<br>資料共有対応</div>
+        </div>
+      </div>
+
+      <div class="lp-dark-panel">
+
+        <div>
+          <div class="lp-dark-panel-title">対応解析種別</div>
+          <ul class="lp-dark-list">
+            <li>L1地震時静的解析・断面照査</li>
+            <li>L2地震時動的解析・時刻歴応答解析</li>
+            <li>FEM解析・地盤応答解析</li>
+            <li>非線形解析・固有値解析</li>
+            <li>地盤条件を考慮した構造解析</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="lp-dark-panel-title">品質管理体制</div>
+          <ul class="lp-dark-list">
+            <li>複数名による社内照査の実施</li>
+            <li>第三者チェック対応</li>
+        <li>中間報告・協議対応の柔軟な対応</li>
+            <li>計算書・報告書・根拠資料の整理</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-cta-sec" id="cta">
+    <div class="lp-cta-inner">
+      <div class="lp-cta-lbl">Contact</div>
+
+      <h2>
+        耐震解析・補強設計のご相談は<br>
+        お気軽にお問い合わせください
+      </h2>
+
+      <p>
+        概算工数や対応可否の確認も承ります。<br>
+        図面・設計条件をお送りいただければ、対応範囲をご提案します。
+      </p>
+
+      <div class="lp-cta-btns">
+        <a href="https://www.landplus.work/contact-3/" class="lp-btn-g">お問い合わせ →</a>
+        <a href="https://www.landplus.work/contact-2/" class="lp-btn-w">業務実績を見る</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="lp-back-top" id="lpBackTop">↑</div>
+
+</div>
+
+<script>
+(function(){
+  function setAdminBar(){
+    var bar = document.getElementById("wpadminbar");
+    var h = bar ? bar.offsetHeight : 0;
+    document.documentElement.style.setProperty("--admin-bar", h + "px");
+  }
+
+  setAdminBar();
+  window.addEventListener("resize", setAdminBar);
+
+  var btn = document.getElementById("lpBackTop");
+  if(btn){
+    btn.addEventListener("click", function(){
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    window.addEventListener("scroll", function(){
+      btn.classList.toggle("on", window.scrollY > 300);
+    });
+  }
+})();
+</script>
