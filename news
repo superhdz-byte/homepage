@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お知らせ一覧 | LANDPLUS.WORK</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+/* ==================================================
+   Elementor outer reset
+   ================================================== */
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+body.elementor-page {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.elementor,
+.elementor-section,
+.elementor-container,
+.elementor-column,
+.elementor-widget-wrap,
+.elementor-widget,
+.elementor-widget-html,
+.elementor-widget-container,
+.e-con,
+.e-con-inner,
+.e-con-full,
+.elementor-element {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  gap: 0 !important;
+  max-width: none !important;
+}
+
+.elementor-widget-html,
+.elementor-widget-html > .elementor-widget-container {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.elementor-widget-container > html,
+.elementor-widget-container > body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==================================================
+   LANDPLUS NEWS PAGE
+   ================================================== */
+
+:root {
+  --dk-bg:    #1a2e4a;
+  --dk-bg2:   #152238;
+  --dk-blue:  #3d6fa8;
+  --dk-gold:  #b07d2b;
+
+  --lt-bg:    #f5f7fa;
+  --lt-card:  #ffffff;
+  --lt-navy:  #1a2e4a;
+  --lt-blue:  #2a5b9e;
+  --lt-blue2: #3d6fa8;
+  --lt-gold:  #b07d2b;
+  --lt-text:  #21364f;
+  --lt-text2: #2b4058;
+  --lt-text3: #5d7892;
+  --lt-bdr:   #dce6f0;
+  --lt-bdr2:  #b8c9dc;
+
+  --mono:  'Share Tech Mono', monospace;
+  --serif: 'Noto Serif JP', serif;
+  --sans:  'Noto Sans JP', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.lp-news-page {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--lt-bg);
+  color: var(--lt-text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+
+.lp-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 200;
+  background: var(--dk-bg2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.35);
+}
+
+.lp-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.lp-logo-main {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: #fff;
+}
+
+.lp-logo-sub {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.48);
+  text-transform: uppercase;
+}
+
+.lp-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.lp-nav a {
+  font-size: 11.5px;
+  letter-spacing: 0.10em;
+  text-decoration: none;
+  color: rgba(255,255,255,0.70);
+  transition: color .18s;
+  font-weight: 500;
+}
+
+.lp-nav a:hover,
+.lp-nav a.on {
+  color: #fff;
+}
+
+.lp-nav-cta {
+  background: var(--dk-gold);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 2px;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+}
+
+.lp-nav-cta:hover {
+  background: #c48f35 !important;
+}
+
+/* HERO */
+
+.lp-page-hero {
+  margin-top: 60px;
+  width: 100vw;
+  background: linear-gradient(150deg, #1a2e4a 0%, #1e3558 50%, #243d68 100%);
+  padding: 58px 0 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.lp-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+.lp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.20em;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.lp-breadcrumb a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+}
+
+.lp-breadcrumb a:hover {
+  color: rgba(255,255,255,0.75);
+}
+
+.lp-page-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.40em;
+  color: #e8b96a;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.lp-page-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: #e8b96a;
+}
+
+.lp-page-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.lp-page-hero-sub {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* BODY */
+
+.lp-body-wrap {
+  width: 100vw;
+  background: var(--lt-bg);
+  padding: 0;
+}
+
+.lp-body-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 44px 40px 88px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 38px;
+  align-items: start;
+}
+
+/* SIDEBAR */
+
+.lp-sidebar {
+  position: sticky;
+  top: 76px;
+  color: #21364f;
+}
+
+.lp-sb-block {
+  margin-bottom: 30px;
+}
+
+.lp-sb-heading {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: #1f5f9f;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #bfd0e2;
+}
+
+.lp-sb-heading::before {
+  content: '—';
+  color: #1f5f9f;
+  font-size: 12px;
+}
+
+.lp-cat-list,
+.lp-year-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-cat-list li {
+  border-bottom: 1px solid var(--lt-bdr);
+}
+
+.lp-cat-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 13px 6px 13px 12px;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #2b4058;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color .16s, background .16s;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.lp-cat-btn:hover {
+  color: #0f2a48;
+  background: rgba(42, 91, 158, 0.08);
+}
+
+.lp-cat-btn.active {
+  color: #0f2a48;
+  font-weight: 700;
+  border-left-color: #1f5f9f;
+  background: rgba(42, 91, 158, 0.11);
+}
+
+.lp-cat-name {
+  flex: 1;
+}
+
+.lp-cat-count {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #2f5f91;
+  background: #e2ebf4;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  min-width: 26px;
+  text-align: center;
+}
+
+.lp-year-btn {
+  display: block;
+  width: 100%;
+  padding: 11px 6px 11px 12px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: #2b4058;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: color .16s, background .16s;
+}
+
+.lp-year-btn:hover {
+  color: #0f2a48;
+}
+
+.lp-year-btn.active {
+  color: #1f5f9f;
+  font-weight: 700;
+  border-left-color: #1f5f9f;
+  background: rgba(42, 91, 158, 0.07);
+}
+
+.lp-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.lp-tag-pill {
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: #2b4058;
+  font-weight: 500;
+  padding: 6px 13px;
+  border: 1px solid #b8c9dc;
+  border-radius: 2px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: var(--sans);
+}
+
+.lp-tag-pill:hover,
+.lp-tag-pill.active {
+  color: #1f5f9f;
+  border-color: #1f5f9f;
+  background: rgba(42, 91, 158, 0.08);
+}
+
+.lp-tag-empty {
+  font-size: 13px;
+  color: #4a6278;
+}
+
+/* MAIN */
+
+.lp-main-col {
+  min-width: 0;
+}
+
+.lp-ctrl-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #fff;
+  border: 1px solid var(--lt-bdr);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+.lp-result-count {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #3d526b;
+  font-weight: 500;
+}
+
+.lp-result-count em {
+  color: #1f5f9f;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.lp-sort-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-sort-lbl {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: #3d526b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.lp-sort-sel {
+  background: var(--lt-bg);
+  border: 1px solid var(--lt-bdr2);
+  color: #1f3148;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  padding: 5px 10px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* TABLE */
+
+.lp-news-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--lt-bdr);
+}
+
+.lp-news-table tbody tr {
+  border-bottom: 1px solid var(--lt-bdr);
+  cursor: pointer;
+  transition: background .14s;
+}
+
+.lp-news-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.lp-news-table tbody tr:hover {
+  background: #f0f6ff;
+}
+
+.lp-news-table td.lp-td-date {
+  position: relative;
+}
+
+.lp-news-table td.lp-td-date::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--lt-blue);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .18s ease;
+}
+
+.lp-news-table tr:hover td.lp-td-date::before {
+  transform: scaleY(1);
+}
+
+.lp-news-table td {
+  padding: 20px 16px;
+  vertical-align: middle;
+}
+
+.lp-td-date {
+  width: 126px;
+  white-space: nowrap;
+  padding-left: 22px !important;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: #1f4268;
+  font-weight: 700;
+}
+
+.lp-td-badge {
+  width: 118px;
+  white-space: nowrap;
+}
+
+.lp-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 2px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.lp-badge-info   { background: var(--lt-blue2); }
+.lp-badge-update { background: var(--dk-gold); }
+.lp-badge-tech   { background: #2a7a6e; }
+.lp-badge-media  { background: #5a7a2a; }
+
+.lp-td-title {
+  padding-right: 16px;
+}
+
+.lp-news-ttl {
+  font-size: 16px;
+  color: #102c4b;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 5px;
+  transition: color .14s;
+}
+
+.lp-news-table tr:hover .lp-news-ttl {
+  color: var(--lt-blue);
+}
+
+.lp-news-exc {
+  font-size: 13px;
+  color: #3f566f;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.65;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.lp-new-mark {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: #c44a3a;
+  padding: 1px 6px;
+  border-radius: 1px;
+  margin-left: 7px;
+  vertical-align: middle;
+}
+
+.lp-td-arrow {
+  width: 36px;
+  text-align: right;
+  padding-right: 18px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--lt-bdr2);
+  transition: color .14s, transform .18s;
+}
+
+.lp-news-table tr:hover .lp-td-arrow {
+  color: var(--lt-blue);
+  transform: translateX(3px);
+}
+
+.lp-empty-row td {
+  padding: 64px 0 !important;
+  text-align: center;
+  color: var(--lt-text3);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+/* PAGINATION */
+
+.lp-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 36px;
+}
+
+.lp-pg-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lt-bdr2);
+  border-radius: 2px;
+  color: var(--lt-text2);
+  background: #fff;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.lp-pg-btn:hover {
+  border-color: var(--lt-blue2);
+  color: var(--lt-navy);
+  background: var(--lt-bg);
+}
+
+.lp-pg-btn.active {
+  background: var(--lt-blue);
+  border-color: var(--lt-blue);
+  color: #fff;
+}
+
+.lp-pg-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+.lp-pg-dot {
+  color: var(--lt-text3);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 0 2px;
+  line-height: 38px;
+}
+
+/* FOOTER */
+
+.lp-footer {
+  width: 100vw;
+  background: var(--dk-bg2);
+  border-top: 3px solid var(--dk-blue);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lp-ft-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.20em;
+  color: rgba(255,255,255,0.82);
+}
+
+.lp-ft-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.lp-ft-links a {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.52);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.lp-ft-links a:hover {
+  color: rgba(255,255,255,0.85);
+}
+
+.lp-ft-copy {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+}
+
+/* BACK TO TOP */
+
+.lp-back-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  border: 1px solid var(--lt-bdr2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--lt-text3);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+}
+
+.lp-back-top.on {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lp-back-top:hover {
+  background: var(--lt-blue);
+  color: #fff;
+  border-color: var(--lt-blue);
+}
+
+@keyframes lpRowIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.lp-news-table tbody tr {
+  animation: lpRowIn .26s ease both;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .lp-header {
+    padding: 0 18px;
+  }
+
+  .lp-nav {
+    display: none;
+  }
+
+  .lp-hero-inner {
+    padding: 0 24px;
+  }
+
+  .lp-page-hero h1 {
+    font-size: 30px;
+  }
+
+  .lp-body-inner {
+    grid-template-columns: 1fr;
+    padding: 32px 20px 72px;
+    gap: 28px;
+  }
+
+  .lp-sidebar {
+    position: static;
+    background: #ffffff;
+    border: 1px solid #dce6f0;
+    padding: 18px;
+  }
+
+  .lp-cat-btn {
+    font-size: 14px;
+  }
+
+  .lp-year-btn {
+    font-size: 13px;
+  }
+
+  .lp-tag-pill {
+    font-size: 12px;
+  }
+
+  .lp-ctrl-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .lp-news-table,
+  .lp-news-table tbody,
+  .lp-news-table tr,
+  .lp-news-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .lp-news-table tr {
+    padding: 16px 18px;
+  }
+
+  .lp-news-table td {
+    padding: 4px 0 !important;
+  }
+
+  .lp-td-date {
+    font-size: 13px;
+    padding-left: 0 !important;
+  }
+
+  .lp-news-table td.lp-td-date::before {
+    display: none;
+  }
+
+  .lp-td-badge {
+    margin-top: 4px;
+  }
+
+  .lp-news-ttl {
+    font-size: 15px;
+    margin-top: 8px;
+  }
+
+  .lp-td-arrow {
+    display: none !important;
+  }
+
+  .lp-footer {
+    padding: 30px 24px;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="lp-news-page">
+
+
+
+  <section class="lp-page-hero">
+    <div class="lp-hero-inner">
+      <div class="lp-breadcrumb">
+        <a href="home.html">HOME</a>
+        <span>/</span>
+        <span>お知らせ</span>
+      </div>
+
+      <div class="lp-page-label">News &amp; Updates</div>
+
+      <h1>お知らせ</h1>
+
+      <p class="lp-page-hero-sub">
+        業務情報・技術資料・サイト更新など、最新情報をご案内します。
+      </p>
+    </div>
+  </section>
+
+  <main class="lp-body-wrap">
+    <div class="lp-body-inner">
+
+      <aside class="lp-sidebar">
+        <div class="lp-sb-block">
+          <div class="lp-sb-heading">カテゴリー</div>
+          <ul class="lp-cat-list" id="lpCatList">
+            <li>
+              <button class="lp-cat-btn active" type="button">
+                <span class="lp-cat-name">読み込み中</span>
+                <span class="lp-cat-count">...</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lp-sb-block">
+          <div class="lp-sb-heading">年別アーカイブ</div>
+          <ul class="lp-year-list" id="lpYearList">
+            <li>
+              <button class="lp-year-btn active" type="button">読み込み中</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lp-sb-block">
+          <div class="lp-sb-heading">タグ</div>
+          <div class="lp-tag-cloud" id="lpTagCloud">
+            <span class="lp-tag-empty">読み込み中</span>
+          </div>
+        </div>
+      </aside>
+
+      <section class="lp-main-col">
+        <div class="lp-ctrl-bar">
+          <div class="lp-result-count" id="lpResultCount"><em>0</em> 件のお知らせ</div>
+
+          <div class="lp-sort-row">
+            <span class="lp-sort-lbl">並び順</span>
+            <select class="lp-sort-sel" id="lpSortSel">
+              <option value="desc">新着順</option>
+              <option value="asc">古い順</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="lp-news-table">
+          <tbody id="lpNewsBody">
+            <tr class="lp-empty-row">
+              <td colspan="4">投稿を読み込み中です。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="lp-pagination" id="lpPagination"></div>
+      </section>
+
+    </div>
+  </main>
+
+
+
+  <div class="lp-back-top" id="lpBackTop">↑</div>
+
+</div>
+
+<script>
+const LP_PER = 10;
+let LP_NEWS = [];
+const LP_STATE = { cat: 'all', year: 'all', tags: [], sort: 'desc', page: 1 };
+
+function lpTextOnly(html) {
+  const div = document.createElement("div");
+  div.innerHTML = html || "";
+  return div.textContent || div.innerText || "";
+}
+
+function lpEscapeHtml(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function lpGetPostTerms(post) {
+  const result = { categories: [], tags: [] };
+
+  if (!post._embedded || !post._embedded["wp:term"]) {
+    return result;
+  }
+
+  post._embedded["wp:term"].forEach(group => {
+    group.forEach(term => {
+      if (term.taxonomy === "category") result.categories.push(term);
+      if (term.taxonomy === "post_tag") result.tags.push(term);
+    });
+  });
+
+  return result;
+}
+
+function lpBadgeClassByName(name) {
+  if (name === "更新情報") return "lp-badge-update";
+  if (name === "技術コラム") return "lp-badge-tech";
+  if (name === "メディア掲載") return "lp-badge-media";
+  if (name === "モデル作成") return "lp-badge-tech";
+  if (name === "土木設計") return "lp-badge-update";
+  if (name === "耐震解析") return "lp-badge-info";
+  return "lp-badge-info";
+}
+
+function lpFormatDate(dateText) {
+  const d = new Date(dateText);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return y + "." + m + "." + day;
+}
+
+function lpIsNewPost(dateText) {
+  const postDate = new Date(dateText);
+  const now = new Date();
+  const days = (now - postDate) / (1000 * 60 * 60 * 24);
+  return days <= 30;
+}
+
+function lpConvertPost(post) {
+  const terms = lpGetPostTerms(post);
+  const mainCat = terms.categories[0] || { name: "お知らせ", slug: "news" };
+
+  const excerptText = lpTextOnly(post.excerpt && post.excerpt.rendered ? post.excerpt.rendered : "");
+  const titleText = lpTextOnly(post.title && post.title.rendered ? post.title.rendered : "無題");
+
+  return {
+    id: post.id,
+    date: post.date.substring(0, 10),
+    link: post.link,
+    cat: mainCat.slug || "news",
+    catName: mainCat.name || "お知らせ",
+    badge: mainCat.name || "お知らせ",
+    cls: lpBadgeClassByName(mainCat.name || "お知らせ"),
+    title: titleText,
+    excerpt: excerptText || "詳細は記事ページをご確認ください。",
+    tags: terms.tags.map(t => t.name),
+    year: post.date.substring(0, 4),
+    isNew: lpIsNewPost(post.date)
+  };
+}
+
+function lpLoadPosts() {
+  const tb = document.getElementById("lpNewsBody");
+
+  if (tb) {
+    tb.innerHTML = '<tr class="lp-empty-row"><td colspan="4">投稿を読み込み中です。</td></tr>';
+  }
+
+  fetch(window.location.origin + "/wp-json/wp/v2/posts?per_page=100&_embed=1")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("REST API error");
+      }
+      return response.json();
+    })
+    .then(posts => {
+      LP_NEWS = posts.map(lpConvertPost);
+      lpBuildSidebar();
+      lpRender();
+    })
+    .catch(error => {
+      console.error(error);
+
+      if (tb) {
+        tb.innerHTML = '<tr class="lp-empty-row"><td colspan="4">投稿を取得できませんでした。WordPress REST API または投稿の公開状態を確認してください。</td></tr>';
+      }
+
+      const rc = document.getElementById("lpResultCount");
+      if (rc) rc.innerHTML = '<em>0</em> 件のお知らせ';
+
+      const cat = document.getElementById("lpCatList");
+      const year = document.getElementById("lpYearList");
+      const tag = document.getElementById("lpTagCloud");
+
+      if (cat) {
+        cat.innerHTML = '<li><button class="lp-cat-btn active" type="button"><span class="lp-cat-name">取得失敗</span><span class="lp-cat-count">0</span></button></li>';
+      }
+
+      if (year) {
+        year.innerHTML = '<li><button class="lp-year-btn active" type="button">取得失敗</button></li>';
+      }
+
+      if (tag) {
+        tag.innerHTML = '<span class="lp-tag-empty">タグを取得できませんでした</span>';
+      }
+    });
+}
+
+function lpBuildSidebar() {
+  lpBuildCategoryList();
+  lpBuildYearList();
+  lpBuildTagList();
+}
+
+function lpBuildCategoryList() {
+  const catList = document.getElementById("lpCatList");
+  if (!catList) return;
+
+  const counts = {};
+
+  LP_NEWS.forEach(n => {
+    if (!counts[n.cat]) {
+      counts[n.cat] = { slug: n.cat, name: n.catName, count: 0 };
+    }
+    counts[n.cat].count++;
+  });
+
+  let html = `
+    <li>
+      <button class="lp-cat-btn active" type="button" data-cat="all">
+        <span class="lp-cat-name">すべて</span>
+        <span class="lp-cat-count">${LP_NEWS.length}</span>
+      </button>
+    </li>
+  `;
+
+  Object.values(counts).forEach(c => {
+    html += `
+      <li>
+        <button class="lp-cat-btn" type="button" data-cat="${lpEscapeHtml(c.slug)}">
+          <span class="lp-cat-name">${lpEscapeHtml(c.name)}</span>
+          <span class="lp-cat-count">${c.count}</span>
+        </button>
+      </li>
+    `;
+  });
+
+  catList.innerHTML = html;
+
+  catList.querySelectorAll(".lp-cat-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      LP_STATE.cat = this.dataset.cat || "all";
+      LP_STATE.page = 1;
+
+      document.querySelectorAll(".lp-cat-btn").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+
+      lpRender();
+    });
+  });
+}
+
+function lpBuildYearList() {
+  const yearList = document.getElementById("lpYearList");
+  if (!yearList) return;
+
+  const years = [...new Set(LP_NEWS.map(n => n.year))].sort((a, b) => b.localeCompare(a));
+
+  let html = `
+    <li>
+      <button class="lp-year-btn active" type="button" data-year="all">すべての年</button>
+    </li>
+  `;
+
+  years.forEach(y => {
+    html += `
+      <li>
+        <button class="lp-year-btn" type="button" data-year="${lpEscapeHtml(y)}">${lpEscapeHtml(y)}年</button>
+      </li>
+    `;
+  });
+
+  yearList.innerHTML = html;
+
+  yearList.querySelectorAll(".lp-year-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      LP_STATE.year = this.dataset.year || "all";
+      LP_STATE.page = 1;
+
+      document.querySelectorAll(".lp-year-btn").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+
+      lpRender();
+    });
+  });
+}
+
+function lpBuildTagList() {
+  const tagCloud = document.getElementById("lpTagCloud");
+  if (!tagCloud) return;
+
+  const tagSet = new Set();
+
+  LP_NEWS.forEach(n => {
+    n.tags.forEach(t => tagSet.add(t));
+  });
+
+  const tags = [...tagSet];
+
+  if (!tags.length) {
+    tagCloud.innerHTML = '<span class="lp-tag-empty">タグはありません</span>';
+    return;
+  }
+
+  tagCloud.innerHTML = tags.map(t => `
+    <button class="lp-tag-pill" type="button" data-tag="${lpEscapeHtml(t)}">${lpEscapeHtml(t)}</button>
+  `).join("");
+
+  tagCloud.querySelectorAll(".lp-tag-pill").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const tag = this.dataset.tag;
+      this.classList.toggle("active");
+
+      LP_STATE.tags = LP_STATE.tags.includes(tag)
+        ? LP_STATE.tags.filter(t => t !== tag)
+        : [...LP_STATE.tags, tag];
+
+      LP_STATE.page = 1;
+      lpRender();
+    });
+  });
+}
+
+function lpFiltered() {
+  let d = [...LP_NEWS];
+
+  if (LP_STATE.cat !== "all") {
+    d = d.filter(n => n.cat === LP_STATE.cat);
+  }
+
+  if (LP_STATE.year !== "all") {
+    d = d.filter(n => n.year === LP_STATE.year);
+  }
+
+  if (LP_STATE.tags.length) {
+    d = d.filter(n => LP_STATE.tags.every(t => n.tags.includes(t)));
+  }
+
+  d.sort((a, b) => {
+    return LP_STATE.sort === "asc"
+      ? a.date.localeCompare(b.date)
+      : b.date.localeCompare(a.date);
+  });
+
+  return d;
+}
+
+function lpRender() {
+  const data = lpFiltered();
+  const total = data.length;
+  const pages = Math.max(1, Math.ceil(total / LP_PER));
+
+  if (LP_STATE.page > pages) LP_STATE.page = pages;
+
+  const slice = data.slice((LP_STATE.page - 1) * LP_PER, LP_STATE.page * LP_PER);
+
+  const resultCount = document.getElementById("lpResultCount");
+  if (resultCount) {
+    resultCount.innerHTML = `<em>${total}</em> 件のお知らせ`;
+  }
+
+  const tb = document.getElementById("lpNewsBody");
+  if (!tb) return;
+
+  tb.innerHTML = !slice.length
+    ? '<tr class="lp-empty-row"><td colspan="4">該当するお知らせはありません。</td></tr>'
+    : slice.map((n, i) => `
+        <tr style="animation-delay:${i * 0.03}s" data-link="${lpEscapeHtml(n.link)}">
+          <td class="lp-td-date">${lpFormatDate(n.date)}</td>
+          <td class="lp-td-badge"><span class="lp-badge ${lpEscapeHtml(n.cls)}">${lpEscapeHtml(n.badge)}</span></td>
+          <td class="lp-td-title">
+            <div class="lp-news-ttl">
+              ${lpEscapeHtml(n.title)}
+              ${n.isNew ? '<span class="lp-new-mark">NEW</span>' : ''}
+            </div>
+            <div class="lp-news-exc">${lpEscapeHtml(n.excerpt)}</div>
+          </td>
+          <td class="lp-td-arrow">→</td>
+        </tr>
+      `).join("");
+
+  tb.querySelectorAll("tr[data-link]").forEach(row => {
+    row.addEventListener("click", function () {
+      const link = this.dataset.link;
+      if (link) window.location.href = link;
+    });
+  });
+
+  lpRenderPagination(pages);
+}
+
+function lpRenderPagination(pages) {
+  const pg = document.getElementById("lpPagination");
+  if (!pg) return;
+
+  if (pages <= 1) {
+    pg.innerHTML = "";
+    return;
+  }
+
+  const p = LP_STATE.page;
+  let html = `<button class="lp-pg-btn" type="button" data-page="${p - 1}" ${p === 1 ? "disabled" : ""}>←</button>`;
+
+  for (let i = 1; i <= pages; i++) {
+    if (pages > 7 && i !== 1 && i !== pages && Math.abs(i - p) > 1) {
+      if (i === p - 2 || i === p + 2) html += '<span class="lp-pg-dot">…</span>';
+      continue;
+    }
+
+    html += `<button class="lp-pg-btn${i === p ? " active" : ""}" type="button" data-page="${i}">${i}</button>`;
+  }
+
+  html += `<button class="lp-pg-btn" type="button" data-page="${p + 1}" ${p === pages ? "disabled" : ""}>→</button>`;
+
+  pg.innerHTML = html;
+
+  pg.querySelectorAll(".lp-pg-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const page = Number(this.dataset.page);
+      if (!page || this.disabled) return;
+
+      LP_STATE.page = page;
+      lpRender();
+
+      const bodyWrap = document.querySelector(".lp-body-wrap");
+      if (bodyWrap) {
+        window.scrollTo({
+          top: bodyWrap.offsetTop - 70,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+}
+
+const lpSortSel = document.getElementById("lpSortSel");
+if (lpSortSel) {
+  lpSortSel.addEventListener("change", function () {
+    LP_STATE.sort = this.value;
+    LP_STATE.page = 1;
+    lpRender();
+  });
+}
+
+const lpBackTop = document.getElementById("lpBackTop");
+if (lpBackTop) {
+  lpBackTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", function () {
+    lpBackTop.classList.toggle("on", window.scrollY > 300);
+  });
+}
+
+lpLoadPosts();
+</script>
+
+</body>
+</html>
