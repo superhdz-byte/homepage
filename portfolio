@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実績・事例 | LANDPLUS.WORK</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+/* ==================================================
+   Elementor outer reset / full width fix
+   ================================================== */
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+body.elementor-page {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.elementor,
+.elementor-section,
+.elementor-container,
+.elementor-column,
+.elementor-widget-wrap,
+.elementor-widget,
+.elementor-widget-html,
+.elementor-widget-container,
+.e-con,
+.e-con-inner,
+.e-con-full,
+.elementor-element {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  gap: 0 !important;
+  max-width: none !important;
+}
+
+.elementor-widget-html,
+.elementor-widget-html > .elementor-widget-container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==================================================
+   TOKENS
+   ================================================== */
+
+:root {
+  --dk-bg:    #1a2e4a;
+  --dk-bg2:   #152238;
+  --dk-blue:  #3d6fa8;
+  --dk-gold:  #b07d2b;
+  --dk-grid:  rgba(255,255,255,0.033);
+
+  --lt-bg:    #f4f7fb;
+  --lt-card:  #ffffff;
+  --lt-navy:  #1a2e4a;
+  --lt-blue:  #2a5b9e;
+  --lt-blue2: #3d6fa8;
+  --lt-gold:  #b07d2b;
+  --lt-teal:  #2a7a6e;
+  --lt-text:  #21364f;
+  --lt-text2: #3f566f;
+  --lt-text3: #6c8299;
+  --lt-bdr:   #dce6f0;
+  --lt-bdr2:  #c4d4e4;
+  --lt-bg2:   #eaf1f8;
+
+  --mono:  'Share Tech Mono', monospace;
+  --serif: 'Noto Serif JP', serif;
+  --sans:  'Noto Sans JP', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.lp-works-page {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  overflow-x: hidden;
+  background: var(--lt-bg);
+  color: var(--lt-text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ==================================================
+   HEADER
+   ================================================== */
+
+.lp-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 200;
+  background: var(--dk-bg2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.35);
+}
+
+.lp-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.lp-logo-main {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: .16em;
+  color: #fff;
+}
+
+.lp-logo-sub {
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: rgba(255,255,255,.48);
+  text-transform: uppercase;
+}
+
+.lp-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.lp-nav a {
+  font-size: 11.5px;
+  letter-spacing: .10em;
+  text-decoration: none;
+  color: rgba(255,255,255,.70);
+  transition: color .18s;
+  font-weight: 500;
+}
+
+.lp-nav a:hover,
+.lp-nav a.on {
+  color: #fff;
+}
+
+.lp-nav-cta {
+  background: var(--dk-gold);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 2px;
+  font-size: 11px;
+  letter-spacing: .13em;
+}
+
+.lp-nav-cta:hover {
+  background: #c48f35 !important;
+}
+
+/* ==================================================
+   HERO
+   ================================================== */
+
+.lp-page-hero {
+  margin-top: 60px;
+  width: 100vw;
+  background: linear-gradient(150deg,#1a2e4a 0%,#1d3457 45%,#233f6a 100%);
+  padding: 64px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--dk-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--dk-grid) 1px,transparent 1px);
+  background-size: 44px 44px;
+}
+
+.lp-hero-deco-svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 380px;
+  opacity: .06;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+}
+
+.lp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .20em;
+  color: rgba(255,255,255,.42);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.lp-breadcrumb a {
+  color: rgba(255,255,255,.42);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.lp-breadcrumb a:hover {
+  color: rgba(255,255,255,.72);
+}
+
+.lp-page-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .40em;
+  color: #e8b96a;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.lp-page-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: #e8b96a;
+}
+
+.lp-page-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px,3vw,40px);
+  letter-spacing: .07em;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.35;
+}
+
+.lp-page-hero h1 span {
+  display: block;
+  font-size: .62em;
+  color: rgba(255,255,255,.76);
+  letter-spacing: .05em;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+.lp-page-hero-desc {
+  font-size: 13.5px;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.62);
+  line-height: 1.95;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ==================================================
+   SECTION COMMON
+   ================================================== */
+
+.lp-sec {
+  width: 100vw;
+  padding: 72px 0;
+  background: var(--lt-bg);
+}
+
+.lp-sec.alt {
+  background: var(--lt-card);
+}
+
+.lp-sec.dark {
+  background: var(--dk-bg);
+  color: rgba(255,255,255,.88);
+}
+
+.lp-sec-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.lp-sec-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .42em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.lp-sec-label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--lt-blue);
+}
+
+.lp-sec.dark .lp-sec-label {
+  color: #7cb8e8;
+}
+
+.lp-sec.dark .lp-sec-label::before {
+  background: #7cb8e8;
+}
+
+.lp-sec-h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(24px,2.4vw,34px);
+  letter-spacing: .07em;
+  color: var(--lt-navy);
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.lp-sec.dark .lp-sec-h2 {
+  color: #d8eaf8;
+}
+
+.lp-sec-desc {
+  font-size: 13.5px;
+  color: var(--lt-text2);
+  letter-spacing: .04em;
+  line-height: 1.95;
+  margin: 0 0 48px;
+  max-width: 580px;
+}
+
+.lp-sec.dark .lp-sec-desc {
+  color: rgba(255,255,255,.58);
+}
+
+/* ==================================================
+   SUMMARY
+   ================================================== */
+
+.lp-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--lt-bdr);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lp-sum-card {
+  background: var(--lt-card);
+  padding: 28px 24px 26px;
+  position: relative;
+  border-top: 3px solid transparent;
+  transition: border-color .2s, background .2s;
+}
+
+.lp-sum-card:hover {
+  border-top-color: var(--lt-blue);
+  background: #f8fbff;
+}
+
+.lp-sum-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 3px;
+  background: rgba(42,91,158,.09);
+  border: 1px solid rgba(42,91,158,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.lp-sum-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--lt-blue);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lp-sum-ttl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .32em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.lp-sum-val {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--lt-navy);
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: .04em;
+}
+
+.lp-sum-sub {
+  font-size: 11.5px;
+  color: var(--lt-text3);
+  margin-top: 6px;
+  letter-spacing: .03em;
+  line-height: 1.7;
+}
+
+/* ==================================================
+   FIELD RECORDS
+   ================================================== */
+
+.lp-field-block {
+  margin-bottom: 56px;
+}
+
+.lp-field-block:last-child {
+  margin-bottom: 0;
+}
+
+.lp-field-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--lt-bdr);
+}
+
+.lp-field-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--lt-blue);
+  letter-spacing: .2em;
+}
+
+.lp-field-ttl {
+  font-family: var(--serif);
+  font-size: 21px;
+  color: var(--lt-navy);
+  font-weight: 400;
+  letter-spacing: .05em;
+}
+
+.lp-field-count {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  color: var(--lt-text3);
+  margin-left: auto;
+  background: var(--lt-bg2);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.lp-case-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+}
+
+.lp-case-card {
+  background: var(--lt-card);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .22s, transform .22s, border-color .22s;
+}
+
+.lp-case-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--lt-blue2);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .2s ease;
+}
+
+.lp-case-card:hover {
+  box-shadow: 0 6px 22px rgba(26,46,74,.10);
+  transform: translateY(-3px);
+  border-color: var(--lt-bdr2);
+}
+
+.lp-case-card:hover::before {
+  transform: scaleY(1);
+}
+
+.lp-case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.lp-case-tag {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: .12em;
+  padding: 3px 9px;
+  border-radius: 1px;
+  color: #fff;
+}
+
+.lp-ct-blue { background: var(--lt-blue2); }
+.lp-ct-teal { background: var(--lt-teal); }
+.lp-ct-gold { background: var(--lt-gold); }
+.lp-ct-navy { background: var(--lt-navy); }
+
+.lp-case-ttl {
+  font-size: 14px;
+  color: var(--lt-navy);
+  letter-spacing: .04em;
+  font-weight: 500;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.lp-case-client {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .10em;
+  color: var(--lt-text3);
+  margin-bottom: 14px;
+}
+
+.lp-case-rows {
+  border-top: 1px solid var(--lt-bdr);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lp-case-row {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: .03em;
+}
+
+.lp-cr-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: var(--lt-text3);
+  text-transform: uppercase;
+  min-width: 44px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.lp-cr-val {
+  color: var(--lt-text2);
+  line-height: 1.6;
+}
+
+/* ==================================================
+   FEATURED CASES
+   ================================================== */
+
+.lp-featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.lp-feat-card {
+  background: var(--lt-card);
+  border: 1px solid var(--lt-bdr);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lp-feat-header {
+  background: linear-gradient(135deg,var(--dk-bg) 0%,#223d6a 100%);
+  padding: 28px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-feat-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size: 32px 32px;
+}
+
+.lp-feat-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .38em;
+  color: rgba(255,255,255,.42);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.lp-feat-title {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: .06em;
+  line-height: 1.45;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.lp-feat-facility {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.50);
+  position: relative;
+}
+
+.lp-feat-svg {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  opacity: .12;
+  pointer-events: none;
+}
+
+.lp-feat-body {
+  padding: 26px 30px;
+}
+
+.lp-feat-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.lp-feat-table tr {
+  border-bottom: 1px solid var(--lt-bdr);
+}
+
+.lp-feat-table tr:last-child {
+  border-bottom: none;
+}
+
+.lp-feat-table td {
+  padding: 10px 0;
+  vertical-align: top;
+}
+
+.lp-ft-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  width: 108px;
+  padding-right: 14px;
+  padding-top: 2px;
+  flex-shrink: 0;
+  line-height: 1.6;
+}
+
+.lp-ft-val {
+  font-size: 12.5px;
+  color: var(--lt-text2);
+  line-height: 1.7;
+  letter-spacing: .03em;
+}
+
+.lp-feat-points {
+  background: var(--lt-bg2);
+  border-left: 3px solid var(--lt-blue);
+  padding: 14px 16px;
+  border-radius: 0 2px 2px 0;
+}
+
+.lp-feat-points-lbl {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: .22em;
+  color: var(--lt-blue);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.lp-feat-points ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-feat-points li {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--lt-text2);
+  letter-spacing: .03em;
+  line-height: 1.65;
+}
+
+.lp-feat-points li::before {
+  content: '—';
+  color: var(--lt-blue);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ==================================================
+   SCOPE
+   ================================================== */
+
+.lp-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 24px;
+}
+
+.lp-scope-col {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 3px;
+  padding: 28px;
+}
+
+.lp-scope-col-ttl {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .30em;
+  color: #7cb8e8;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-scope-col-ttl::before {
+  content: '';
+  width: 12px;
+  height: 1px;
+  background: #7cb8e8;
+}
+
+.lp-scope-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-scope-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: 13px;
+  letter-spacing: .03em;
+  color: rgba(255,255,255,.76);
+  line-height: 1.65;
+}
+
+.lp-scope-list li:last-child {
+  border-bottom: none;
+}
+
+.lp-scope-list li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--dk-blue);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+/* ==================================================
+   QUALITY
+   ================================================== */
+
+.lp-qc-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.lp-qc-card {
+  background: #fff;
+  border: 1px solid var(--lt-bdr);
+  border-radius: 3px;
+  padding: 24px;
+}
+
+.lp-qc-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 2px;
+  background: rgba(42,91,158,.08);
+  border: 1px solid rgba(42,91,158,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.lp-qc-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--lt-blue2);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lp-qc-ttl {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--lt-navy);
+  font-weight: 400;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.lp-qc-body {
+  font-size: 12.5px;
+  color: var(--lt-text2);
+  letter-spacing: .03em;
+  line-height: 1.85;
+}
+
+/* ==================================================
+   CTA
+   ================================================== */
+
+.lp-cta-sec {
+  width: 100vw;
+  background: linear-gradient(135deg,#1a2e4a 0%,#1e3557 50%,#243f6e 100%);
+  padding: 72px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-cta-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size: 44px 44px;
+}
+
+.lp-cta-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 48px;
+  text-align: center;
+  position: relative;
+}
+
+.lp-cta-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .40em;
+  color: #e8b96a;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.lp-cta-label::before,
+.lp-cta-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e8b96a;
+  max-width: 32px;
+}
+
+.lp-cta-h2 {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: .07em;
+  margin: 0 0 18px;
+  line-height: 1.4;
+}
+
+.lp-cta-desc {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.62);
+  letter-spacing: .04em;
+  line-height: 2;
+  margin: 0 0 36px;
+}
+
+.lp-cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lp-btn-gold,
+.lp-btn-wht {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-size: 12.5px;
+  letter-spacing: .18em;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: background .2s, transform .2s, border-color .2s, color .2s;
+}
+
+.lp-btn-gold {
+  background: var(--dk-gold);
+  color: #fff;
+  border: none;
+}
+
+.lp-btn-gold:hover {
+  background: #c48f35;
+  transform: translateY(-2px);
+}
+
+.lp-btn-wht {
+  border: 1px solid rgba(255,255,255,.4);
+  color: rgba(255,255,255,.85);
+}
+
+.lp-btn-wht:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+
+.lp-footer {
+  width: 100vw;
+  background: var(--dk-bg2);
+  border-top: 3px solid var(--dk-blue);
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lp-ft-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .20em;
+  color: rgba(255,255,255,.82);
+}
+
+.lp-ft-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.lp-ft-links a {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.52);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.lp-ft-links a:hover {
+  color: rgba(255,255,255,.85);
+}
+
+.lp-ft-copy {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .08em;
+}
+
+/* ==================================================
+   BACK TO TOP
+   ================================================== */
+
+.lp-back-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  border: 1px solid var(--lt-bdr2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--lt-text3);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.10);
+}
+
+.lp-back-top.on {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lp-back-top:hover {
+  background: var(--lt-blue);
+  color: #fff;
+  border-color: var(--lt-blue);
+}
+
+/* ==================================================
+   ANIMATION
+   ================================================== */
+
+@keyframes lpFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lp-hero-inner > * {
+  animation: lpFadeUp .45s ease both;
+}
+
+.lp-hero-inner > *:nth-child(1) { animation-delay: .05s; }
+.lp-hero-inner > *:nth-child(2) { animation-delay: .12s; }
+.lp-hero-inner > *:nth-child(3) { animation-delay: .18s; }
+.lp-hero-inner > *:nth-child(4) { animation-delay: .24s; }
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+
+@media (max-width: 1024px) {
+  .lp-summary-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .lp-case-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .lp-featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-qc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .lp-header {
+    padding: 0 18px;
+  }
+
+  .lp-nav {
+    display: none;
+  }
+
+  .lp-hero-inner,
+  .lp-sec-inner,
+  .lp-cta-inner {
+    padding: 0 24px;
+  }
+
+  .lp-page-hero {
+    padding: 52px 0 44px;
+  }
+
+  .lp-page-hero h1 {
+    font-size: 30px;
+  }
+
+  .lp-page-hero h1 span {
+    font-size: .56em;
+  }
+
+  .lp-summary-grid,
+  .lp-case-grid,
+  .lp-scope-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-sec {
+    padding: 56px 0;
+  }
+
+  .lp-field-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lp-field-count {
+    margin-left: 0;
+  }
+
+  .lp-feat-body {
+    padding: 22px;
+  }
+
+  .lp-feat-table,
+  .lp-feat-table tbody,
+  .lp-feat-table tr,
+  .lp-feat-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .lp-ft-lbl {
+    width: 100%;
+    padding-bottom: 2px;
+  }
+
+  .lp-footer {
+    padding: 30px 24px;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="lp-works-page">
+
+
+
+  <section class="lp-page-hero">
+    <div class="lp-hero-deco-svg" aria-hidden="true">
+      <svg viewBox="0 0 360 320" width="360" height="320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="90" width="280" height="180" stroke="white" stroke-width="1.2"/>
+        <rect x="70" y="120" width="60" height="100" stroke="white" stroke-width="1"/>
+        <rect x="150" y="120" width="60" height="100" stroke="white" stroke-width="1"/>
+        <rect x="230" y="120" width="60" height="100" stroke="white" stroke-width="1"/>
+        <line x1="40" y1="90" x2="20" y2="70" stroke="white" stroke-width="1"/>
+        <line x1="320" y1="90" x2="340" y2="70" stroke="white" stroke-width="1"/>
+        <line x1="20" y1="70" x2="340" y2="70" stroke="white" stroke-width="1.2"/>
+        <line x1="40" y1="270" x2="40" y2="290" stroke="white" stroke-width="1"/>
+        <line x1="320" y1="270" x2="320" y2="290" stroke="white" stroke-width="1"/>
+        <line x1="10" y1="290" x2="350" y2="290" stroke="white" stroke-width="2"/>
+        <line x1="180" y1="34" x2="180" y2="90" stroke="white" stroke-width="1" stroke-dasharray="5 4"/>
+        <circle cx="180" cy="26" r="10" stroke="white" stroke-width="1.2"/>
+        <text x="190" y="84" fill="white" font-size="9" font-family="monospace">▽GL</text>
+        <text x="54" y="260" fill="white" font-size="8" font-family="monospace">L2地震動</text>
+      </svg>
+    </div>
+
+    <div class="lp-hero-inner">
+      <div class="lp-breadcrumb">
+        <a href="/">HOME</a>
+        <span>/</span>
+        <span>実績・事例</span>
+      </div>
+
+      <div class="lp-page-label">Portfolio &amp; Case Studies</div>
+
+      <h1>
+        実績・事例
+        <span>上下水道施設・地下構造物の耐震解析／補強設計実績</span>
+      </h1>
+
+      <p class="lp-page-hero-desc">
+        浄水場・配水池・ポンプ場・地下構造物を中心に、L1静的解析、L2動的解析、FEM解析、
+        補強設計、数量計算まで対応しています。
+      </p>
+    </div>
+  </section>
+
+  <section class="lp-sec alt">
+    <div class="lp-sec-inner">
+      <div class="lp-summary-grid">
+
+        <div class="lp-sum-card">
+          <div class="lp-sum-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="1"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/></svg>
+          </div>
+          <div class="lp-sum-ttl">対応分野</div>
+          <div class="lp-sum-val">浄水場・配水池<br>ポンプ場・地下構造物</div>
+          <div class="lp-sum-sub">上下水道施設を中心とした<br>土木RC構造物全般</div>
+        </div>
+
+        <div class="lp-sum-card">
+          <div class="lp-sum-icon">
+            <svg viewBox="0 0 24 24"><polyline points="3,17 7,11 11,14 15,6 21,10"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+          </div>
+          <div class="lp-sum-ttl">対応解析</div>
+          <div class="lp-sum-val">L1静的解析<br>L2動的解析 / FEM解析</div>
+          <div class="lp-sum-sub">地盤応答解析から<br>時刻歴応答解析まで一貫対応</div>
+        </div>
+
+        <div class="lp-sum-card">
+          <div class="lp-sum-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+          </div>
+          <div class="lp-sum-ttl">対応範囲</div>
+          <div class="lp-sum-val">解析・照査・補強設計<br>数量計算・報告書作成</div>
+          <div class="lp-sum-sub">設計条件整理から<br>成果品提出まで</div>
+        </div>
+
+        <div class="lp-sum-card">
+          <div class="lp-sum-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg>
+          </div>
+          <div class="lp-sum-ttl">品質管理</div>
+          <div class="lp-sum-val">複数名照査<br>第三者チェック対応</div>
+          <div class="lp-sum-sub">発注者・設計会社からの<br>外部技術パートナーとして実績</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec">
+    <div class="lp-sec-inner">
+      <div class="lp-sec-label">Field Records</div>
+      <h2 class="lp-sec-h2">分野別実績一覧</h2>
+      <p class="lp-sec-desc">
+        対応施設・業務種別ごとの実績を掲載しています。客先名は非公開のため、施設種別と業務内容でご確認ください。
+      </p>
+
+      <div class="lp-field-block">
+        <div class="lp-field-header">
+          <span class="lp-field-num">01</span>
+          <span class="lp-field-ttl">浄水場・配水池</span>
+          <span class="lp-field-count">4 件</span>
+        </div>
+
+        <div class="lp-case-grid">
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-blue">L2動的解析</span>
+              <span class="lp-case-tag lp-ct-teal">上水道</span>
+            </div>
+            <div class="lp-case-ttl">某市浄水場 沈澱池・ろ過池<br>L2耐震解析業務</div>
+            <div class="lp-case-client">某水道事業体</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造沈澱池・急速ろ過池</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">L2地震時動的解析、部材照査</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">時刻歴応答解析により各部材の断面力を算定し、照査結果を整理。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-blue">L1/L2解析</span>
+              <span class="lp-case-tag lp-ct-gold">補強設計</span>
+            </div>
+            <div class="lp-case-ttl">某自治体 配水池<br>耐震補強設計業務</div>
+            <div class="lp-case-client">某市上下水道局</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造地下式配水池（2室）</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">L1照査・L2動的解析・補強設計・数量計算</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">既設構造物の耐震性能を確認し、補強方針および概算数量を整理。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-teal">地盤応答</span>
+              <span class="lp-case-tag lp-ct-blue">動的解析</span>
+            </div>
+            <div class="lp-case-ttl">某水道事業体 配水池兼用施設<br>動的解析・時刻歴応答解析</div>
+            <div class="lp-case-client">某建設コンサルタント会社（再委託）</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造浄水場・配水池兼用施設</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">地盤応答解析、時刻歴応答解析</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">地盤モデルの構築から上部構造の応答値算定まで一貫実施。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-gold">補強設計</span>
+              <span class="lp-case-tag lp-ct-navy">炭素繊維</span>
+            </div>
+            <div class="lp-case-ttl">某自治体 急速ろ過池<br>炭素繊維シート補強設計業務</div>
+            <div class="lp-case-client">某市水道局</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造急速ろ過池（既設）</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">静的解析、補強方針検討、補強断面設計</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">炭素繊維シートによる補強案を複数比較し、施工性を考慮して選定。</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lp-field-block">
+        <div class="lp-field-header">
+          <span class="lp-field-num">02</span>
+          <span class="lp-field-ttl">ポンプ場・地下構造物</span>
+          <span class="lp-field-count">3 件</span>
+        </div>
+
+        <div class="lp-case-grid">
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-teal">FEM解析</span>
+              <span class="lp-case-tag lp-ct-blue">地下構造</span>
+            </div>
+            <div class="lp-case-ttl">某市 ポンプ場地下構造物<br>FEM解析業務</div>
+            <div class="lp-case-client">某市下水道部</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造地下ピット（雨水ポンプ場）</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">FEM解析モデル作成、応力・変形解析</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">水圧・土圧・地震時荷重を考慮した詳細応力解析を実施。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-blue">L2動的解析</span>
+              <span class="lp-case-tag lp-ct-teal">複合構造</span>
+            </div>
+            <div class="lp-case-ttl">某自治体 排水機場<br>地上・地下複合構造 L2動的解析</div>
+            <div class="lp-case-client">某市下水道局</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">地上ポンプ棟＋地下ピット複合構造</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">L2時刻歴動的解析、部材照査</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">地上・地下一体モデルを構築し、各部の断面力・変形を解析。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-blue">L1静的</span>
+              <span class="lp-case-tag lp-ct-navy">部材照査</span>
+            </div>
+            <div class="lp-case-ttl">某自治体 雨水ポンプ場<br>L1静的耐震照査業務</div>
+            <div class="lp-case-client">某市下水道局</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造雨水ポンプ場上屋</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">L1地震時静的解析、断面照査</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">設計条件を整理し、静的地震力による断面力算定・照査を実施。</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lp-field-block">
+        <div class="lp-field-header">
+          <span class="lp-field-num">03</span>
+          <span class="lp-field-ttl">トンネル・管廊・BOX構造物</span>
+          <span class="lp-field-count">2 件</span>
+        </div>
+
+        <div class="lp-case-grid">
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-blue">L1/L2解析</span>
+              <span class="lp-case-tag lp-ct-teal">管廊</span>
+            </div>
+            <div class="lp-case-ttl">某県 共同溝（管廊）BOX断面<br>L1・L2耐震照査業務</div>
+            <div class="lp-case-client">某県土木部</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造BOX断面（共同溝）</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">L1静的・L2動的解析、照査</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">埋設BOX断面の地震時応力を算定し、部材照査結果を整理。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-teal">FEM解析</span>
+              <span class="lp-case-tag lp-ct-gold">継手変形</span>
+            </div>
+            <div class="lp-case-ttl">某水道事業体 送水管廊<br>継手部FEM変形解析・損傷評価</div>
+            <div class="lp-case-client">某市上下水道局</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造送水管廊・継手部</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">FEM変形解析、損傷評価</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">継手部の鉛直・水平変位を解析し、許容変位との比較により損傷評価を実施。</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lp-field-block">
+        <div class="lp-field-header">
+          <span class="lp-field-num">04</span>
+          <span class="lp-field-ttl">耐震補強・数量計算</span>
+          <span class="lp-field-count">3 件</span>
+        </div>
+
+        <div class="lp-case-grid">
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-gold">数量計算</span>
+              <span class="lp-case-tag lp-ct-navy">概算工事費</span>
+            </div>
+            <div class="lp-case-ttl">某市 高架配水池<br>耐震補強数量計算・概算工事費</div>
+            <div class="lp-case-client">某市水道局</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">高架式RC造配水池</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">数量計算、概算工事費算定、説明資料作成</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">耐震補強に伴う材料・施工数量を算出し、発注者説明用の資料を整備。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-gold">補強設計</span>
+              <span class="lp-case-tag lp-ct-blue">あと施工</span>
+            </div>
+            <div class="lp-case-ttl">某自治体 既設浄水場<br>RC壁増厚・あと施工アンカー補強</div>
+            <div class="lp-case-client">某設計事務所（外部パートナー）</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">RC造浄水場壁体</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">補強方針検討、配筋設計、数量計算</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">RC増厚・アンカー等の補強案を比較し、施工性を考慮した補強設計を実施。</span></div>
+            </div>
+          </div>
+
+          <div class="lp-case-card">
+            <div class="lp-case-tags">
+              <span class="lp-case-tag lp-ct-navy">開口部補強</span>
+              <span class="lp-case-tag lp-ct-gold">設計支援</span>
+            </div>
+            <div class="lp-case-ttl">某建設コンサルタント<br>既設RC構造物 開口部補強設計</div>
+            <div class="lp-case-client">某建設コンサルタント会社</div>
+            <div class="lp-case-rows">
+              <div class="lp-case-row"><span class="lp-cr-label">対象</span><span class="lp-cr-val">既設RC壁体・開口部周辺</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">業務</span><span class="lp-cr-val">開口部応力集中解析、補強設計</span></div>
+              <div class="lp-case-row"><span class="lp-cr-label">内容</span><span class="lp-cr-val">設備開口追加に伴う応力集中を解析し、補強筋の配置・数量を整理。</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="lp-sec alt">
+    <div class="lp-sec-inner">
+      <div class="lp-sec-label">Featured Cases</div>
+      <h2 class="lp-sec-h2">代表事例</h2>
+      <p class="lp-sec-desc">
+        業務内容・技術的なポイントを詳しくご紹介する代表的な取り組みです。
+      </p>
+
+      <div class="lp-featured-grid">
+
+        <div class="lp-feat-card">
+          <div class="lp-feat-header">
+            <div class="lp-feat-num">CASE STUDY 01</div>
+            <div class="lp-feat-title">配水池のL2耐震解析<br>・補強設計</div>
+            <div class="lp-feat-facility">RC造配水池 ／ 某市上下水道局</div>
+            <div class="lp-feat-svg" aria-hidden="true">
+              <svg viewBox="0 0 160 110" width="160" height="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="18" width="120" height="72" stroke="white" stroke-width="1.2"/>
+                <rect x="14" y="12" width="132" height="8" stroke="white" stroke-width="1"/>
+                <line x1="80" y1="18" x2="80" y2="90" stroke="white" stroke-width="1"/>
+                <rect x="14" y="88" width="132" height="7" stroke="white" stroke-width="1"/>
+                <line x1="10" y1="98" x2="150" y2="98" stroke="white" stroke-width="2"/>
+                <line x1="20" y1="55" x2="78" y2="55" stroke="white" stroke-width="0.8" stroke-dasharray="4 3"/>
+                <text x="22" y="52" fill="white" font-size="8" font-family="monospace">▽HWL</text>
+                <line x1="8" y1="60" x2="20" y2="60" stroke="#b07d2b" stroke-width="1.5"/>
+                <polyline points="17,57 20,60 17,63" fill="none" stroke="#b07d2b" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="lp-feat-body">
+            <table class="lp-feat-table">
+              <tr><td class="lp-ft-lbl">対象施設</td><td class="lp-ft-val">RC造配水池（地下式・2室構造）</td></tr>
+              <tr><td class="lp-ft-lbl">検討内容</td><td class="lp-ft-val">L1地震時照査、L2地震時動的解析、耐震補強設計、数量計算</td></tr>
+              <tr><td class="lp-ft-lbl">成果物</td><td class="lp-ft-val">解析モデル、照査結果表、補強案比較、数量計算書、報告書</td></tr>
+            </table>
+
+            <div class="lp-feat-points">
+              <div class="lp-feat-points-lbl">技術ポイント</div>
+              <ul>
+                <li>動水圧の考慮方法と地盤条件の整理</li>
+                <li>L2時刻歴解析による部材断面力の算定</li>
+                <li>RC増厚・あと施工アンカー等の補強案を比較し選定</li>
+                <li>第三者チェック対応</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-feat-card">
+          <div class="lp-feat-header">
+            <div class="lp-feat-num">CASE STUDY 02</div>
+            <div class="lp-feat-title">浄水場施設の<br>耐震性能照査</div>
+            <div class="lp-feat-facility">沈殿池・ろ過池・ポンプ井 ／ 某水道事業体</div>
+            <div class="lp-feat-svg" aria-hidden="true">
+              <svg viewBox="0 0 160 110" width="160" height="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="25" width="136" height="60" stroke="white" stroke-width="1.2"/>
+                <line x1="58" y1="25" x2="58" y2="85" stroke="white" stroke-width="1"/>
+                <line x1="104" y1="25" x2="104" y2="85" stroke="white" stroke-width="1"/>
+                <rect x="7" y="18" width="146" height="8" stroke="white" stroke-width="1"/>
+                <circle cx="35" cy="18" r="5" stroke="#b07d2b" stroke-width="1.2"/>
+                <circle cx="81" cy="18" r="5" stroke="#b07d2b" stroke-width="1.2"/>
+                <circle cx="127" cy="18" r="5" stroke="#b07d2b" stroke-width="1.2"/>
+                <line x1="10" y1="90" x2="150" y2="90" stroke="white" stroke-width="2"/>
+                <text x="12" y="104" fill="white" font-size="7" font-family="monospace">▽GL</text>
+                <text x="20" y="72" fill="white" font-size="7" font-family="monospace">L2解析</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="lp-feat-body">
+            <table class="lp-feat-table">
+              <tr><td class="lp-ft-lbl">対象施設</td><td class="lp-ft-val">沈殿池・急速ろ過池・ポンプ井・着水井等</td></tr>
+              <tr><td class="lp-ft-lbl">検討内容</td><td class="lp-ft-val">常時・L1・L2地震時の構造照査、補強要否の判定</td></tr>
+              <tr><td class="lp-ft-lbl">成果物</td><td class="lp-ft-val">解析結果一覧、照査表、補強要否判定書、報告書</td></tr>
+            </table>
+
+            <div class="lp-feat-points">
+              <div class="lp-feat-points-lbl">技術ポイント</div>
+              <ul>
+                <li>施設ごとの構造特性を踏まえた解析条件整理</li>
+                <li>照査位置・断面力の整理・一覧化</li>
+                <li>複数施設の耐震性能を統一フォーマットで比較</li>
+                <li>補強要否判定の根拠を報告書に整理</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec dark">
+    <div class="lp-sec-inner">
+      <div class="lp-sec-label">Scope of Work</div>
+      <h2 class="lp-sec-h2">対応可能な業務範囲</h2>
+      <p class="lp-sec-desc">
+        設計条件の整理から報告書作成まで、耐震解析・補強設計に関する業務を一貫して承ります。
+      </p>
+
+      <div class="lp-scope-grid">
+        <div class="lp-scope-col">
+          <div class="lp-scope-col-ttl">解析・照査</div>
+          <ul class="lp-scope-list">
+            <li>設計条件整理（荷重・地盤・地震動条件の設定）</li>
+            <li>既往図面・構造諸元の整理</li>
+            <li>L1地震時静的解析・断面照査</li>
+            <li>L2地震時動的解析（時刻歴応答解析）</li>
+            <li>地盤応答解析</li>
+            <li>FEM解析モデル作成・応力・変形解析</li>
+            <li>部材照査・断面力整理</li>
+          </ul>
+        </div>
+
+        <div class="lp-scope-col">
+          <div class="lp-scope-col-ttl">補強設計・成果品</div>
+          <ul class="lp-scope-list">
+            <li>耐震補強方針の検討・比較</li>
+            <li>補強断面設計・配筋検討</li>
+            <li>開口部補強・増厚設計</li>
+            <li>数量計算・概算工事費整理</li>
+            <li>報告書・計算書・照査表の作成</li>
+            <li>発注者説明資料・協議資料の整備</li>
+            <li>第三者チェック対応</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec">
+    <div class="lp-sec-inner">
+      <div class="lp-sec-label">Quality &amp; System</div>
+      <h2 class="lp-sec-h2">品質管理・照査体制</h2>
+      <p class="lp-sec-desc">
+        外部技術パートナーとして、発注者・元請け設計会社の要求水準に対応できる体制を整えています。
+      </p>
+
+      <div class="lp-qc-grid">
+
+        <div class="lp-qc-card">
+          <div class="lp-qc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg>
+          </div>
+          <div class="lp-qc-ttl">複数名による社内照査</div>
+          <div class="lp-qc-body">
+            解析結果・照査計算は担当者以外による確認を実施。ミスの早期発見と品質確保に努めています。
+          </div>
+        </div>
+
+        <div class="lp-qc-card">
+          <div class="lp-qc-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7" y1="4" x2="7" y2="9"/></svg>
+          </div>
+          <div class="lp-qc-ttl">第三者照査への対応</div>
+          <div class="lp-qc-body">
+            第三者チェックからの指摘事項対応・修正資料の作成を含め、納品まで一貫してサポートします。
+          </div>
+        </div>
+
+        <div class="lp-qc-card">
+          <div class="lp-qc-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          </div>
+          <div class="lp-qc-ttl">スケジュール・工程管理</div>
+          <div class="lp-qc-body">
+            発注者・元請けの工程に合わせた進捗管理を実施。中間報告・協議対応も柔軟に対応します。
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-cta-sec" id="cta">
+    <div class="lp-cta-inner">
+      <div class="lp-cta-label">Contact</div>
+      <h2 class="lp-cta-h2">同種施設の解析・補強設計について<br>お気軽にご相談ください</h2>
+      <p class="lp-cta-desc">
+        概算工数や対応可否の確認も承ります。<br>
+        図面・設計条件・既往資料をもとに、対応範囲を整理してご提案します。
+      </p>
+
+      <div class="lp-cta-btns">
+        <a href="/contact-3/" class="lp-btn-gold">お問い合わせ →</a>
+        <a href="/technical/" class="lp-btn-wht">技術資料を見る</a>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <div class="lp-back-top" id="lpBackTop">↑</div>
+
+</div>
+
+<script>
+const lpWorksBackTop = document.getElementById('lpBackTop');
+
+if (lpWorksBackTop) {
+  lpWorksBackTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', function () {
+    lpWorksBackTop.classList.toggle('on', window.scrollY > 300);
+  });
+}
+</script>
+
+</body>
+</html>
