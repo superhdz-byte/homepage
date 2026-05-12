@@ -1,0 +1,1125 @@
+/* ==================================================
+   LANDPLUS.WORK 共通CSS 完整替换版
+   用途：
+   1. 固定ページ：全幅・紺色ベース・Elementor用
+   2. 投稿ページ：白背景・記事本文を正常表示
+   3. WordPressヘッダー：固定表示
+   4. ナビ：右寄せ・文字調整
+   5. Footer調整
+   6. HOME お知らせ联动修正
+   ================================================== */
+
+
+/* ==================================================
+   01. 基本変数
+   ================================================== */
+
+:root {
+  --lp-header-height: 78px;
+  --lp-blue-dark: #071d35;
+  --lp-blue-main: #0b2a4a;
+  --lp-blue-head: #0d2543;
+  --lp-bg-navy: #0d2543;
+  --lp-gold: #d8a94a;
+  --lp-gold-dark: #b77a16;
+  --lp-text-dark: #111827;
+  --lp-text-gray: #374151;
+}
+
+
+/* ==================================================
+   02. 基本リセット
+   ================================================== */
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  padding-top: var(--lp-header-height) !important;
+  background: var(--lp-bg-navy) !important;
+}
+
+body.admin-bar {
+  padding-top: var(--lp-header-height) !important;
+}
+
+
+/* ==================================================
+   03. 固定ページ専用：タイトル・パンくず非表示
+   注意：投稿ページには適用しない
+   ================================================== */
+
+body.page .entry-header,
+body.page .page-header,
+body.page .page-title,
+body.page .entry-title,
+body.page .site-description,
+body.page .header-inner .site-description,
+body.page .breadcrumb,
+body.page .breadcrumbs,
+body.page .rank-math-breadcrumb {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* ==================================================
+   04. 固定ページ専用：本文を全幅化
+   注意：投稿ページには適用しない
+   ================================================== */
+
+body.page,
+body.page #page,
+body.page .site,
+body.page .site-content,
+body.page .content-area,
+body.page .site-main,
+body.page .page-content,
+body.page .entry-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  background: transparent !important;
+}
+
+
+/* ==================================================
+   05. Elementor 余白対策
+   ================================================== */
+
+.elementor,
+.elementor-section,
+.elementor-container,
+.elementor-column,
+.elementor-widget-wrap,
+.elementor-widget-html,
+.elementor-widget-html .elementor-widget-container {
+  max-width: 100% !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.elementor-widget:not(:last-child) {
+  margin-bottom: 0 !important;
+}
+
+.elementor-element:first-child,
+.elementor-section:first-child,
+.elementor-widget:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+
+/* ==================================================
+   06. WordPress ヘッダー固定
+   ================================================== */
+
+.site-header,
+#masthead,
+header.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: var(--lp-header-height) !important;
+  min-height: var(--lp-header-height) !important;
+  z-index: 99999 !important;
+  background: var(--lp-blue-head) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: none !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16) !important;
+}
+
+.site-header::after,
+#masthead::after,
+header.site-header::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(216,169,74,0.45) 30%,
+    rgba(216,169,74,0.45) 70%,
+    transparent 100%
+  ) !important;
+  pointer-events: none !important;
+}
+
+body.admin-bar .site-header,
+body.admin-bar #masthead,
+body.admin-bar header.site-header {
+  top: 32px !important;
+}
+
+
+/* ==================================================
+   07. ヘッダー内側レイアウト
+   ================================================== */
+
+.site-header .header-inner,
+.site-header .site-header-inner,
+header.site-header .header-inner,
+header.site-header .site-header-inner {
+  max-width: 1500px !important;
+  width: 100% !important;
+  height: var(--lp-header-height) !important;
+  margin: 0 auto !important;
+  padding: 0 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 40px !important;
+  box-sizing: border-box !important;
+}
+
+.site-branding,
+.site-logo,
+.header-logo,
+.site-title {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-right: auto !important;
+}
+
+.site-title,
+.site-title a,
+.site-branding a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+
+.site-title a::after {
+  content: 'SEISMIC ANALYSIS · CIVIL ENGINEERING';
+  display: block !important;
+  font-size: 8.5px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.16em !important;
+  color: rgba(255,255,255,0.36) !important;
+  text-transform: uppercase !important;
+  margin-top: 4px !important;
+  line-height: 1 !important;
+}
+
+
+/* ==================================================
+   08. グローバルナビ
+   ================================================== */
+
+.site-header nav,
+.site-header .main-navigation,
+.site-header .primary-navigation,
+.site-header .site-navigation {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+.site-header nav ul,
+.site-header .main-navigation ul,
+.site-header .primary-navigation ul,
+.site-header .site-navigation ul {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 38px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.site-header nav li,
+.site-header .main-navigation li,
+.site-header .primary-navigation li,
+.site-header .site-navigation li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-header nav a,
+.site-header .main-navigation a,
+.site-header .primary-navigation a,
+.site-header .site-navigation a {
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  color: rgba(255,255,255,0.90) !important;
+  text-decoration: none !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  line-height: 1.4 !important;
+  padding: 4px 0 !important;
+  white-space: nowrap !important;
+  transition: color 0.22s ease !important;
+}
+
+.site-header nav li:not(:last-child) a:hover,
+.site-header .main-navigation li:not(:last-child) a:hover,
+.site-header .primary-navigation li:not(:last-child) a:hover,
+.site-header .site-navigation li:not(:last-child) a:hover {
+  color: #ffffff !important;
+}
+
+.site-header nav li:not(:last-child) a::after,
+.site-header .main-navigation li:not(:last-child) a::after,
+.site-header .primary-navigation li:not(:last-child) a::after,
+.site-header .site-navigation li:not(:last-child) a::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: -4px !important;
+  width: 100% !important;
+  height: 1.5px !important;
+  background: var(--lp-gold) !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform 0.24s ease !important;
+}
+
+.site-header nav li:not(:last-child) a:hover::after,
+.site-header .main-navigation li:not(:last-child) a:hover::after,
+.site-header .primary-navigation li:not(:last-child) a:hover::after,
+.site-header .site-navigation li:not(:last-child) a:hover::after,
+.site-header nav .current-menu-item a::after,
+.site-header .main-navigation .current-menu-item a::after,
+.site-header .primary-navigation .current-menu-item a::after,
+.site-header nav .current_page_item a::after,
+.site-header .main-navigation .current_page_item a::after {
+  transform: scaleX(1) !important;
+}
+
+
+/* ==================================================
+   09. お問い合わせボタン
+   ================================================== */
+
+.site-header nav li:last-child a,
+.site-header .main-navigation li:last-child a,
+.site-header .primary-navigation li:last-child a,
+.site-header .site-navigation li:last-child a {
+  background: transparent !important;
+  border: 1.5px solid rgba(216,169,74,0.85) !important;
+  color: var(--lp-gold) !important;
+  padding: 12px 24px !important;
+  border-radius: 2px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.10em !important;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.site-header nav li:last-child a:hover,
+.site-header .main-navigation li:last-child a:hover,
+.site-header .primary-navigation li:last-child a:hover,
+.site-header .site-navigation li:last-child a:hover {
+  background: rgba(216,169,74,0.14) !important;
+  border-color: var(--lp-gold) !important;
+  color: #e8c060 !important;
+}
+
+.site-header nav li:last-child a::after,
+.site-header .main-navigation li:last-child a::after,
+.site-header .primary-navigation li:last-child a::after,
+.site-header .site-navigation li:last-child a::after {
+  display: none !important;
+}
+
+
+/* ==================================================
+   10. 固定ページ Hero 接続対策
+   ================================================== */
+
+body.page .site-content,
+body.page .content-area,
+body.page .site-main,
+body.page .entry-content,
+body.page .elementor,
+body.page .elementor-section:first-child {
+  margin-top: 0 !important;
+}
+
+body.page .hero,
+body.page .lp-hero,
+body.page section.hero,
+body.page section.lp-hero {
+  margin-top: 0 !important;
+}
+
+body.page .lp-hero-kicker,
+body.page .hero-kicker,
+body.page .elementor .lp-hero-kicker,
+body.page .elementor .hero-kicker {
+  margin-top: 34px !important;
+  margin-bottom: 42px !important;
+}
+
+body.page .lp-hero .lp-hero-kicker,
+body.page .hero .hero-kicker,
+body.page .elementor .lp-hero .lp-hero-kicker,
+body.page .elementor .hero .hero-kicker {
+  position: relative !important;
+  top: 22px !important;
+}
+
+body.page .lp-hero,
+body.page .hero,
+body.page .elementor .lp-hero,
+body.page .elementor .hero {
+  padding-top: 96px !important;
+}
+
+
+/* ==================================================
+   11. 投稿ページ専用：白背景・記事本文正常化
+   ================================================== */
+
+body.single-post,
+body.post-template-default {
+  background: #ffffff !important;
+  color: var(--lp-text-dark) !important;
+}
+
+/* 投稿ページ全体 */
+body.single-post #page,
+body.single-post .site,
+body.single-post .site-content,
+body.single-post .content-area,
+body.single-post .site-main,
+body.single-post main,
+body.single-post .wp-site-blocks,
+body.single-post .ast-container,
+body.single-post .container,
+body.single-post .content-wrap {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: var(--lp-text-dark) !important;
+}
+
+/* 投稿ページの本文エリア */
+body.single-post .site-main {
+  max-width: 980px !important;
+  width: calc(100% - 48px) !important;
+  margin: 0 auto !important;
+  padding: 54px 0 90px !important;
+  box-sizing: border-box !important;
+}
+
+/* 投稿記事本体 */
+body.single-post article.post,
+body.single-post .type-post,
+body.single-post .hentry {
+  max-width: 880px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  color: var(--lp-text-dark) !important;
+  box-sizing: border-box !important;
+}
+
+/* 投稿ページではタイトルを必ず表示 */
+body.single-post .entry-header,
+body.single-post .entry-title {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* 投稿タイトル */
+body.single-post .entry-title,
+body.single-post h1.entry-title {
+  color: var(--lp-text-dark) !important;
+  font-size: 38px !important;
+  line-height: 1.35 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.03em !important;
+  margin: 0 0 34px !important;
+  padding: 0 !important;
+}
+
+/* 投稿メタ情報 */
+body.single-post .entry-meta,
+body.single-post .posted-on,
+body.single-post .byline {
+  color: #6b7280 !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+  margin: 0 0 28px !important;
+}
+
+/* 投稿本文 */
+body.single-post .entry-content {
+  max-width: 880px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  color: var(--lp-text-dark) !important;
+  box-sizing: border-box !important;
+}
+
+/* 投稿本文文字 */
+body.single-post .entry-content,
+body.single-post .entry-content p,
+body.single-post .entry-content li,
+body.single-post .entry-content div,
+body.single-post .entry-content span {
+  color: var(--lp-text-dark) !important;
+  font-size: 16px !important;
+  line-height: 2.0 !important;
+  font-weight: 500 !important;
+}
+
+/* 段落 */
+body.single-post .entry-content p {
+  margin: 0 0 20px !important;
+}
+
+/* リスト */
+body.single-post .entry-content ul,
+body.single-post .entry-content ol {
+  margin: 18px 0 28px 1.4em !important;
+  padding: 0 !important;
+}
+
+body.single-post .entry-content li {
+  margin: 0 0 8px !important;
+}
+
+/* 見出し */
+body.single-post .entry-content h2 {
+  color: var(--lp-text-dark) !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  line-height: 1.45 !important;
+  margin: 56px 0 24px !important;
+  padding: 0 0 12px !important;
+  border-bottom: 2px solid var(--lp-gold) !important;
+}
+
+body.single-post .entry-content h3 {
+  color: var(--lp-text-dark) !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  margin: 40px 0 18px !important;
+}
+
+/* 投稿リンク */
+body.single-post .entry-content a {
+  color: #0b4ecb !important;
+  text-decoration: underline !important;
+  font-weight: 700 !important;
+}
+
+body.single-post .entry-content a:hover {
+  color: var(--lp-gold-dark) !important;
+}
+
+/* PDFリンク */
+body.single-post .entry-content a[href$=".pdf"],
+body.single-post .entry-content a[href*=".pdf"] {
+  display: inline-block !important;
+  color: #0b4ecb !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+}
+
+/* 投稿画像 */
+body.single-post .entry-content img,
+body.single-post img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 36px auto !important;
+  background: #ffffff !important;
+}
+
+/* 図表 */
+body.single-post .wp-block-image,
+body.single-post figure {
+  background: #ffffff !important;
+  margin: 36px auto !important;
+  text-align: center !important;
+}
+
+/* 画像キャプション */
+body.single-post figcaption,
+body.single-post .wp-element-caption {
+  color: #6b7280 !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+  text-align: center !important;
+  margin-top: 10px !important;
+}
+
+/* 投稿ページ内のElementorがある場合も白背景 */
+body.single-post .elementor,
+body.single-post .elementor-section,
+body.single-post .elementor-container,
+body.single-post .elementor-column,
+body.single-post .elementor-widget-wrap,
+body.single-post .elementor-widget-container {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: var(--lp-text-dark) !important;
+}
+
+/* 投稿ナビ・カテゴリ */
+body.single-post .cat-links,
+body.single-post .tags-links,
+body.single-post .post-navigation,
+body.single-post .comments-area {
+  max-width: 880px !important;
+  margin: 40px auto !important;
+  color: var(--lp-text-dark) !important;
+  background: #ffffff !important;
+}
+
+body.single-post .post-navigation a,
+body.single-post .cat-links a,
+body.single-post .tags-links a {
+  color: #0b4ecb !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+}
+
+
+/* ==================================================
+   12. Footer 基本
+   ================================================== */
+
+.site-footer,
+footer.site-footer,
+#colophon,
+.elementor-location-footer {
+  background: var(--lp-blue-dark) !important;
+  color: #ffffff !important;
+  border-top: 2px solid rgba(57,124,190,0.85) !important;
+}
+
+.elementor-location-footer .elementor-section,
+.elementor-location-footer .elementor-container,
+.elementor-location-footer .elementor-column,
+.elementor-location-footer .elementor-widget-wrap {
+  margin-top: 0 !important;
+}
+
+.elementor-location-footer .elementor-section,
+.elementor-location-footer .elementor-container {
+  padding-top: 36px !important;
+  padding-bottom: 36px !important;
+}
+
+.site-footer,
+.site-footer p,
+.site-footer span,
+.site-footer a,
+.elementor-location-footer,
+.elementor-location-footer p,
+.elementor-location-footer span,
+.elementor-location-footer a {
+  color: rgba(255,255,255,0.72) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.08em !important;
+  text-decoration: none !important;
+}
+
+.site-footer a:hover,
+.elementor-location-footer a:hover {
+  color: var(--lp-gold) !important;
+}
+
+
+/* ==================================================
+   13. 手書きFooter用クラス
+   ================================================== */
+
+.lp-footer {
+  background: var(--lp-blue-dark) !important;
+  color: #ffffff !important;
+  padding: 64px 0 28px !important;
+  border-top: 2px solid rgba(57,124,190,0.85) !important;
+}
+
+.lp-footer-inner {
+  width: min(1180px, calc(100% - 48px)) !important;
+  margin: 0 auto !important;
+}
+
+.lp-footer-main {
+  display: grid !important;
+  grid-template-columns: 1.35fr 0.85fr 1fr !important;
+  gap: 64px !important;
+  align-items: start !important;
+}
+
+.lp-footer-logo {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 8px !important;
+  color: #ffffff !important;
+}
+
+.lp-footer-sub {
+  font-size: 11px !important;
+  letter-spacing: 0.22em !important;
+  color: rgba(216,169,74,0.9) !important;
+  margin-bottom: 24px !important;
+}
+
+.lp-footer-brand p,
+.lp-footer-contact p {
+  font-size: 14px !important;
+  line-height: 2 !important;
+  color: rgba(255,255,255,0.72) !important;
+  margin: 0 !important;
+}
+
+.lp-footer h3 {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  color: #ffffff !important;
+  margin: 0 0 22px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.16) !important;
+}
+
+.lp-footer-nav ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.lp-footer-nav li {
+  margin-bottom: 12px !important;
+}
+
+.lp-footer-nav a {
+  color: rgba(255,255,255,0.72) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.lp-footer-nav a:hover {
+  color: var(--lp-gold) !important;
+}
+
+.lp-footer-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 24px !important;
+  padding: 14px 28px !important;
+  background: var(--lp-gold-dark) !important;
+  border: 1px solid var(--lp-gold) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  min-width: 180px !important;
+}
+
+.lp-footer-btn:hover {
+  background: var(--lp-gold) !important;
+  color: var(--lp-blue-dark) !important;
+}
+
+.lp-footer-bottom {
+  margin-top: 56px !important;
+  padding-top: 22px !important;
+  border-top: 1px solid rgba(255,255,255,0.12) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(255,255,255,0.46) !important;
+}
+
+
+/* ==================================================
+   14. Footer下に出る重複ナビを非表示
+   ================================================== */
+
+footer + nav,
+footer + header,
+footer + .main-navigation,
+footer + .site-navigation,
+footer + .elementor-location-header,
+footer + .elementor-section,
+.elementor-location-footer + .elementor-location-header,
+.elementor-location-footer ~ .elementor-location-header,
+.elementor-location-footer + header,
+.elementor-location-footer ~ header,
+footer ~ .elementor-location-header,
+footer ~ .hfe-header,
+footer ~ .hfe-nav-menu,
+footer ~ .main-header-bar {
+  display: none !important;
+}
+
+body > .elementor-location-header:last-child,
+body > header:last-child {
+  display: none !important;
+}
+
+
+/* ==================================================
+   15. HOME お知らせ section 表示修正
+   ================================================== */
+
+.lp-news-section,
+.lp-home-news,
+.lp-news-area,
+section:has(#lp-auto-news),
+.elementor-section:has(#lp-auto-news) {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding-top: 90px !important;
+  padding-bottom: 120px !important;
+  margin-bottom: 0 !important;
+}
+
+.elementor-container:has(#lp-auto-news),
+.elementor-column:has(#lp-auto-news),
+.elementor-widget-wrap:has(#lp-auto-news),
+.elementor-widget-container:has(#lp-auto-news) {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+#lp-auto-news {
+  width: 100%;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin-top: 54px !important;
+  margin-bottom: 48px !important;
+}
+
+#lp-auto-news .lp-news-item {
+  display: grid !important;
+  grid-template-columns: 110px 110px 1fr !important;
+  align-items: center !important;
+  gap: 18px !important;
+  width: 100% !important;
+  min-height: 56px !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 15px 24px !important;
+  overflow: visible !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+#lp-auto-news .lp-news-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+.lp-news-list,
+.lp-news-box,
+.news-list,
+.news-box {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.lp-cta,
+.lp-contact-cta,
+.lp-bottom-cta,
+section.lp-cta,
+section:has(.lp-cta-inner) {
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+section:has(#lp-auto-news) {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+
+/* ==================================================
+   16. スマホ対応
+   ================================================== */
+
+@media (max-width: 900px) {
+  :root {
+    --lp-header-height: 112px;
+  }
+
+  .site-header .header-inner,
+  .site-header .site-header-inner,
+  header.site-header .header-inner,
+  header.site-header .site-header-inner {
+    height: var(--lp-header-height) !important;
+    padding: 12px 18px !important;
+    display: block !important;
+  }
+
+  .site-title,
+  .site-title a,
+  .site-branding a {
+    font-size: 16px !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .site-title a::after {
+    font-size: 8px !important;
+    margin-top: 3px !important;
+  }
+
+  .site-header nav ul,
+  .site-header .main-navigation ul,
+  .site-header .primary-navigation ul,
+  .site-header .site-navigation ul {
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    gap: 20px !important;
+    margin-top: 12px !important;
+    white-space: nowrap !important;
+    padding-bottom: 6px !important;
+  }
+
+  .site-header nav a,
+  .site-header .main-navigation a,
+  .site-header .primary-navigation a,
+  .site-header .site-navigation a {
+    font-size: 13px !important;
+  }
+
+  .site-header nav li:last-child a,
+  .site-header .main-navigation li:last-child a,
+  .site-header .primary-navigation li:last-child a,
+  .site-header .site-navigation li:last-child a {
+    padding: 9px 16px !important;
+    font-size: 13px !important;
+  }
+
+  body.page .lp-hero,
+  body.page .hero,
+  body.page .elementor .lp-hero,
+  body.page .elementor .hero {
+    padding-top: 72px !important;
+  }
+
+  body.page .lp-hero-kicker,
+  body.page .hero-kicker,
+  body.page .elementor .lp-hero-kicker,
+  body.page .elementor .hero-kicker {
+    margin-top: 20px !important;
+    margin-bottom: 32px !important;
+  }
+
+  body.page .lp-hero .lp-hero-kicker,
+  body.page .hero .hero-kicker,
+  body.page .elementor .lp-hero .lp-hero-kicker,
+  body.page .elementor .hero .hero-kicker {
+    top: 12px !important;
+  }
+
+  body.single-post .site-main {
+    width: calc(100% - 28px) !important;
+    padding: 34px 0 60px !important;
+  }
+
+  body.single-post .entry-title,
+  body.single-post h1.entry-title {
+    font-size: 28px !important;
+    line-height: 1.4 !important;
+  }
+
+  body.single-post .entry-content,
+  body.single-post .entry-content p,
+  body.single-post .entry-content li,
+  body.single-post .entry-content div,
+  body.single-post .entry-content span {
+    font-size: 15px !important;
+    line-height: 1.9 !important;
+  }
+
+  body.single-post .entry-content h2 {
+    font-size: 23px !important;
+  }
+
+  body.single-post .entry-content h3 {
+    font-size: 19px !important;
+  }
+
+  .lp-news-section,
+  .lp-home-news,
+  .lp-news-area,
+  section:has(#lp-auto-news),
+  .elementor-section:has(#lp-auto-news) {
+    padding-top: 64px !important;
+    padding-bottom: 90px !important;
+  }
+
+  #lp-auto-news {
+    margin-top: 36px !important;
+    margin-bottom: 36px !important;
+  }
+
+  #lp-auto-news .lp-news-item {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 18px 18px !important;
+  }
+
+  .lp-footer {
+    padding: 52px 0 24px !important;
+  }
+
+  .lp-footer-main {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .lp-footer-bottom {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+}
+
+
+/* ==================================================
+   17. スマホ時のWordPress管理バー対策
+   ================================================== */
+
+@media (max-width: 782px) {
+  body.admin-bar .site-header,
+  body.admin-bar #masthead,
+  body.admin-bar header.site-header {
+    top: 46px !important;
+  }
+}
+/* ======================================
+   投稿 #1731 個別美化
+   ====================================== */
+
+/* ヒーローヘッダー */
+.postid-1731 .entry-header {
+  background: linear-gradient(135deg, #071d35 0%, #0d2543 60%, #1a3a5c 100%);
+  padding: 60px 48px 48px;
+  border-bottom: 3px solid #d8a94a;
+  position: relative;
+}
+.postid-1731 .entry-title {
+  color: #ffffff !important;
+  font-size: clamp(20px, 2.4vw, 30px) !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.6 !important;
+}
+
+/* セクション見出し h2 */
+.postid-1731 .entry-content h2 {
+  color: #0b2a4a !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  border-left: 4px solid #d8a94a !important;
+  padding: 10px 0 10px 16px !important;
+  margin: 40px 0 20px !important;
+  background: linear-gradient(90deg, rgba(13,37,67,0.06) 0%, transparent 100%) !important;
+}
+
+/* テーブル */
+.postid-1731 .entry-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 24px 0 !important;
+  font-size: 14px !important;
+  box-shadow: 0 2px 12px rgba(7,29,53,0.12) !important;
+}
+.postid-1731 .entry-content table th {
+  background: #0b2a4a !important;
+  color: #ffffff !important;
+  padding: 12px 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  border: 1px solid #1a3a5c !important;
+}
+.postid-1731 .entry-content table td {
+  padding: 10px 14px !important;
+  border: 1px solid #dde3ec !important;
+  color: #1a2a3a !important;
+  vertical-align: top !important;
+}
+.postid-1731 .entry-content table tr:nth-child(even) td {
+  background: #f4f7fb !important;
+}
+
+/* リスト */
+.postid-1731 .entry-content ul li::marker {
+  color: #d8a94a !important;
+}
+
+/* PDFダウンロードリンク */
+.postid-1731 .entry-content a[href$=".pdf"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #0b2a4a !important;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  margin: 6px 0 !important;
+  transition: background 0.2s !important;
+}
+.postid-1731 .entry-content a[href$=".pdf"]:hover {
+  background: #d8a94a !important;
+}
+/* 投稿ページのみコメント欄を非表示 */
+.single-post .comments-area,
+.single-post #comments,
+.single-post .comment-respond,
+.single-post #respond,
+.single-post .comment-form,
+.single-post .comments-title,
+.single-post .comment-reply-title {
+  display: none !important;
+}
+
+.single-post .comments-area,
+.single-post #comments,
+.single-post .comment-respond {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
